@@ -1,0 +1,13 @@
+.card_grid
+{
+    background-color: #eee;
+	width: 1000px;
+	margin: 30px auto;
+	
+	display: grid;
+	grid-template-rows: 150px 150px;
+	grid-template-columns: 150px 150px 150px;
+	
+
+	grid-gap: 150px;
+}

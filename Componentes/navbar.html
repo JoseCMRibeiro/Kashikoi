@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<head>
+  <title>Kashikoi</title>
+  <style>
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #f2f2f2;
+      padding: 10px;
+      font-size: 22px;  
+    }
+
+    .navbar_left a {
+      
+      margin-right: 10px;
+      color: #333;
+      text-decoration: none;
+    }
+
+    .navbar_center {
+      flex-grow: 1;
+      text-align: center;
+    }
+
+    .navbar_rigth a {
+      margin-left: 10px;
+      color: #333;
+      text-decoration: none;
+
+    }
+
+    .navbar a:hover {
+      font-size: 40px;  
+    }
+
+    .navbar .icon {
+    display: none;
+  }
+
+
+
+  @media screen and (max-width: 600px) 
+  {
+    .navbar_left {display: none;}
+    .navbar_rigth {display: none;}
+    .navbar a.icon  
+    {
+      float: right;
+      display: block;
+    }
+    .navbar_left.a    
+    {
+      float: left;
+      display: block;
+    }
+  }
+    
+@media screen and (max-width: 600px) {
+  
+  
+  .navbar.responsive {position: relative;}
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+    .navbar .responsive .a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    
+  .dflex
+  {
+    display: flex;
+    flex-direction: column;
+  }
+
+  }
+  
+
+
+    
+  </style>
+</head>
+<body>
+  <nav class="navbar" id="myNavBar">
+    <div class="navbar_left" id="left">
+      <a href="#"><i class="fa fa-shopping-cart"></i>  shoping</a> 
+      <a href="#"><i class="fa fa-info"></i> About</a> 
+      <a href="#"><i class="fa fa-fw fa-envelope"></i> Contact</a> 
+      
+    </div>
+    <div class="navbar_center">
+      <h1>Kashikoi</h1>
+    </div>
+    <div class="navbar_rigth" id = "rigth">
+      <a href="#"><i class="fa fa-twitter"></i></a>
+      <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+      <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
+    </div>
+    
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </a>
+  </nav>
+
+
+  <script>
+    function myFunction() {
+      var x = document.getElementById("myNavBar");
+      const l= document.getElementById("left");
+      if (x.className === "navbar") 
+      {
+        x.className += " responsive";
+        l.className += " dflex";
+      } 
+      else 
+      {
+        x.className = "navbar";        
+        l.classList.remove("dflex")
+      }
+
+    }
+    </script>
+</body>
+</html>

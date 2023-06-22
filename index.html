@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+    <body><!---------------------------------------------------- BODY ----------------------------------------------->
+        
+
+          <style>
+            .container {
+              display: flex;
+            }
+        
+            .column {
+              flex-grow: 1;
+              padding: 10px;
+              border: 1px solid #000;
+            }
+        
+            .column:first-child {
+              flex-grow: 3;
+            }
+
+            .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 10px;
+    }
+
+    .grid-item {
+      border: 1px solid #000;
+    }
+
+    .grid-item img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+          </style>
+
+          <div class="container"><!-- items no carrinho -->
+            <div class="column"><!-- items no carrinho -->
+              <ul id="cesto">
+              </ul>
+            </div>
+            <div class="column"><!--talao de compras-->
+                <div> 
+                    <ul>
+                        <li>
+                            Inserir Cupon Desconto
+                        </li>
+                        <li>
+                            <input id="cupon_desconto" type="text" placeholder="codigo coupon">
+                            <button id="bt_submeter_cupon" type="button">Submit</button>
+                        </li>
+                        <br>
+                    </ul>
+                </div>
+              <ul>
+                <li >Preço Total<label id="preco_total">000.00</label></li>
+                <li>Desconto<label id="desconto">000.00</label></li>
+                <li>TOTAL<label id="TOTAL">000.00</label></li>
+                <li><button id="bt_efetuar_pagamento" >Efetuar pagamento</button></li>
+                <li><button id="bt_master_card">Master Card</button><button id="bt_pay_pal">Paypal</button><button id="bt_visa">Visa</button><button id="bt_American_express">American Express</button></li>
+              </ul>
+            </div>
+          </div><!-- items no carrinho -->
+
+       
+           <br><br>
+           
+          <div class="grid-container">
+            
+                <div class="grid-item">
+                  <img src="./Componentes/k logo.jpeg" alt="1">
+                </div>
+                <div class="grid-item">
+                  <img src="./Componentes/k logo.jpeg" alt="2">
+                </div>
+                <div class="grid-item">
+                  <img src="./Componentes/k logo.jpeg" alt="3">
+                </div>
+                <div class="grid-item">
+                  <img src="./Componentes/k logo.jpeg" alt="4">
+                </div>
+                <div class="grid-item">
+                  <img src="./Componentes/k logo.jpeg" alt="5">
+                </div>
+                <div class="grid-item">
+                  <img src="./Componentes/k logo.jpeg" alt="6">
+                </div>
+          </div><!-- items no carrinho -->
+
+
+    <script type="module" src="./main.js"></script>
+    </body><!--------------------------------------------------- BODY---------------------------------------------- -->
+</html>
