@@ -33,7 +33,7 @@ export class ShoppingCart
       {
         if(this.armazem[i].id==id)
           {
-            armazemIndex=i;//index do produtyo no armazem
+            armazemIndex=i;//index do produto no armazem
             i=this.armazem.length;
           }
       }
@@ -44,6 +44,8 @@ export class ShoppingCart
           this.items[i].quantity+=n; 
           i=this.items.length;
           novo=false;
+          if (this.items[i]<0)
+            this.removeItem[id];
         }
       }
       if(novo)//se não existir no cesto adiciona ao cesto
@@ -89,8 +91,7 @@ export class ShoppingCart
     }
   
     getItems() //listagem de produtos no carrinho
-    {
-      
+    {      
       const cartStorage = localStorage.getItem('cart')
       if(cartStorage)
         this.items=JSON.parse(cartStorage)

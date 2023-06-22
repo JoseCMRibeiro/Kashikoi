@@ -84,40 +84,34 @@ export function renderLiItem(item)
     //adding listener
     plusButton.addEventListener('click',() => 
     {       
-        Cart.addItem(ID.toString(),1);
-        var Index=0;
-        for (var i = 0; i < Cart.items.length;i++)
-        {
-            if(Cart.items[i].id==ID)
-            {
-                Index=i;
-                i=Cart.items.lenght
-            }
-            
-        }
-        const quantity=Cart.items[Index].quantity;
-        quantityButton.textContent = quantity.toString();
-        li3.textContent = "SubTotal: "+ (quantity*Cart.items[Index].price);
+        changeQuantity(Cart,ID,quantityButton,li3,1 )
     });
     //bt_minus listener
     minusButton.addEventListener('click',() => 
     {       
-        Cart.addItem(ID.toString(),-1);
-        var Index=0;
-        for (var i = 0; i < Cart.items.length;i++)
-        {
-            if(Cart.items[i].id==ID)
-            {
-                Index=i;
-                i=Cart.items.lenght
-            }
-            
-        }
-        const quantity=Cart.items[Index].quantity;
-        quantityButton.textContent = quantity.toString();
-        li3.textContent = "SubTotal: "+ (quantity*Cart.items[Index].price);
-    });
-
+        changeQuantity(Cart,ID,quantityButton,li3,-1)
+    }); 
     
     return liItem;
+}
+function changeQuantity(Cart,ID,quantityButton,li3,n)
+{    
+    Cart.addItem(ID.toString(),n);
+    var Index=0;
+    for (var i = 0; i < Cart.items.length;i++)
+    {
+        if(Cart.items[i].id==ID)
+        {
+            Index=i;
+            i=Cart.items.lenght
+        }            
+    }
+    const quantity=Cart.items[Index].quantity;
+    if (quantity+n<0)
+        Cart.removeItem(ID)
+    else
+    {
+    quantityButton.textContent = quantity.toString();
+    li3.textContent = "SubTotal: "+ (quantity*Cart.items[Index].price);
+    }
 }
