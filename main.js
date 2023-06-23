@@ -30,13 +30,20 @@ async function mainFunction()
 }//------------------------------------------------------------------------------------------------------
 function addListener()//------------------------ADD LISTENER---------------------------------------------
 {
-    const images = document.querySelectorAll('.grid-item img');
-    
+ 
+  const images = document.querySelectorAll('.grid-item img'); 
 
     images.forEach(image => 
     {
+
       image.addEventListener('click', () => 
       {
+        const storage = localStorage.getItem('cart')
+        if(storage)
+          Cart.items=JSON.parse(storage)
+        else
+          Cart.items=[];
+
         let novo=true;
         for (var i= 0; i < Cart.items.length;i++)
         {

@@ -10,25 +10,26 @@
     <body><!---------------------------------------------------- BODY ----------------------------------------------->
         
 
-          <style>
-            .container {
+  <style>
+    .container {
               display: flex;
             }
         
-            .column {
+    .column {
               flex-grow: 1;
               padding: 10px;
               border: 1px solid #000;
             }
         
-            .column:first-child {
+    .column:first-child {
               flex-grow: 3;
             }
 
-            .grid-container {
+    .grid-container {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 10px;
+      max-width: 150px; 
     }
 
     .grid-item {
@@ -40,7 +41,7 @@
       max-width: 100%;
       height: auto;
     }
-          </style>
+  </style>
 
           <div class="container"><!-- items no carrinho -->
             <div class="column"><!-- items no carrinho -->

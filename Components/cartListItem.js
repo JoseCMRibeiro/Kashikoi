@@ -1,10 +1,8 @@
-import { ShoppingCart } from './ClassCart.js'
 const total=document.getElementById("TOTAL")
 
-export function renderLiItem(item)
+export function renderLiItem(Cart)
 {    
-    const Cart = new ShoppingCart();
-
+    const item=Cart.items[Cart.items.length-1]
     const words=item.name.split(' ');
     const name= words.slice(0,2).join(' ');
     const ID=item.id;
@@ -80,42 +78,26 @@ export function renderLiItem(item)
     //trash listener
     deleteButton.addEventListener('click',() => 
     {       
-        Cart.removeItem(ID);
+        Cart.removeItem(ID);    
     });
     //adding listener
     plusButton.addEventListener('click',() => 
-    {       
-        changeQuantity(Cart,ID,quantityButton,li3,1 )
+    {     
+        Cart.addItem(ID,1)         
+        quantityButton.textContent=++item.quantity      
+        total.textContent=Cart.getTotal()  
+        li3.textContent="Sub Total: " +item.quantity*item.price
+
     });
     //bt_minus listener
     minusButton.addEventListener('click',() => 
-    {       
-        changeQuantity(Cart,ID,quantityButton,li3,-1)
+    {   
+        Cart.addItem(ID,-1)           
+        quantityButton.textContent=--item.quantity
+        total.textContent=Cart.getTotal() 
     }); 
-    
-    return liItem;
-}
-function changeQuantity(Cart,ID,quantityButton,li3,n)
-{    
-    Cart.addItem(ID.toString(),n);
-    var Index=0;
-    var Total=0;
-    for (var i = 0; i < Cart.items.length;i++)
-    {
-        Total+= Cart.items[i].price * Cart.items[i].quantity
-        if(Cart.items[i].id==ID)
-        {
-            Index=i;   
-        } 
-    }
-    const quantity=Cart.items[Index].quantity;
-    if (quantity+n<0)
-        Cart.removeItem(ID)
-    else
-    {
-    quantityButton.textContent = quantity.toString();
-    li3.textContent = "SubTotal: "+ (quantity*Cart.items[Index].price);
-    }
-    total.textContent=Total.toString();
 
+
+    total.textContent=Cart.getTotal()    
+    return liItem;
 }

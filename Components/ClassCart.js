@@ -20,8 +20,7 @@ export class ShoppingCart
   
     addItem(id,n)//adicionar n produtos ao carrinho pelo id
     {                
-      const storage = localStorage.getItem('cart') 
-      
+      const storage = localStorage.getItem('cart')       
       if(storage)
         this.items=JSON.parse(storage)
       else
@@ -42,10 +41,10 @@ export class ShoppingCart
         if(this.armazem[armazemIndex].id==this.items[i].id)//já existe no cesto
         {
           this.items[i].quantity+=n; 
+          if (this.items[i].quantity <1)
+            this.removeItem(id)
           i=this.items.length;
           novo=false;
-          if (this.items[i]<0)
-            this.removeItem[id];
         }
       }
       if(novo)//se não existir no cesto adiciona ao cesto
@@ -53,41 +52,36 @@ export class ShoppingCart
         this.items.push(this.armazem[armazemIndex]);
         const lastItem=this.items[this.items.length-1]
         lastItem.quantity=1;        
-        const liItem=renderLiItem(lastItem);
+        const liItem=renderLiItem(this);
         cesto.appendChild(liItem);
       }
 
       localStorage.setItem("cart", JSON.stringify(this.items));//actualiza storage      
     }
   
-    removeItem(id)//remover item do carrinho 
+    removeItem(ID)//remover item com id=ID do carrinho 
     {
-      const storage = localStorage.getItem('cart') 
-      
-      if(storage)
-        this.items=JSON.parse(storage)
-
-      let idIndex=0;
-      
+      let index=0;      
       for(let i= 0; i < this.items.length;i++)
       {
-        if(id==this.items[i].id)
+        if(ID==this.items[i].ID)
         {
-          idIndex=i;
+          index=i;
           i=this.items.length
         }
       }
 
-      this.items.splice(idIndex, 1);
+      this.items.splice(index, 1);
 
-      const li=document.getElementById(id)
+      const li=document.getElementById(ID)
       cesto.removeChild(li)
       localStorage.setItem("cart", JSON.stringify(this.items));//actualiza storage      
+      
     }
   
     getTotal()// 
     {
-      return this.items.reduce((total, item) => total + item.price, 0);
+      return this.items.reduce((total, item) => total + item.price*item.quantity, 0);
     }
   
     getItems() //listagem de produtos no carrinho
@@ -104,6 +98,7 @@ export class ShoppingCart
     clearCart() //esvaziar carrinho
     {
       this.items = [];
+
     }
   }
   
