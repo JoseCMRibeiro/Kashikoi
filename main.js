@@ -1,9 +1,13 @@
 import { fetchProducts } from './Components/productsApi'
 import { ShoppingCart } from './Components/ClassCart'
 import { RenderNavBar } from './Components/renderNavBar';
+import { RenderModal } from './Components/renderModal.js';
+
 
 const page=document.getElementById("page");
 
+const modal= RenderModal("Tenha um bom dia","com alegria")
+document.body.appendChild(modal)
 
 
 const Cart = new ShoppingCart();
@@ -22,6 +26,10 @@ async function mainFunction()
       const navBar=RenderNavBar();
       page.appendChild(navBar)
       addListener()
+      
+RenderModal()
+
+
     }
     catch(error)
     {
@@ -59,3 +67,5 @@ function addListener()//------------------------ADD LISTENER--------------------
       });
     });
 }//-------------------------------------------------------------------------------------------------------
+
+

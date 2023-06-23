@@ -1,4 +1,4 @@
-import { renderLiItem } from '/Components/cartListItem'
+import { renderLiItem } from '/Components/renderCartList'
 const cesto= document.getElementById('cesto')
 
 export class ShoppingCart 
@@ -33,28 +33,29 @@ export class ShoppingCart
         if(id==this.armazem[i].id)
           {
             armazemIndex=i;//index do produto no armazem
-            i=this.armazem.length;
+            i=this.armazem.length;//saida do for
           }
       }
-      for(var i = 0; i < this.items.length;i++)//verifica se já existe o item no cesto e aumenta a quantidade caso já haja
+      for(var i = 0; i < this.items.length;i++)//verifica se já existe o item no cesto e modifica a quantidade caso já haja
       {
         if(this.armazem[armazemIndex].id==this.items[i].id)//já existe no cesto
-        {
+        {          
+          novo=false;  
           this.items[i].quantity+=n; //actualiza a quantidade no cesto
-          if (this.items[i].quantity <1)
+          if (this.items[i].quantity <1)//remove do cesto
           {
-            this.items.splice(i, 1);//remove o item
-          }            
+            this.removeItem(id);
+          } 
+                  
           i=this.items.length;//sai do for
-          novo=false;
         }
       }
       if(novo)//se não existir no cesto adiciona ao cesto
       {       
-        this.items.push(this.armazem[armazemIndex]);
+        this.items.push(this.armazem[armazemIndex]);//adiciona a lista de produtos
         const newItem=this.items[this.items.length-1]
-        newItem.quantity=1;        
-        const liItem=renderLiItem(this);
+        newItem.quantity=1;//inicializa quantidade no cesto em 1        
+        const liItem=renderLiItem(this);//criar produto no cesto
         cesto.appendChild(liItem);
       }
 
@@ -81,7 +82,7 @@ export class ShoppingCart
       
     }
   
-    getTotal()// 
+    getTotal()//valor dos items no cesto 
     {
       var Total=0;
       for ( var i=0; i < this.items.length; i++)

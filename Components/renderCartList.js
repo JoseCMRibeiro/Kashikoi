@@ -1,4 +1,4 @@
-const total=document.getElementById("precoFinal")
+const total=document.getElementById("precototal")
 
 export function renderLiItem(Cart)
 {    

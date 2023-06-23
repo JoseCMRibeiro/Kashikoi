@@ -14,10 +14,10 @@ export function RenderNavBar()
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" href="./">Home</a>
-          </li>
+          </ul>
           <li class="nav-item">
             <a class="nav-link" href="./cart">Cart</a>
-          </li>
+          </ul>
         </ul>
       </div>
     </div>
