@@ -30,7 +30,7 @@ export class ShoppingCart
       let novo=true;
       for(var i=0; i < this.armazem.length;i++)//procura pelo item adicionado ao cesto na lista de produtos 
       {
-        if(this.armazem[i].id==id)
+        if(id==this.armazem[i].id)
           {
             armazemIndex=i;//index do produto no armazem
             i=this.armazem.length;
@@ -40,18 +40,20 @@ export class ShoppingCart
       {
         if(this.armazem[armazemIndex].id==this.items[i].id)//já existe no cesto
         {
-          this.items[i].quantity+=n; 
+          this.items[i].quantity+=n; //actualiza a quantidade no cesto
           if (this.items[i].quantity <1)
-            this.removeItem(id)
-          i=this.items.length;
+          {
+            this.items.splice(i, 1);//remove o item
+          }            
+          i=this.items.length;//sai do for
           novo=false;
         }
       }
       if(novo)//se não existir no cesto adiciona ao cesto
       {       
         this.items.push(this.armazem[armazemIndex]);
-        const lastItem=this.items[this.items.length-1]
-        lastItem.quantity=1;        
+        const newItem=this.items[this.items.length-1]
+        newItem.quantity=1;        
         const liItem=renderLiItem(this);
         cesto.appendChild(liItem);
       }
@@ -64,7 +66,7 @@ export class ShoppingCart
       let index=0;      
       for(let i= 0; i < this.items.length;i++)
       {
-        if(ID==this.items[i].ID)
+        if(ID==this.items[i].id)
         {
           index=i;
           i=this.items.length
@@ -81,7 +83,13 @@ export class ShoppingCart
   
     getTotal()// 
     {
-      return this.items.reduce((total, item) => total + item.price*item.quantity, 0);
+      var Total=0;
+      for ( var i=0; i < this.items.length; i++)
+        Total+=this.items[i].quantity*this.items[i].price;
+
+      return Total
+
+      //return this.items.reduce((total, item) => total + item.price*item.quantity, 0);
     }
   
     getItems() //listagem de produtos no carrinho
@@ -98,7 +106,6 @@ export class ShoppingCart
     clearCart() //esvaziar carrinho
     {
       this.items = [];
-
     }
   }
   

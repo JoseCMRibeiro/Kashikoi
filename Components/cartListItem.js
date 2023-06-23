@@ -1,4 +1,4 @@
-const total=document.getElementById("TOTAL")
+const total=document.getElementById("precoFinal")
 
 export function renderLiItem(Cart)
 {    
@@ -78,15 +78,16 @@ export function renderLiItem(Cart)
     //trash listener
     deleteButton.addEventListener('click',() => 
     {       
-        Cart.removeItem(ID);    
+        Cart.removeItem(ID);  
+        total.textContent=Cart.getTotal().toFixed(2)   
     });
     //adding listener
     plusButton.addEventListener('click',() => 
     {     
         Cart.addItem(ID,1)         
-        quantityButton.textContent=++item.quantity      
-        total.textContent=Cart.getTotal()  
-        li3.textContent="Sub Total: " +item.quantity*item.price
+        quantityButton.textContent=++item.quantity    
+        total.textContent=Cart.getTotal().toFixed(2) 
+        li3.textContent="Sub Total: " +(item.quantity*item.price).toFixed(2)
 
     });
     //bt_minus listener
@@ -94,7 +95,8 @@ export function renderLiItem(Cart)
     {   
         Cart.addItem(ID,-1)           
         quantityButton.textContent=--item.quantity
-        total.textContent=Cart.getTotal() 
+        total.textContent=Cart.getTotal().toFixed(2) 
+        li3.textContent="Sub Total: " +(item.quantity*item.price).toFixed(2)
     }); 
 
 
