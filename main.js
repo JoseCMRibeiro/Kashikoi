@@ -1,5 +1,9 @@
-import { fetchProducts } from './Componentes/productsApi'
-import { ShoppingCart } from './Componentes/ClassCart'
+import { fetchProducts } from './Components/productsApi'
+import { ShoppingCart } from './Components/ClassCart'
+import { RenderNavBar } from './Components/renderNavBar';
+
+const page=document.getElementById("page");
+
 
 
 const Cart = new ShoppingCart();
@@ -14,6 +18,9 @@ async function mainFunction()
       const armazem = await fetchProducts();
       const products= JSON.stringify(armazem);
       localStorage.setItem("products", products);
+
+      const navBar=RenderNavBar();
+      page.appendChild(navBar)
       addListener()
     }
     catch(error)
@@ -26,17 +33,17 @@ function addListener()//------------------------ADD LISTENER--------------------
     const images = document.querySelectorAll('.grid-item img');
     
 
-    images.forEach(image => {
+    images.forEach(image => 
+    {
       image.addEventListener('click', () => 
       {
         let novo=true;
-        var items=Cart.getItems;
-        for (var i= 0; i < items.length;i++)
+        for (var i= 0; i < Cart.items.length;i++)
         {
-          if(image.alt==items[i].id)
+          if(parseInt(image.alt)==Cart.items[i].id)
           {
             novo=false;
-            i=items.length;
+            i=Cart.items.length;
           }
         }
 

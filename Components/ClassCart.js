@@ -1,4 +1,4 @@
-import { renderLiItem } from '/Componentes/cartListItem'
+import { renderLiItem } from '/Components/cartListItem'
 const cesto= document.getElementById('cesto')
 
 export class ShoppingCart 

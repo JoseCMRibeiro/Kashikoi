@@ -1,4 +1,5 @@
 import { ShoppingCart } from './ClassCart.js'
+const total=document.getElementById("TOTAL")
 
 export function renderLiItem(item)
 {    
@@ -98,13 +99,14 @@ function changeQuantity(Cart,ID,quantityButton,li3,n)
 {    
     Cart.addItem(ID.toString(),n);
     var Index=0;
+    var Total=0;
     for (var i = 0; i < Cart.items.length;i++)
     {
+        Total+= Cart.items[i].price * Cart.items[i].quantity
         if(Cart.items[i].id==ID)
         {
-            Index=i;
-            i=Cart.items.lenght
-        }            
+            Index=i;   
+        } 
     }
     const quantity=Cart.items[Index].quantity;
     if (quantity+n<0)
@@ -114,4 +116,6 @@ function changeQuantity(Cart,ID,quantityButton,li3,n)
     quantityButton.textContent = quantity.toString();
     li3.textContent = "SubTotal: "+ (quantity*Cart.items[Index].price);
     }
+    total.textContent=Total.toString();
+
 }
