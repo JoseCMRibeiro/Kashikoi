@@ -33,7 +33,7 @@ function Modal(options)
     modalContent.appendChild(modalHeader);
     modalContent.appendChild(modalBody);
     modalContainer.appendChild(modalContent);
-    modalContainer.appendChild(closeButton);
+    modalBody.appendChild(closeButton);
   
     if (isOpen) {
       modalContainer.style.display = 'block';
