@@ -1,37 +1,35 @@
 import { renderLiItem } from '/Components/renderCartList'
+import { RenderModal} from './renderModal'
 const cesto= document.getElementById('cesto')
 
 export class ShoppingCart 
 { 
     constructor()//construtor 
     {      
-      const armazemStorage = localStorage.getItem('products')
-      if(armazemStorage)
-        this.armazem = JSON.parse(armazemStorage)
-      else
-        this.armazem =[];//array de produtos na loja 
-      const cartStorage = localStorage.getItem('cart')
-      if(cartStorage)
-        this.items=JSON.parse(cartStorage)
-      else
-        this.items=[]//array de produtos no carrinho
+      this.armazem=[]//produtos no armazem
+      this.items=[]//array de produtos no carrinho
     }
     
   
-    addItem(id,n)//adicionar n produtos ao carrinho pelo id
+    addItem(id,n)//adicionar n produtos id ao carrinho
     {                
       const storage = localStorage.getItem('cart')       
       if(storage)
         this.items=JSON.parse(storage)
-      else
-        this.items=[]
-
-      var armazemIndex
+      
+      const armazem = localStorage.getItem('products')       
+        if(armazem)
+          this.armazem=JSON.parse(armazem)  
+     
+      let armazemIndex
+      let quantity=1
+      let stock
       let novo=true;
-      for(var i=0; i < this.armazem.length;i++)//procura pelo item adicionado ao cesto na lista de produtos 
+      for(var i=0; i < this.armazem.length;i++)//procura pelo item adicionado ao cesto no armazem
       {
         if(id==this.armazem[i].id)
           {
+            stock=this.armazem[i].quantity
             armazemIndex=i;//index do produto no armazem
             i=this.armazem.length;//saida do for
           }
@@ -41,25 +39,30 @@ export class ShoppingCart
         if(this.armazem[armazemIndex].id==this.items[i].id)//já existe no cesto
         {          
           novo=false;  
-          this.items[i].quantity+=n; //actualiza a quantidade no cesto
+          quantity=this.items[i].quantity+=n; //actualiza a quantidade no cesto
           if (this.items[i].quantity <1)//remove do cesto
           {
             this.removeItem(id);
-          } 
-                  
+          }                   
           i=this.items.length;//sai do for
         }
       }
-      if(novo)//se não existir no cesto adiciona ao cesto
+      
+      if(novo && stock > 0)//se não existir no cesto adiciona ao cesto
       {       
-        this.items.push(this.armazem[armazemIndex]);//adiciona a lista de produtos
-        const newItem=this.items[this.items.length-1]
-        newItem.quantity=1;//inicializa quantidade no cesto em 1        
+        const item=this.newItem(armazemIndex,this.armazem)
+        this.items.push(item);//adiciona a lista de produtos
+        quantity=item.quantity=1;//inicializa quantidade no cesto em 1        
         const liItem=renderLiItem(this);//criar produto no cesto
         cesto.appendChild(liItem);
       }
-
+      if(quantity>=stock)
+      { 
+        quantity=this.armazem[armazemIndex].quantity       
+        RenderModal("STOCK LIMITADO", "só existem "+ quantity + " deste artigo em Stock")        
+      }
       localStorage.setItem("cart", JSON.stringify(this.items));//actualiza storage      
+      return quantity
     }
   
     removeItem(ID)//remover item com id=ID do carrinho 
@@ -107,6 +110,20 @@ export class ShoppingCart
     clearCart() //esvaziar carrinho
     {
       this.items = [];
+    }
+
+    newItem(index,olditem)
+    {
+      const item =
+      {
+        description: olditem[index].description, 
+        id:olditem[index].id, 
+        image:olditem[index].image, 
+        name:olditem[index].name, 
+        price:olditem[index].price, 
+        quantity:olditem[index].quantity 
+      };
+      return item
     }
   }
   

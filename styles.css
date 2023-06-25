@@ -1,4 +1,4 @@
-.modal {
+ .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
@@ -14,11 +14,13 @@
   
   /* Modal Content */
   .modal-content {
-    background-color: #fefefe;
+    background-color: rgb(234, 232, 232);
+    color: whiote;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 1px solid #d3d4cc;
     width: 80%;
+    height: 40%;
   }
 
   .container {
@@ -50,5 +52,4 @@ border: 1px solid #000;
 display: block;
 max-width: 100px;
 max-height: 100px;
-}
-  
+} 

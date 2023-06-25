@@ -1,4 +1,5 @@
 const total=document.getElementById("precototal")
+const submit=document.getElementById("bt_submeter_cupon")
 
 export function renderLiItem(Cart)
 {    
@@ -79,24 +80,25 @@ export function renderLiItem(Cart)
     deleteButton.addEventListener('click',() => 
     {       
         Cart.removeItem(ID);  
-        total.textContent=Cart.getTotal().toFixed(2)   
+        total.textContent=Cart.getTotal().toFixed(2)  
+        submit.click(); //para atualizar valores no checkout
     });
     //adding listener
     plusButton.addEventListener('click',() => 
-    {     
-        Cart.addItem(ID,1)         
-        quantityButton.textContent=++item.quantity    
+    {   
+        quantityButton.textContent=Cart.addItem(ID,1)     
         total.textContent=Cart.getTotal().toFixed(2) 
-        li3.textContent="Sub Total: " +(item.quantity*item.price).toFixed(2)
-
+        li3.textContent="Sub Total: " +(item.quantity*item.price).toFixed(2)      
+        submit.click(); //para atualizar valores no checkout
     });
     //bt_minus listener
     minusButton.addEventListener('click',() => 
-    {   
-        Cart.addItem(ID,-1)           
-        quantityButton.textContent=--item.quantity
+    {       
+        quantityButton.textContent=Cart.addItem(ID,-1) 
         total.textContent=Cart.getTotal().toFixed(2) 
         li3.textContent="Sub Total: " +(item.quantity*item.price).toFixed(2)
+        
+        submit.click(); 
     }); 
 
 

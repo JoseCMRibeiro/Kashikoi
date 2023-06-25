@@ -39,8 +39,7 @@ function Modal(options)
       modalContainer.style.display = 'block';
     } else {
       modalContainer.style.display = 'none';
-    }
-  
+    }    
     return modalContainer;
   }
   

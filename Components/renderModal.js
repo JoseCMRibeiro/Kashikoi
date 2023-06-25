@@ -16,5 +16,6 @@ export function RenderModal(t,c)
     }    
     modal.style.display = 'block';  
     
-    return modal    
+    document.body.appendChild(modal)
+    //return modal    
 }

@@ -1,4 +1,6 @@
 
+import { RenderModal } from './renderModal.js';
+
 export async function fetchProducts() 
 {
   try 
@@ -17,38 +19,46 @@ export async function fetchProducts()
     throw error;
   }
 }
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////  
+////////////////////////////
+////////////////////////////
+//                        //
+//  CART FORMAT           //   
+//                        //
+// const cart =           //
+// {                      //
+//   "products":          //
+//   [                    //
+//     {                  //
+//       "id": 1,         //
+//       "quantity": 2    //
+//     },                 //
+//     {                  //
+//       "id": 2,         //
+//       "quantity": 1    //
+//     }                  //  
+//   ],                   //
+//   "coupon": "TWXTQVQ"  //  
+//  }                     //
+////////////////////////////
+////////////////////////////
 
 
-const coupon =
+export async function checkout(coupon) 
 {
-  "couponCode": "TWXTQVQ"
-}
+
+  let items=[]
+  const cartStorage = localStorage.getItem('cart')
+  if(cartStorage)
+    items=JSON.parse(cartStorage)
 
 
+  const simplifiedProducts = items.map(({ id, quantity }) => ({ id, quantity }));//cria um novo JSON com apenas os atributos necessarios para checkout
+  const cart = 
+  {
+    products: simplifiedProducts,
+    coupon: coupon
+  }
 
-const cart =
-{
-  "products": 
-  [
-    {
-      "id": 1,
-      "quantity": 2
-    },
-    {
-      "id": 2,
-      "quantity": 1
-    }
-  ],
-  "coupon": "TWXTQVQ"  //discount coupon
-}
-
-
-//******************************************************************************************** */
-  
-async function checkout(cart) 
-{
 
   const url = 'http://127.0.0.1:3333/checkout';
 
@@ -62,21 +72,34 @@ async function checkout(cart)
     });
 
     const data = await response.json();
-    console.log(data);
+    return data
   } 
   catch (error) 
   {
-    console.error(error);
+    console.log(error);
   }
 }
-////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////    
-async function check_coupon(coupon) 
+////////////////////////////////
+////////////////////////////////
+//                            //
+//  COUPON FORMAT             //
+//  const coupon =            //
+//  {                         //
+//   "couponCode": "TWXTQVQ"  //  
+//  }                         //
+//                            //
+////////////////////////////////
+////////////////////////////////
+export async function checkCoupon(text) 
 {
 //-------------------------------------------------------
 
   const url = 'http://127.0.0.1:3333/check-coupon';
-//-------------------------------------------------------
+  const coupon=
+  {
+    "couponCode": text
+  }
+
   try 
   {
     const response = await fetch(url, 
@@ -88,6 +111,7 @@ async function check_coupon(coupon)
 
     const data = await response.json();
     console.log(data);
+    return data;
   }
   catch (error) 
   {
