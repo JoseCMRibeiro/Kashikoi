@@ -1,6 +1,4 @@
 
-import { RenderModal } from './renderModal.js';
-
 export async function fetchProducts() 
 {
   try 
@@ -41,8 +39,6 @@ export async function fetchProducts()
 //  }                     //
 ////////////////////////////
 ////////////////////////////
-
-
 export async function checkout(coupon) 
 {
 
