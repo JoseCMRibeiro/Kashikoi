@@ -8,9 +8,9 @@ export function NavbarTop()
     navbarLeft.className = 'navbarLeft';
     navbarLeft.id = 'left';
     navbarLeft.innerHTML = `
-      <a href="/pages/cart/index.html"><i class="fa fa-shopping-cart"></i> Shop</a> 
-      <a href="about.html"><i class="fa fa-info"></i> About</a> 
-      <a href="contact.html"><i class="fa fa-phone"></i> Contact</a> 
+      <a href="/pages/shop.html"><i class="fa fa-shopping-cart"></i> Shop</a> 
+      <a href="/pages/about.html"><i class="fa fa-info"></i> About</a> 
+      <a href="/pages/contact.html"><i class="fa fa-phone"></i> Contact</a> 
     `;
   
     const navbarCenter = document.createElement('div');
@@ -43,9 +43,9 @@ export function NavbarTop()
     links.className = 'links';
     linkContainer.id = 'links';
     linkContainer.innerHTML = `
-    <a href="shop.html"><i class="fa fa-shopping-cart "></i></a> 
-    <a href="contact.html"><i class="fa fa-info"></i></a> 
-    <a href="about.html"><i class="fa fa-phone"></i></a> 
+    <a href="/pages/shop.html"><i class="fa fa-shopping-cart "></i></a> 
+    <a href="/pages/about.html"><i class="fa fa-info"></i></a> 
+    <a href="/pages/contact.html"><i class="fa fa-phone"></i></a> 
     `;
     return links
 }

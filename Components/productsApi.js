@@ -6,8 +6,6 @@ export async function fetchProducts()
     const response = await fetch('http://127.0.0.1:3333/products');///get list of products
     
     const array_response = await response.json();
-
-    console.log(array_response);
     return array_response;//return array with list of products
 
   } 

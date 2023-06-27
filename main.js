@@ -5,21 +5,21 @@ const footer=document.getElementById("footer")
 header.appendChild(NavbarTop())
 footer.appendChild(NavBarBottom())
 
-
-
-localStorage.setItem('cart',[])//limpa carinho
-
-mainFunction()
+const storage = localStorage.getItem('products')
+if(!storage) mainFunction()
 
 async function mainFunction()
 {
     try
     {        
       const armazem = await fetchProducts();
+      for(var i=0;i< armazem.length;i++)
+      {
+        armazem[i].quantityInCart=0
+        armazem[i].productIndex=i
+      }
       const products= JSON.stringify(armazem);
-      localStorage.setItem("products", products);
-
-    
+      localStorage.setItem("products", products);    
     }
     catch(error)
     {

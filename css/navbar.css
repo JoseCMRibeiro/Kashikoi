@@ -58,7 +58,7 @@
 /*---------------------------  */
 /*-------  Media   ----------- */
 /*---------------------------  */
-@media screen and (max-width: 600px){
+@media screen and (max-width: 576px){
   .navbarLeft {display: none;}
   .navbarRigth {display: none;}  
   .navbarCenter {margin-right: 0px;}
