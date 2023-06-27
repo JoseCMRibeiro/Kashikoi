@@ -33,7 +33,6 @@ export class ShoppingCart
         return (quantity)
       }
     }
-
     removeItem(item)
     {
       const storage = localStorage.getItem('products')
@@ -43,7 +42,10 @@ export class ShoppingCart
     }
     getTotal()
     {
-      return 1
-    }
+      var Total=0;
+      for ( var i=0; i < this.products.length; i++)
+        Total+=this.products[i].quantityInCart*this.products[i].price;
 
+      return Total
+    }
 }

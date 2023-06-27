@@ -33,7 +33,7 @@ export function renderCartItem(item)
     li2.textContent = "Preço: €"+ item.price;
     const li3 = document.createElement('ul');
     li3.textContent = "";
-    li3.id='SubTotal'+ ID;
+    li3.id='SubTotal'+ID;
 
     // Append li elements to ul
     ul.appendChild(li1);
@@ -85,15 +85,14 @@ export function renderCartItem(item)
         toRemove.remove()    
         Cart.removeItem(item);  
         total.textContent=Cart.getTotal().toFixed(2)  
-        submit.click(); //para atualizar valores no checkout
     });
     //adding listener
     plusButton.addEventListener('click',() => 
-    {             
-        quantityButton.textContent=Cart.addItem(item,1);
+    {   
+        const quantity = Cart.addItem(item,1);          
+        quantityButton.textContent = quantity;
         total.textContent=Cart.getTotal().toFixed(2) 
-        li3.textContent="Sub Total: " +(item.quantityInCart*item.price).toFixed(2)      
-        submit.click(); //para atualizar valores no checkout
+        li3.textContent="Sub Total: " + (quantity*item.price).toFixed(2)     
     });
     //bt_minus listener
     minusButton.addEventListener('click',() => 
@@ -105,10 +104,7 @@ export function renderCartItem(item)
         }
         quantityButton.textContent=Cart.addItem(item,-1) 
         total.textContent=Cart.getTotal().toFixed(2) 
-        li3.textContent="Sub Total: " +(item.quantityInCart*item.price).toFixed(2)  
-        
-        submit.click(); 
-    }); 
-  
+        li3.textContent="Sub Total: " +(item.quantityInCart*item.price).toFixed(2)          
+    });   
     return cartItem;
 }
