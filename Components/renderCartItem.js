@@ -11,7 +11,7 @@ export function renderCartItem(item)
     const ID=item.id;
     // Create li element
     const cartItem = document.createElement('ul');
-    cartItem.id = item.id;
+    cartItem.id = "inCart"+item.id;
 
     // Create container div
     const containerDiv = document.createElement('div');
@@ -80,7 +80,9 @@ export function renderCartItem(item)
 
     //trash listener
     deleteButton.addEventListener('click',() => 
-    {       
+    {   
+        const toRemove=document.getElementById("inCart"+item.id)
+        toRemove.remove()    
         Cart.removeItem(item);  
         total.textContent=Cart.getTotal().toFixed(2)  
         submit.click(); //para atualizar valores no checkout
@@ -90,15 +92,20 @@ export function renderCartItem(item)
     {             
         quantityButton.textContent=Cart.addItem(item,1);
         total.textContent=Cart.getTotal().toFixed(2) 
-        li3.textContent="Sub Total: " +(item.quantity*item.price).toFixed(2)      
+        li3.textContent="Sub Total: " +(item.quantityInCart*item.price).toFixed(2)      
         submit.click(); //para atualizar valores no checkout
     });
     //bt_minus listener
     minusButton.addEventListener('click',() => 
-    {       
+    {   
+        if(quantityButton.textContent=="1")    
+        {
+            deleteButton.click()
+            return
+        }
         quantityButton.textContent=Cart.addItem(item,-1) 
         total.textContent=Cart.getTotal().toFixed(2) 
-        li3.textContent="Sub Total: " +(item.quantity*item.price).toFixed(2)
+        li3.textContent="Sub Total: " +(item.quantityInCart*item.price).toFixed(2)  
         
         submit.click(); 
     }); 

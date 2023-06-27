@@ -40,7 +40,10 @@ export class ShoppingCart
       this.products = JSON.parse(storage)
       this.products[item.productIndex].quantityInCart=0;
       localStorage.setItem("products", JSON.stringify(this.products));//actualiza storage      
-
+    }
+    getTotal()
+    {
+      return 1
     }
 
 }
