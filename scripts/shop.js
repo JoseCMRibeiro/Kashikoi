@@ -25,8 +25,8 @@ function cardClick(event)
     }
     if(item.quantityInCart>0)
     {
-        RenderModal("Produto já existente no carinho",
-        "Pode modificar a quantidade desejada no carinho")
+        RenderModal("Produto já existente no carrinho",
+        "Pode modificar a quantidade desejada no carrinho")
         return
     }
     else if(item.quantity<1)        

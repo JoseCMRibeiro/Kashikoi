@@ -14,10 +14,15 @@ function Modal(options)
     const modalTitle = document.createElement('h2');
     modalTitle.className = 'modal-title';
     modalTitle.textContent = title;
-  
+
+    const container = document.createElement('div');
+    container.id="modalContent";
+
     const closeButton = document.createElement('button');
     closeButton.className = 'modal-close';
-    closeButton.textContent = '×';
+    closeButton.textContent = ' CLOSE ';
+    closeButton.style.backgroundColor = "grey";
+    closeButton.style.color = "white";
     closeButton.addEventListener('click', onClose);
   
     const modalBody = document.createElement('div');

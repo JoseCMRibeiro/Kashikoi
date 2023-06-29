@@ -1,4 +1,10 @@
 import { RenderModal } from "../Components/renderModal";
+const final = document.getElementById("precoFinal")
+const desconto = document.getElementById("desconto")
+const precoTotal = document.getElementById("precototal")
+
+//gestão do conteudo do carrinho, afixa valores total e final
+
 export class ShoppingCart 
 { 
     constructor()//construtor 
@@ -6,7 +12,6 @@ export class ShoppingCart
       const storage = localStorage.getItem('products')
       this.products = JSON.parse(storage)
     }
-
 
     addItem(item,n)
     {  
@@ -33,6 +38,7 @@ export class ShoppingCart
         return (quantity)
       }
     }
+    //////////////////////////////////////////////////////////
     removeItem(item)
     {
       const storage = localStorage.getItem('products')
@@ -40,12 +46,16 @@ export class ShoppingCart
       this.products[item.productIndex].quantityInCart=0;
       localStorage.setItem("products", JSON.stringify(this.products));//actualiza storage      
     }
+    //////////////////////////////////////////////////////////
     getTotal()
     {
-      var Total=0;
+      var total=0;
       for ( var i=0; i < this.products.length; i++)
-        Total+=this.products[i].quantityInCart*this.products[i].price;
-
-      return Total
+      total+=this.products[i].quantityInCart*this.products[i].price;
+      precoTotal.textContent = "€" + total.toFixed(2)
+      const descontoValue = parseInt(desconto.textContent)
+      const finalValue = total * (100 - descontoValue)/100
+      final.textContent =  "€" + finalValue.toFixed(2) 
+      return total
     }
 }

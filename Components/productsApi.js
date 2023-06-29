@@ -18,9 +18,9 @@ export async function fetchProducts()
 ////////////////////////////
 ////////////////////////////
 //                        //
-//  CART FORMAT           //   
+//  products FORMAT           //   
 //                        //
-// const cart =           //
+// const products =           //
 // {                      //
 //   "products":          //
 //   [                    //
@@ -41,13 +41,16 @@ export async function checkout(coupon)
 {
 
   let items=[]
-  const cartStorage = localStorage.getItem('cart')
-  if(cartStorage)
-    items=JSON.parse(cartStorage)
+  let productsStorage = localStorage.getItem('products')
+  
+  if(productsStorage)
+    items=JSON.parse(productsStorage)
 
-
-  const simplifiedProducts = items.map(({ id, quantity }) => ({ id, quantity }));//cria um novo JSON com apenas os atributos necessarios para checkout
-  const cart = 
+  let simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));//cria um novo JSON com apenas os atributos necessarios para checkout
+  
+  simplifiedProducts.quantity=simplifiedProducts.quantityInCart;
+  delete simplifiedProducts.quantityInCart;
+  const products = 
   {
     products: simplifiedProducts,
     coupon: coupon
@@ -62,7 +65,7 @@ export async function checkout(coupon)
     {
       method: 'post',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
-      body: JSON.stringify(cart)
+      body: JSON.stringify(products)
     });
 
     const data = await response.json();
