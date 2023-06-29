@@ -1,29 +1,34 @@
-import { RenderCard } from "./product_card";
+import { createCard } from './cardProducts.js';
 
-export function updateProductGrid(searchItem){
-    //obtem os produtos no localStorage
-    if(searchItem.length >= 3){   
-    const jsonProducts = localStorage.getItem("products");
-    const products = JSON.parse(jsonProducts);  //convert string to json
+const searchInput = document.querySelector('.search');
+const productsContainer = document.querySelector('.DataGridProducts');
 
-    //filtra os produtos com base a pesquisa
-    const filteredProducts = products.filter(product => {
-        const productName = product.name.toLowerCase(); 
-        return productName.includes(searchItem.toLowerCase());
-    });
+searchInput.addEventListener('input', handleSearch);
 
-    console.log(filteredProducts);
+async function handleSearch() {
+  const searchValue = searchInput.value.trim().toLowerCase();
+  if (searchValue.length < 3) {
+    // Limpar a lista de produtos se a pesquisa estiver vazia
+    productsContainer.innerHTML = ' <h2> Product not found </h2>';
+    return;
+  }
 
-    //obtem o elementos da grid e limpa
-    const cardGrid = document.getElementById("cardGridId");
-    cardGrid.innerHTML = "";
+  const jsonProducts = localStorage.getItem("products");
+    const products = JSON.parse(jsonProducts);
 
-    //
-    filteredProducts.forEach(product => { 
-        const {title,price,imageUrl,id} = product; //desestruturação dos dados do produto
-        const card = RenderCard(title,price,imageUrl,id); //cria o card com os dados do produto
-        cardGrid.appendChild(card); //adiciona o card na grid
+  const filteredProducts = products.filter((product) => {
+    const productName = product.name.toLowerCase();
+    return productName.includes(searchValue);
+  });
 
-    });
-    }
+  renderProducts(filteredProducts);
+}
+
+function renderProducts(products) {
+  productsContainer.innerHTML = '';
+
+  products.forEach((product) => {
+    const card = createCard(product);
+    productsContainer.appendChild(card);
+  });
 }
