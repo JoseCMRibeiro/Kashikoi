@@ -1,5 +1,6 @@
 import { RenderModal } from "../Components/renderModal";
 import { ShoppingCart } from '../Components/ClassCart'
+import { ModalProduct } from "../Components/renderProductModal";
 const buttonCart = document.getElementById("buttonCart")
 const cards = document.querySelectorAll('.card')
 //adding listeners to product cards
@@ -14,12 +15,15 @@ buttonCart.onclick = function()
 
 function cardClick(event)
 {   
+
+
     var item
     for(var i=0; i < Cart.products.length;i++)
     {    
         if(event.target.id==Cart.products[i].id)
         {
             item=Cart.products[i]
+            ModalProduct(item)
             i=Cart.products.length;
         }
     }

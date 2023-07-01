@@ -17,11 +17,6 @@ export class CheckOut
         this.armazem = JSON.parse(armazemStorage)
       else
         this.armazem =[];//array de produtos na loja 
-      const cartStorage = localStorage.getItem('cart')
-      if(cartStorage)
-        this.items=JSON.parse(cartStorage)
-      else
-        this.items=[]//array de produtos no carrinho
     }
 
     async addCoupon(codigo)     

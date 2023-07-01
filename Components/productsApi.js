@@ -46,13 +46,12 @@ export async function checkout(coupon)
   if(productsStorage)
     items=JSON.parse(productsStorage)
 
-  let simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));//cria um novo JSON com apenas os atributos necessarios para checkout
-  
-  simplifiedProducts.quantity=simplifiedProducts.quantityInCart;
-  delete simplifiedProducts.quantityInCart;
+  const simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));//cria um novo JSON com apenas os atributos necessarios para checkout
+  const cleanProducts = simplifiedProducts.filter(item => item.quantity > 0);//remove produtos a zero
+
   const products = 
   {
-    products: simplifiedProducts,
+    products: cleanProducts,
     coupon: coupon
   }
 
