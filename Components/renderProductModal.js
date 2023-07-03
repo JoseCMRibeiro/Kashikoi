@@ -1,5 +1,5 @@
-export function ModalProduct(product) {
-  // CSS
+export function ModalProduct(product) 
+{
   const modalStyle = document.createElement('style');
   modalStyle.textContent = `
   .productModal {

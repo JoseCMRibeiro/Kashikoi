@@ -1,6 +1,7 @@
-import { RenderModal } from "../Components/renderModal";
+import { messageModal} from "../Components/modalMessage"
 import { ShoppingCart } from '../Components/ClassCart'
 import { ModalProduct } from "../Components/renderProductModal";
+
 const buttonCart = document.getElementById("buttonCart")
 const cards = document.querySelectorAll('.card')
 //adding listeners to product cards
@@ -27,16 +28,10 @@ function cardClick(event)
             i=Cart.products.length;
         }
     }
-    if(item.quantityInCart>0)
+
+     if(item.quantity<1)        
     {
-        RenderModal("Produto já existente no carrinho",
-        "Pode modificar a quantidade desejada no carrinho")
-        return
-    }
-    else if(item.quantity<1)        
-    {
-        RenderModal("Não podemos satisfazer o seu pedido",
-        "o artigo está em rotura de stock")
+        messageModal("Não podemos satisfazer o seu pedido","o artigo está em rotura de stock")
     }
     else
     {

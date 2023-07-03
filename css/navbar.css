@@ -4,7 +4,7 @@
   align-items: center;
   background-color: #f2f2f2;
   padding: 1px;
-  font-size: 20px;  
+  font-size: 18px;  
 }
 
 .links{
@@ -25,17 +25,13 @@
 .linkContainer{  
   background-color: #cecbcb;
   border-radius: 25px;
-  padding: 10px;
-  
+  padding: 10px;  
 }
 .links a{
   margin-right: 20px;
   border-radius: 40px;
   padding: 10px;  
   color: black;
-}
-.links a:hover {
-  color: red;
 }
 .navbarLeft a{
   margin-right: 10px;
@@ -55,6 +51,14 @@
   color: red;
   font-size: 21px; 
 }
+.links a:hover {
+  color: red;
+}
+.navbar h1:hover{
+  color: red;
+}
+.hide{display: none;}
+
 /*---------------------------  */
 /*-------  Media   ----------- */
 /*---------------------------  */

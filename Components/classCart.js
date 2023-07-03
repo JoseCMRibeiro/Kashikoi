@@ -1,4 +1,5 @@
-import { RenderModal } from "../Components/renderModal";
+import { messageModal } from "./modalMessage"
+
 const final = document.getElementById("precoFinal")
 const desconto = document.getElementById("desconto")
 const precoTotal = document.getElementById("precototal")
@@ -34,7 +35,7 @@ export class ShoppingCart
       else
       {
         const quantity = this.products[item.productIndex].quantity
-        RenderModal("Só existem "+ this.products[item.productIndex].quantityInCart + " deste artigo em stock","")
+        messageModal("Só existem "+ this.products[item.productIndex].quantityInCart + " deste artigo em stock","")
         return (quantity)
       }
     }

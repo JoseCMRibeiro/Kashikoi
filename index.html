@@ -6,10 +6,7 @@
   <title>Kashikoi</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/styles.css">
 </head>
-
-
 
 <body>
   <header id="header"></header>
@@ -106,12 +103,7 @@
   </div>
   <br>
   
-  <div style="text-align:center">
-    <span class="dot"></span> 
-    <span class="dot"></span> 
-    <span class="dot"></span> 
-  </div>
-  
+
   <script>
   let slideIndex = 0;
   let timeout;
@@ -121,9 +113,12 @@
   function showSlides() {
     let i;
     let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
+
+    // let navbar = document.getElementById("myNavBar")
+    // navbar.classList.add("hide")
     
-    for (i = 0; i < slides.length; i++) {
+    for (i = 0; i < slides.length; i++) 
+    {
       slides[i].style.display = "none";  
     }
     
@@ -132,17 +127,14 @@
       slideIndex = 1;
     }
     
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
     
     slides[slideIndex-1].style.display = "block";  
-    dots[slideIndex-1].className += " active";
     
     timeout = setTimeout(showSlides, 2000); // Change image every 2 seconds
   }
   
   function stopSlideshow() {
+    
     clearTimeout(timeout); // Stop the slideshow
   }
   </script>

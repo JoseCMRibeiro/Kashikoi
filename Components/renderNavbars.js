@@ -32,6 +32,12 @@ export function NavbarTop()
   
     document.body.appendChild(navbar);
 
+    navbarCenter.addEventListener('click',()=>
+    {
+      window.location.href = "../index.html";
+    });
+
+
     return navbar
   }
   export function NavBarBottom() 

@@ -1,6 +1,6 @@
 import DOMPurify from 'dompurify'
 import { checkCoupon, checkout ,fetchProducts} from './productsApi'
-import { RenderModal } from './renderModal.js';
+import { messageModal } from './modalMessage'
 
 const total= document.getElementById("precototal")
 const final = document.getElementById("precoFinal")
@@ -58,7 +58,7 @@ export class CheckOut
     
 
       
-    RenderModal("OBRIGADO PELA SUA VISITA",JSON.stringify(data))
+    messageModal("OBRIGADO PELA SUA VISITA",JSON.stringify(data))
 
 
     localStorage.removeItem("products")
