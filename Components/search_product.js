@@ -1,4 +1,5 @@
 import { createCard } from './cardProducts.js';
+import { cardClick } from '../scripts/shop.js';
 
 const searchInput = document.querySelector('.search');
 const productsContainer = document.querySelector('.DataGridProducts');
@@ -30,5 +31,6 @@ function renderProducts(products) {
   products.forEach((product) => {
     const card = createCard(product);
     productsContainer.appendChild(card);
+    card.addEventListener('click', cardClick)
   });
 }

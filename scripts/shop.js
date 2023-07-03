@@ -12,7 +12,7 @@ buttonCart.onclick = function()
     window.location.href = '/pages/cart.html';
 };
 
-function cardClick(event)
+export function cardClick(event)
 {   
     var item
     for(var i=0; i < Cart.products.length;i++)
