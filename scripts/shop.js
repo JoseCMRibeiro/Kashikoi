@@ -1,30 +1,49 @@
-import { messageModal} from "../Components/modalMessage"
-import { ShoppingCart } from '../Components/ClassCart'
+import { createProductCard } from "../Components/renderItemCard";
+import { ShoppingCart} from "../Components/classCart"
 import { ModalProduct } from "../Components/renderProductModal";
+import { messageModal } from "../Components/modalMessage";
 
-const buttonCart = document.getElementById("buttonCart")
-const cards = document.querySelectorAll('.card')
-//adding listeners to product cards
-cards.forEach(card => {card.addEventListener('click', cardClick)});
-//geting stocks
 const Cart = new ShoppingCart()
+const main= document.getElementById("main")
+const cardGrid = document.createElement("div")
+cardGrid.classList.add("grid-container")
 
-buttonCart.onclick = function()
-{
-    window.location.href = '/pages/cart.html';
-};
+
+for (var i = 0; i < Cart.products.length;i++)
+{    
+cardGrid.appendChild(createProductCard(Cart.products[i]))
+}
+
+main.appendChild(cardGrid)
+
+//adding listeners to product cardIcon
+const cartIcons = document.querySelectorAll('.fa-cart-plus')
+cartIcons.forEach(icon => {icon.addEventListener('click', iconClick)});
+//adding listeners to product cards
+const cardImages = document.querySelectorAll('img')
+cardImages.forEach(cardImage => {cardImage.addEventListener('click', cardClick)});
 
 function cardClick(event)
 {   
+    for(var i=0; i < Cart.products.length;i++)
+    {    
+        if(event.target.id==Cart.products[i].id)
+        {
+            ModalProduct(Cart.products[i])
+            i=Cart.products.length;
+        }
+    }
+};
 
 
+function iconClick(event)
+{
     var item
     for(var i=0; i < Cart.products.length;i++)
     {    
         if(event.target.id==Cart.products[i].id)
         {
-            item=Cart.products[i]
-            ModalProduct(item)
+            item=Cart.products[i]           
             i=Cart.products.length;
         }
     }
@@ -36,5 +55,11 @@ function cardClick(event)
     else
     {
         Cart.addItem(item,1)
+        messageModal(item.name, "Foi adicionado ao carrinho")
     }
+}
+
+buttonCart.onclick = function()
+{
+    window.location.href = '/pages/cart.html';
 };

@@ -1,13 +1,90 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Text and Button Modal</title>
-  </head>
-  <body>
+<head>
+  <title>Grid of Cards with Image and Text</title>
+  <style>
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+  
+    .card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-color: #f2f2f2;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+  
+    .image-container {
+      width: 100%;
+      padding-top: 100%; /* To maintain aspect ratio of the image */
+      position: relative;
+    }
+  
+    .image-container img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  
+    .text-container {
+      width: 100%;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      box-sizing: border-box;
+      align-items: flex-start;
+    }
+  
 
+    .text-container h4 {
+      margin: 0;
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
 
+    .text-container h4 span:first-child {
+      text-align: left;
+      flex: 1;
+    }
 
-<script type="module" src="temp.js"></script>
-  </body>
+    .text-container h4 span:last-child {
+      text-align: right;
+      flex: 1;
+    }
+  </style>
+  
+</head>
+<body>
+  <div class="grid-container">
+    <div class="card">
+      <div class="image-container">
+        <img src="https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg" alt="Image 1">
+      </div>
+      <div class="text-container">
+        <h4>
+          <span>Text 1</span>
+          <span>Text 3</span> <!-- Added Text 3 here -->
+        </h4>
+        </div>
+        <div class="text-container">
+        <h4>
+          <span>Text 2</span>
+          <span>Text 4</span> <!-- Added Text 4 here -->
+        </h4>
+      </div>
+    </div>
+    <!-- Add more cards here if needed -->
+  </div>
+</body>
 </html>
-
