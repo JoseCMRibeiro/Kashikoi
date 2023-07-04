@@ -29,9 +29,9 @@ export function messageModal(text1, text2)
 
   const modalContent = document.createElement('div');
   modalContent.classList.add("modal-content")
-  const h1 = document.createElement('h1');
+  const h1 = document.createElement('h3');
   h1.textContent=text1
-  const h2 = document.createElement('h2');
+  const h2 = document.createElement('h3');
   h2.textContent=text2
   const closeButton = document.createElement('button');
   closeButton.textContent = 'CLOSE';

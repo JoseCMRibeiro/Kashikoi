@@ -1,4 +1,4 @@
-import { ShoppingCart } from '../Components/ClassCart'
+import { ShoppingCart } from './ClassCart'
 const total=document.getElementById("precototal")
 const submit=document.getElementById("bt_submeter_cupon")
 const Cart = new ShoppingCart()

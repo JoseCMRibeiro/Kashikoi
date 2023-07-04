@@ -1,4 +1,4 @@
-import { createProductCard } from "../Components/renderItemCard";
+import { createProductCard } from "../Components/renderShopCard";
 import { ShoppingCart} from "../Components/classCart"
 import { ModalProduct } from "../Components/renderProductModal";
 import { messageModal } from "../Components/modalMessage";
@@ -8,21 +8,30 @@ const main= document.getElementById("main")
 const cardGrid = document.createElement("div")
 cardGrid.classList.add("grid-container")
 
+renderCards(Cart.products)
 
-for (var i = 0; i < Cart.products.length;i++)
-{    
-cardGrid.appendChild(createProductCard(Cart.products[i]))
-}
+//adding listener to search
+const search = document.getElementById("search")
 
-main.appendChild(cardGrid)
-
-//adding listeners to product cardIcon
-const cartIcons = document.querySelectorAll('.fa-cart-plus')
-cartIcons.forEach(icon => {icon.addEventListener('click', iconClick)});
-//adding listeners to product cards
-const cardImages = document.querySelectorAll('img')
-cardImages.forEach(cardImage => {cardImage.addEventListener('click', cardClick)});
-
+search.addEventListener("keydown", function(event) 
+{
+    const length=search.value.length
+    const filteredValue = event.key.replace(/[^a-zA-Z0-9]/g, '');
+    if(length >1 )
+    {
+        if(updateProductGrid(search.value + filteredValue))
+        {}
+        else
+        cardGrid.innerHTML=""
+    }
+    else if (length==0 && cardGrid.innerHTML=="")
+        renderCards(Cart.products)
+    else if (length<1)
+    {
+        cardGrid.innerHTML=""
+    }    
+});
+//-----------------------------------------------------------------------------------------
 function cardClick(event)
 {   
     for(var i=0; i < Cart.products.length;i++)
@@ -34,8 +43,7 @@ function cardClick(event)
         }
     }
 };
-
-
+//-----------------------------------------------------------------------------------------
 function iconClick(event)
 {
     var item
@@ -58,8 +66,43 @@ function iconClick(event)
         messageModal(item.name, "Foi adicionado ao carrinho")
     }
 }
-
+//---------------------------------------------------------------------------------------------
 buttonCart.onclick = function()
 {
     window.location.href = '/pages/cart.html';
 };
+//-------------------------------------------------------------------------------------------------
+function renderCards( products)
+{
+    for (var i = 0; i < products.length;i++)
+    {    
+    cardGrid.appendChild(createProductCard(products[i]))
+    }
+    main.appendChild(cardGrid)    
+    //adding listeners to product cards
+    const cardImages = document.querySelectorAll('img')
+    cardImages.forEach(cardImage => {cardImage.addEventListener('click', cardClick)});
+    //adding listeners to product cardIcon
+    const cartIcons = document.querySelectorAll('.fa-cart-plus')
+    cartIcons.forEach(icon => {icon.addEventListener('click', iconClick)});
+}
+//----------------------------------------------------------------------------------------------------
+function updateProductGrid(searchItem)
+{  
+        const products=Cart.products
+
+        //filtra os produtos com base na pesquisa
+        const filteredProducts = products.filter(product => 
+        {
+            const productName = product.name.toLowerCase(); 
+            return productName.includes(searchItem.toLowerCase());
+        });     
+
+        renderCards(filteredProducts)
+
+        if(filteredProducts.length==0)
+            return false
+        else
+            return true        
+}
+//----------------------------------------------------------------------------------------------------------------

@@ -24,13 +24,14 @@ export function ModalProduct(product)
   }
 
   .imageContainer {
-    max-height: 300px;
+    max-height: 100%;
+    display: flex;
     align-items: center;
-    margin: 0 auto;
+    justify-content: center;
   }
 
   .productImage {
-    max-width: 100%;
+    max-width: 30%;
     max-height: 100%;
     object-fit: contain;
   }

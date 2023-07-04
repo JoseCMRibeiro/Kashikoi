@@ -34,7 +34,7 @@ export class CheckOut
               cupon.value="";
               desconto.textContent="0.00"
               final.textContent=total.textContent;
-              RenderModal("COUPON INVALIDO",response.error)
+              messageModal("COUPON INVALIDO",response.error)
             }
       }
       else

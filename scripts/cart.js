@@ -1,5 +1,5 @@
 import { ShoppingCart } from '../Components/classCart';
-import { renderCartItem } from '../Components/renderCartItem'; 
+import { renderCartItem } from '../Components/renderCartCard'; 
 import { CheckOut } from  '../Components/ClassCheckOut'
 const btSubmit =document.getElementById("bt_submeter_cupon")
 const btPagar =document.getElementById("bt_efetuar_pagamento")
@@ -9,7 +9,7 @@ const Check = new CheckOut()
 const Cart = new ShoppingCart()
 
 
-const cartItems = document.getElementById("Cart")//ponto de entrada
+const cartItems = document.getElementById("Cart")
 
 for(var i = 0; i < Cart.products.length;i++)
 {    
@@ -26,10 +26,11 @@ for(var i = 0; i < Cart.products.length;i++)
     }
 }
 Cart.getTotal()
+
 /////////////////////////////////////////////////////////////////
-//
-//                              EVENTS
-//
+//                                                             //
+//                            EVENTS                           //
+//                                                             //
 /////////////////////////////////////////////////////////////////
 
 cupon.addEventListener("keydown", function(event) 
