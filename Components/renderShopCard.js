@@ -41,9 +41,10 @@
     const ratingHeading = document.createElement('h4');
 
     const starsContainer = document.createElement('div');
-    starsContainer.className = 'stars-container';
+    starsContainer.className = 'starsContainer';
+    starsContainer.id=item.productIndex
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 1; i++) {
       const starSpan = document.createElement('span');
       starSpan.className = 'fa fa-star';
       

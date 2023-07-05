@@ -17,8 +17,6 @@ async function mainFunction()
       {
         armazem[i].quantityInCart=0
         armazem[i].productIndex=i
-        armazem[i].classificacao=0
-        //armazem[i].reviews=new JSON
       }
       const products= JSON.stringify(armazem);
       localStorage.setItem("products", products);    

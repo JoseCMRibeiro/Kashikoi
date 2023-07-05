@@ -1,56 +1,63 @@
-export function ligthStars() 
+import { messageModal } from "./modalMessage";
+export function ligthStars(product) 
 {
 
   const modalStyles = `
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+      
+    }
 
-  .modal-content {
-    background-color: #313131cb;
-    margin: 20% auto;
-    padding: 20px;
-    color: white;
-    border: 1px solid white;
-    width: 300px;
-  }
+    .modal-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #313131ee;      
+      color: white;
+      margin: 20% auto;
+      padding: 20px;
+      border: 1px solid white;
+      width: 50%;
+      max-width: 500px;
+    }
 
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-  }
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-  .stars {
-    margin-bottom: 20px;
-  }
+    .stars {
+      margin-bottom: 20px;
+    }
 
-  .star {
-    font-size: 24px;
-    cursor: pointer;
-    color: #131212;
-  }
+    .star {
+      font-size: 24px;
+      cursor: pointer;
+      color: #131212;
+    }
 
-  .star:hover,
-  .star.active {
-    color: #ffbf00;
-  }
-`;
+    .star:hover,
+    .star.active {
+      color: #ffbf00;
+    }
+  `;
 
-// Create style element and append CSS styles
-const style = document.createElement('style');
-style.innerHTML = modalStyles;
-document.head.appendChild(style);
+  // Create style element and append CSS styles
+  const style = document.createElement('style');
+  style.innerHTML = modalStyles;
+  document.head.appendChild(style);
+
   // Create modal element
   const modal = document.createElement('div');
   modal.id = 'myModal';
@@ -80,7 +87,6 @@ document.head.appendChild(style);
     star.className = 'star';
     star.setAttribute('data-rating', i);
     star.innerHTML = '&#9733;';
-    star.setAttribute('id',item.id)
     starsContainer.appendChild(star);
   }
 
@@ -149,8 +155,6 @@ document.head.appendChild(style);
         stars[i].classList.remove('active');
       }
 
-      // Log the rating
-      console.log('Number of Yellow Stars (Rating): ' + rating);
     });
   });
 
@@ -160,7 +164,8 @@ document.head.appendChild(style);
     const nameInput = document.getElementById('nameInput');
     const reviewInput = document.getElementById('reviewInput');
 
-    if (selectedRating && nameInput.value && reviewInput.value) {
+    if (selectedRating && nameInput.value && reviewInput.value) 
+    {
       const selectedRatingValue = selectedRating.getAttribute('data-rating');
       const name = nameInput.value;
       const review = reviewInput.value;
@@ -174,10 +179,16 @@ document.head.appendChild(style);
       nameInput.value = '';
       reviewInput.value = '';
       modalElement.style.display = 'none';
-    } else {
-      alert('Por favor preencha todos os campos');
+    } 
+    else 
+    {
+      messageModal('Por favor preencha todos os campos',"");
     }
   });
-  return modal
+  return modal;
 }
 
+function ratingStorage()
+{
+  
+}

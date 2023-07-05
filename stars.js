@@ -12,6 +12,7 @@ export function ligthStars()
       height: 100%;
       overflow: auto;
       background-color: rgba(0, 0, 0, 0.4);
+      
     }
 
     .modal-content {
@@ -20,7 +21,10 @@ export function ligthStars()
       padding: 20px;
       color: white;
       border: 1px solid white;
-      width: 300px;
+      width: 50%; /* Modified width */
+      max-width: 500px; /* Added max-width for responsiveness */
+      width: 500px; /* Set the modal width to 500 pixels */
+      margin: 0 auto; /* Center the modal horizontally */
     }
 
     .close {
@@ -178,5 +182,7 @@ export function ligthStars()
       alert('Por favor preencha todos os campos');
     }
   });
+  document.body.appendChild(modal)
   return modal;
 }
+ligthStars()

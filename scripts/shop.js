@@ -2,6 +2,7 @@ import { createProductCard } from "../Components/renderShopCard";
 import { ShoppingCart} from "../Components/classCart"
 import { ModalProduct } from "../Components/renderProductModal";
 import { messageModal } from "../Components/modalMessage";
+import { ligthStars } from "../Components/starsModal";
 
 const Cart = new ShoppingCart()
 const main= document.getElementById("main")
@@ -9,6 +10,7 @@ const cardGrid = document.createElement("div")
 cardGrid.classList.add("grid-container")
 
 renderCards(Cart.products)
+
 
 //adding listener to search
 const search = document.getElementById("search")
@@ -86,8 +88,14 @@ function renderCards( products)
     const cartIcons = document.querySelectorAll('.fa-cart-plus')
     cartIcons.forEach(icon => {icon.addEventListener('click', iconClick)});
     //adding listeners to stars
-    const stars = document.querySelectorAll(".stars")
-    stars.forEach(star => {star.addEventListener('click', starClick)})
+    const stars = document.querySelectorAll(".starsContainer")    
+    // stars.forEach(star => {star.addEventListener('click', starClick)})
+
+    stars.forEach((star, index) => {
+        star.addEventListener('click', () => {
+          starClick(products[stars[index].id]); // Pass the index as an argument to starClick
+        });
+      });
 }
 //----------------------------------------------------------------------------------------------------
 function searchProductGrid(searchItem)
@@ -109,7 +117,7 @@ function searchProductGrid(searchItem)
             return true        
 }
 //----------------------------------------------------------------------------------------------------------------
-function starClick()
-{
-    console.log("stars")
+function starClick(item)
+{    
+    ligthStars(item)
 }

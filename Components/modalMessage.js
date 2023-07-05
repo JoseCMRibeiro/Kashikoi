@@ -17,12 +17,15 @@ export function messageModal(text1, text2)
       }
 
       .modal-content {
-        background-color: #fefefe;
+        // background-color: #fefefe;
         margin: 15% auto;
         padding: 20px;
         border: 1px solid #888;
         width: 80%;
         text-align: center;
+        
+      background-color: #313131ee;      
+      color: white;
       }
     </style>
   `;
