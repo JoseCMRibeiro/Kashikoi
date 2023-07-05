@@ -46,6 +46,8 @@
     for (let i = 0; i < 5; i++) {
       const starSpan = document.createElement('span');
       starSpan.className = 'fa fa-star';
+      
+      starSpan.classList.add("stars")
       starsContainer.appendChild(starSpan);
     }
 

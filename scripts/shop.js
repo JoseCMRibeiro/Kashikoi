@@ -13,16 +13,16 @@ renderCards(Cart.products)
 //adding listener to search
 const search = document.getElementById("search")
 
-search.addEventListener("keydown", function(event) 
+search.addEventListener("keyup", function(event) 
 {
     const length=search.value.length
-    const filteredValue = event.key.replace(/[^a-zA-Z0-9]/g, '');
-    if(length >1 )
-    {
-        if(updateProductGrid(search.value + filteredValue))
-        {}
-        else
+    const filteredValue = search.value.replace(/[^a-zA-Z0-9]/g, '');
+    if(length >0 && length<3)    
         cardGrid.innerHTML=""
+    if(length > 2 )
+    {        
+        cardGrid.innerHTML=""
+        searchProductGrid(filteredValue)
     }
     else if (length==0 && cardGrid.innerHTML=="")
         renderCards(Cart.products)
@@ -85,9 +85,12 @@ function renderCards( products)
     //adding listeners to product cardIcon
     const cartIcons = document.querySelectorAll('.fa-cart-plus')
     cartIcons.forEach(icon => {icon.addEventListener('click', iconClick)});
+    //adding listeners to stars
+    const stars = document.querySelectorAll(".stars")
+    stars.forEach(star => {star.addEventListener('click', starClick)})
 }
 //----------------------------------------------------------------------------------------------------
-function updateProductGrid(searchItem)
+function searchProductGrid(searchItem)
 {  
         const products=Cart.products
 
@@ -106,3 +109,7 @@ function updateProductGrid(searchItem)
             return true        
 }
 //----------------------------------------------------------------------------------------------------------------
+function starClick()
+{
+    console.log("stars")
+}
