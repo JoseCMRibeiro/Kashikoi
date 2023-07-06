@@ -17,10 +17,9 @@ export function messageModal(text1, text2)
       }
 
       .modal-content {
-        // background-color: #fefefe;
         margin: 15% auto;
         padding: 20px;
-        border: 1px solid #888;
+        border: 1px solid #ffbf00;
         width: 80%;
         text-align: center;
         

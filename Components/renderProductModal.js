@@ -1,3 +1,5 @@
+import { getProductReview } from "./reviewStorage";
+
 export function ModalProduct(product) 
 {
   const modalStyle = document.createElement('style');
@@ -19,8 +21,9 @@ export function ModalProduct(product)
   .productModalContent {
     background-color: #fefefe;
     padding: 5%;
-    border: 1px solid #888;
-    height: 100%;
+    border: 5px solid #ffbf00;
+    height: 90%;
+    overflow-y: auto;
   }
 
   .imageContainer {
@@ -81,14 +84,53 @@ export function ModalProduct(product)
   productImage.src = product.image;
   productImage.className = 'productImage';
 
+
   // Append the elements to the containers  
   imageContainer.appendChild(productImage);
 
-  modalContent.appendChild(closeButton);
   modalContent.appendChild(productName);
   modalContent.appendChild(productDescription);
   modalContent.appendChild(productPrice);
   modalContent.appendChild(imageContainer);
+
+  
+
+  const pRatings = document.createElement('h2')
+  pRatings.textContent="REVIEWS:"
+  modalContent.appendChild(pRatings)
+  const rating = getProductReview(product.id)
+  for ( var i = 0; i < rating.reviews.length ; i++)
+  {    
+    const nameRatings = document.createElement('h4')
+    nameRatings.textContent="👤    " + rating.reviews[i].nome + ":"
+    modalContent.appendChild(nameRatings)
+
+    const productRatings = document.createElement('p')
+    
+    const stars=rating.reviews[i].rating
+    for (let i = 0; i < 5; i++) 
+    {
+      const starIcon = document.createElement("span");
+      if (i < stars) 
+        starIcon.textContent = "★";
+      else
+      starIcon.textContent = "☆"
+      productRatings.appendChild(starIcon);
+    }
+
+
+    const reviewRatings = document.createElement('p')
+    reviewRatings.textContent=rating.reviews[i].comentario
+
+    const  fixedBox = document.createElement("div");   
+    fixedBox.style.background = "lightgray";
+    fixedBox.style.padding = "1px";
+    fixedBox.appendChild(productRatings)
+    fixedBox.appendChild(reviewRatings)
+    modalContent.appendChild(fixedBox)
+  }
+  
+  modalContent.appendChild(closeButton);
   modal.appendChild(modalContent);
 
   container.appendChild(modal);
@@ -97,4 +139,5 @@ export function ModalProduct(product)
 
   // Inject the component into the body of the page
   document.body.appendChild(container);
+  
 }
