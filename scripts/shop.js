@@ -1,7 +1,7 @@
 import { createProductCard } from "../Components/renderShopCard";
 import { ShoppingCart} from "../Components/classCart"
 import { ModalProduct } from "../Components/renderProductModal";
-import { messageModal } from "../Components/modalMessage";
+import { messageModal } from "../Components/renderMessageModal";
 import { ligthStars } from "../Components/starsModal";
 
 const Cart = new ShoppingCart()
