@@ -19,7 +19,7 @@ export function ModalProduct(product)
   .productModalContent {
     background-color: #fefefe;
     padding: 5%;
-    border: 1px solid #888;
+    border: 5px solid #ffbf00;
     height: 100%;
   }
 

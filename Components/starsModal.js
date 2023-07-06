@@ -24,7 +24,7 @@ export function ligthStars(product)
       color: white;
       margin: 20% auto;
       padding: 20px;
-      border: 1px solid white;
+      border: 1px solid ffbf00;
       width: 50%;
       max-width: 500px;
     }
@@ -57,53 +57,44 @@ export function ligthStars(product)
   const style = document.createElement('style');
   style.innerHTML = modalStyles;
   document.head.appendChild(style);
-
   // Create modal element
   const modal = document.createElement('div');
   modal.id = 'myModal';
   modal.className = 'modal';
   modal.style.display = 'none';
-
   // Create modal content
   const modalContent = document.createElement('div');
   modalContent.className = 'modal-content';
-
   // Create close button
   const closeBtn = document.createElement('span');
   closeBtn.className = 'close';
   closeBtn.innerHTML = '&times;';
-
   // Create heading element
   const heading = document.createElement('h2');
   heading.textContent = 'Como qualifica este produto?';
-
   // Create stars container
   const starsContainer = document.createElement('div');
   starsContainer.className = 'stars';
-
   // Create star elements
-  for (let i = 1; i <= 5; i++) {
+  for (let i = 1; i <= 5; i++) 
+  {
     const star = document.createElement('span');
     star.className = 'star';
     star.setAttribute('data-rating', i);
     star.innerHTML = '&#9733;';
     starsContainer.appendChild(star);
   }
-
   // Create name input
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
   nameInput.id = 'nameInput';
   nameInput.placeholder = 'Nome:';
-
   // Create review textarea
   const reviewInput = document.createElement('textarea');
   reviewInput.id = 'reviewInput';
   reviewInput.placeholder = 'Comentario';
-
   // Create empty paragraph element
   const emptyParagraph = document.createElement('p');
-
   // Create submit button
   const submitBtn = document.createElement('button');
   submitBtn.id = 'submitRating';
@@ -117,7 +108,6 @@ export function ligthStars(product)
   modalContent.appendChild(reviewInput);
   modalContent.appendChild(emptyParagraph);
   modalContent.appendChild(submitBtn);
-
   // Append modal content to the modal
   modal.appendChild(modalContent);
 
@@ -132,7 +122,8 @@ export function ligthStars(product)
   const closeModalBtn = document.getElementsByClassName('close')[0];
 
   // Close the modal when the close button is clicked
-  closeModalBtn.addEventListener('click', function() {
+  closeModalBtn.addEventListener('click', function() 
+  {
     modalElement.style.display = 'none';
   });
 
@@ -140,18 +131,22 @@ export function ligthStars(product)
   const stars = document.querySelectorAll('.star');
   let rating = 0; // Initialize the rating variable
 
-  stars.forEach(function(star, index) {
-    star.addEventListener('click', function() {
+  stars.forEach(function(star, index) 
+  {
+    star.addEventListener('click', function() 
+    {
       // Set the rating to the index of the clicked star plus 1
       rating = index + 1;
 
       // Add the 'active' class to stars up to the selected rating
-      for (let i = 0; i < rating; i++) {
+      for (let i = 0; i < rating; i++) 
+      {
         stars[i].classList.add('active');
       }
 
       // Remove the 'active' class from stars after the selected rating
-      for (let i = rating; i < stars.length; i++) {
+      for (let i = rating; i < stars.length; i++) 
+      {
         stars[i].classList.remove('active');
       }
 
@@ -159,7 +154,8 @@ export function ligthStars(product)
   });
 
   // Handle rating submission
-  submitBtn.addEventListener('click', function() {
+  submitBtn.addEventListener('click', function()
+  {
     const selectedRating = document.querySelector('.star.active');
     const nameInput = document.getElementById('nameInput');
     const reviewInput = document.getElementById('reviewInput');
@@ -170,15 +166,13 @@ export function ligthStars(product)
       const name = nameInput.value;
       const review = reviewInput.value;
 
-      // Send the rating, name, and review data to your server for further processing
-      console.log(selectedRatingValue);
-      console.log(name);
-      console.log(review);
 
+      ratingStorage(product.id,name,rating,review)
       // Reset input fields and close the modal
       nameInput.value = '';
       reviewInput.value = '';
       modalElement.style.display = 'none';
+      modal.remove()
     } 
     else 
     {
@@ -187,8 +181,50 @@ export function ligthStars(product)
   });
   return modal;
 }
-
-function ratingStorage()
+//---------------------------------------------------------------------------------------
+//----------------------        Armazena classificações                ------------------
+//---------------------------------------------------------------------------------------
+function ratingStorage(ID,nome,rating,comentario)
 {
-  
-}
+  var productReview = 
+      { 
+        productID: ID, 
+        totalEstrelas: rating,
+        reviews: 
+        [
+          { nome: nome, comentario: comentario, rating: rating }
+        ]
+      }
+
+  const data = localStorage.getItem('reviews');
+  if (data) //storage não nula    
+  {    
+        let storedRatings= [] //cria array de reviews
+
+        const jsonData=JSON.parse(data)
+        if(jsonData.length>0)          
+          storedRatings = JSON.parse(data)
+        else
+          storedRatings.push(JSON.parse(data))
+
+        //vereficar se produto já existe        
+        const existingProductIndex = storedRatings.findIndex(review => review.productID === productReview.productID);  
+        
+        if (existingProductIndex === -1) 
+        {      
+          storedRatings.push(productReview)
+          const jsonAtualizado = JSON.stringify(storedRatings);
+          localStorage.setItem('reviews', jsonAtualizado);      
+        } 
+        else //adiciona novo rating ao produto caso o produto já tenha ratings
+        {          
+          storedRatings[existingProductIndex].totalEstrelas+=rating
+          const novaReview = { nome,comentario, rating };
+          storedRatings[existingProductIndex].reviews.push(novaReview);
+          const jsonAtualizado = JSON.stringify(storedRatings);
+          localStorage.setItem('reviews', jsonAtualizado);
+        }
+    }
+    else //storage vazia adicionar primeira review
+      localStorage.setItem('reviews', JSON.stringify(productReview));
+  }

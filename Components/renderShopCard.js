@@ -44,9 +44,23 @@
     starsContainer.className = 'starsContainer';
     starsContainer.id=item.productIndex
 
-    for (let i = 0; i < 1; i++) {
+    let stars=0
+    const data = localStorage.getItem('reviews');
+    if (data)
+    {
+      const review = getProductReview(item.id,JSON.parse(data))
+      if(review!=null)
+      stars = review.totalEstrelas/review.reviews.length
+    }
+
+
+    for (let i = 0; i < 6; i++) 
+    {
       const starSpan = document.createElement('span');
-      starSpan.className = 'fa fa-star';
+      if(i>=stars)
+        starSpan.className = 'fa fa-star-o'
+      else
+        starSpan.className = 'fa fa-star';
       
       starSpan.classList.add("stars")
       starsContainer.appendChild(starSpan);
@@ -73,3 +87,11 @@
 
     return cardContainer;
   };
+
+  function getProductReview(id,data) 
+  {
+    for (let i = 0; i < data.length; i++) 
+        if (data[i].productID === id) 
+            return data[i];
+    return null; // sem ratings
+  }
