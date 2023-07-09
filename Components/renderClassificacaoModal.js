@@ -56,11 +56,11 @@ export function ligthStars(product)
     }
   `;
 
-  // Create style element and append CSS styles
+  // Create styles
   const style = document.createElement('style');
   style.innerHTML = modalStyles;
   document.head.appendChild(style);
-  // Create modal element
+  // Create modal 
   const modal = document.createElement('div');
   modal.id = 'myModal';
   modal.className = 'modal';
@@ -72,6 +72,7 @@ export function ligthStars(product)
   const closeBtn = document.createElement('span');
   closeBtn.className = 'close';
   closeBtn.innerHTML = '&times;';
+  closeBtn.style.backgroundColor = 'black';
   // Create heading element
   const heading = document.createElement('h2');
   heading.textContent = 'Como qualifica este produto?';
@@ -113,7 +114,6 @@ export function ligthStars(product)
   modalContent.appendChild(submitBtn);
   // Append modal content to the modal
   modal.appendChild(modalContent);
-
   // Append modal to the document body
   document.body.appendChild(modal);
 

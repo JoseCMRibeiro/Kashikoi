@@ -1,4 +1,5 @@
-
+  import { getProductReview } from "./reviewStorage";
+  
   // Function to create the product card
   export function createProductCard (item) 
   {
@@ -45,11 +46,9 @@
     starsContainer.id=item.productIndex
 
     let stars=0
-    const data = localStorage.getItem('reviews');
-    if (data)
+    const review = getProductReview(item.id)
+    if (review!=null)
     {
-      const review = getProductReview(item.id,JSON.parse(data))
-      if(review!=null)
       stars = review.totalEstrelas/review.reviews.length
     }
 
@@ -87,11 +86,3 @@
 
     return cardContainer;
   };
-
-  function getProductReview(id,data) 
-  {
-    for (let i = 0; i < data.length; i++) 
-        if (data[i].productID === id) 
-            return data[i];
-    return null; // sem ratings
-  }

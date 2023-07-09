@@ -18,9 +18,9 @@ export async function fetchProducts()
 ////////////////////////////
 ////////////////////////////
 //                        //
-//  products FORMAT           //   
+//  products FORMAT       //   
 //                        //
-// const products =           //
+// const products =       //
 // {                      //
 //   "products":          //
 //   [                    //

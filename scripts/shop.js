@@ -2,7 +2,7 @@ import { createProductCard } from "../Components/renderShopCard";
 import { ShoppingCart} from "../Components/classCart"
 import { ModalProduct } from "../Components/renderProductModal";
 import { messageModal } from "../Components/renderMessageModal";
-import { ligthStars } from "../Components/starsModal";
+import { ligthStars } from "../Components/renderClassificacaoModal";
 
 const Cart = new ShoppingCart()
 const main= document.getElementById("main")

@@ -1,6 +1,6 @@
 import DOMPurify from 'dompurify'
 import { checkCoupon, checkout ,fetchProducts} from './productsApi'
-import { messageModal } from './modalMessage'
+import { messageModal } from './renderMessageModal'
 
 const total= document.getElementById("precototal")
 const final = document.getElementById("precoFinal")
@@ -53,7 +53,7 @@ export class CheckOut
       else
          discount = ""
       
-    const data = await checkout(discount)//chamada a api    ~
+    const data = await checkout(discount)//chamada a api  
 
     
 
