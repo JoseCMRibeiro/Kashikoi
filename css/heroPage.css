@@ -1,0 +1,185 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+body {
+    background-color: #f2f2f2;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.hero-image{
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("https://images.unsplash.com/photo-1516905041604-7935af78f572?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80");
+    height: 800px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: relative;
+    background-color: black;
+    margin-bottom: 15px;
+}
+.hero-text{
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    font-size: 40px;
+}
+.hero-text button{
+    margin-top: 50px;
+    border: none;
+    font-size: 25px;
+    width: auto;
+    display: inline-block;
+    outline: 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    height: 35px;
+    background-color: #dfdfdf;
+    color: #000000;
+    padding: 0 20px;
+    box-shadow: rgba(124, 26, 116, 0.4) 0px 5px, rgba(130, 46, 240, 0.3) 0px 10px, rgba(49, 46, 240, 0.2) 0px 15px, rgba(46, 107, 240, 0.1) 0px 20px, rgba(31, 122, 158, 0.05) 0px 25px;
+}
+.gallery-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+.gallery-container h1{
+    font-size: 35px;
+    margin: 15px;
+}
+.gallery {
+    width: 50%;
+    margin: 25px;
+    display: grid;
+    grid-template-areas:
+        "img1 img2 img2 img3"
+        "img4 img2 img2 img3"
+        "img4 img5 img6 img6";
+    grid-gap: 25px;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.gallery div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+    color: white;
+}
+.gallery div img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.img1 { grid-area: img1; }
+.img2 { grid-area: img2; }
+.img3 { grid-area: img3; }
+.img4 { grid-area: img4; }
+.img5 { grid-area: img5; }
+.img6 { grid-area: img6; }
+.title-container{
+    text-align: center;
+    margin: 35px auto;
+    font-size: 18px;
+    color: white;
+}
+.brand-container{
+    display: flex;
+    flex-direction: row;
+    margin: 100px;
+    gap: 100px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0px;
+}
+.flip-card {
+    background-color: transparent;
+    width: 300px;
+    height: 200px;
+    border: 1px solid #f1f1f100;
+    perspective: 1000px; 
+    border-radius: 10px;
+    overflow: hidden;
+}
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+.flip-card-front, .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.flip-card-front {
+    background-color: #ffffff;
+    color: black;
+}
+.flip-card-back {
+    background-color: rgb(15, 3, 26);
+    color: white;
+    transform: rotateY(180deg);
+    padding: 3px;
+}
+.background-color{
+    background-color: #000000;
+    background-image: linear-gradient(225deg, #000000 0%, #341b4b 50%, #082497 100%);
+    margin-top: 20px;
+    padding: 1px;
+}
+@media (max-width: 1200px) {
+    .gallery {
+        width: 80%;
+        grid-template-areas:
+            "img1 img2 img3"
+            "img4 img2 img3"
+            "img4 img5 img6";
+        grid-gap: 15px;
+    }
+    .img1 {
+          width: 100%;
+        }
+    .brand-container{
+        margin: 100px;
+    }
+}
+@media (max-width: 490px) {
+    .gallery {
+        width: 90%;
+        grid-template-areas:
+            "img1 img2"
+            "img3 img4"
+            "img5 img6";
+        grid-gap: 10px;
+    }
+    .hero-text button{
+        font-size: 22px;
+        height: 32px;
+    }
+    .hero-text{
+        font-size: 30px;
+    }
+    .brand-container{
+        margin: 0px;
+    }
+    .background-color{
+        padding-bottom: 60px;
+    }
+}
