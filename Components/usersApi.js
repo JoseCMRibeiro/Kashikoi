@@ -5,7 +5,6 @@ export async function fetchusers()
         const response = await fetch('https://randomuser.me/api/?results=2');
         const users = await response.json();
 
-        console.log(array_response);
         return users;//return array with 2 users
     }   
     catch(error)

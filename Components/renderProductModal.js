@@ -53,17 +53,27 @@ export function ModalProduct(product)
   const modalContent = document.createElement('div');
   modalContent.className = 'productModalContent';
 
+  //create image
   const imageContainer = document.createElement('div');
   imageContainer.className = 'imageContainer';
 
+  //create button
+  const btContainer = document.createElement('div');
+  btContainer.style.display = 'flex';
+  btContainer.style.justifyContent = 'center';
+  btContainer.style.alignItems = 'center';
   const closeButton = document.createElement('button');
   closeButton.textContent = 'CLOSE';
   closeButton.style.backgroundColor = 'grey';
-  closeButton.style.color = 'white';
+  closeButton.style.color = 'white';  
+  closeButton.style.marginTop = '50px';
+  closeButton.style.marginLeft = 'auto';
+  closeButton.style.marginRight = 'auto';
   closeButton.addEventListener('click', function () 
   {
     modal.style.display = 'none';
   });
+  btContainer.appendChild(closeButton)
 
   // Create the product information elements
   const productName = document.createElement('h2');
@@ -87,7 +97,6 @@ export function ModalProduct(product)
 
   // Append the elements to the containers  
   imageContainer.appendChild(productImage);
-
   modalContent.appendChild(productName);
   modalContent.appendChild(productDescription);
   modalContent.appendChild(productPrice);
@@ -95,10 +104,11 @@ export function ModalProduct(product)
 
   
 
-  const pRatings = document.createElement('h2')
-  pRatings.textContent="REVIEWS:"
-  modalContent.appendChild(pRatings)
+  const headerRatings = document.createElement('h2')
+  headerRatings.textContent="REVIEWS:"
+  modalContent.appendChild(headerRatings)
   const rating = getProductReview(product.id)
+  if(rating)
   for ( var i = 0; i < rating.reviews.length ; i++)
   {    
     const nameRatings = document.createElement('h4')
@@ -130,7 +140,8 @@ export function ModalProduct(product)
     modalContent.appendChild(fixedBox)
   }
   
-  modalContent.appendChild(closeButton);
+
+  modalContent.appendChild(btContainer);
   modal.appendChild(modalContent);
 
   container.appendChild(modal);

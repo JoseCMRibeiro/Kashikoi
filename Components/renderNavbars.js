@@ -36,10 +36,9 @@ export function NavbarTop()
     {
       window.location.href = "../index.html";
     });
-
-
     return navbar
   }
+  
   export function NavBarBottom() 
 {
     const links = document.createElement('div');

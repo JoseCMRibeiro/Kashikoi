@@ -1,6 +1,6 @@
 import { messageModal } from "./renderMessageModal";
 import { ratingStorage } from "./reviewStorage";
-import { getProductReview } from "./reviewStorage";
+//import { getProductReview } from "./reviewStorage";
 
 export function ligthStars(product) 
 {
@@ -138,16 +138,13 @@ export function ligthStars(product)
   {
     star.addEventListener('click', function() 
     {
-      // Set the rating to the index of the clicked star plus 1
       rating = index + 1;
 
-      // Add the 'active' class to stars up to the selected rating
       for (let i = 0; i < rating; i++) 
       {
         stars[i].classList.add('active');
       }
 
-      // Remove the 'active' class from stars after the selected rating
       for (let i = rating; i < stars.length; i++) 
       {
         stars[i].classList.remove('active');
