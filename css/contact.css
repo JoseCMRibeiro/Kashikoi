@@ -1,4 +1,19 @@
 
+
+.arrowButton
+{
+  width: 150px;
+  margin: auto;
+  padding: 10px;
+  background-color: transparent;
+  border: 0px;
+}
+
+.arrowButton:hover {
+  background-color: #eaeaea;
+  color: #333333;
+}
+
 .carousel{
   max-width: 90%;
   margin: 0 auto;
@@ -132,9 +147,9 @@ cursor: pointer; /* Add cursor pointer */
 
 /* Caption text */
 .text {
-color: #252424;
-font-size: 15px;
-padding: 8px 12px;
+color: black;
+font-size: 25px;
+padding: 12px;
 position: absolute;
 bottom: 8px;
 width: 100%;

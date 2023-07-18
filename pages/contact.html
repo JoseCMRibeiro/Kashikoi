@@ -5,33 +5,49 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="/css/Contact.css">
   <link rel="stylesheet" href="/css/navbar.css">
+  <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <header id="header"></header>
+
         <!-- carousel -->
         <div class="carousel">
 
-            <div class="slideshow-container" onclick="stopSlideshow()">
+            <div class="slideshow-container" id="slides">
       
               <div class="mySlides fade">
                 <img src="/images/c1.jpg" style="width:100%">
-                <div class="text">Caption Text</div>
+                <div class="text">
+                  TEXT 1
+                </div>
               </div>
               
               <div class="mySlides fade">
                 <img src="/images/c2.jpg" style="width:100%">
-                <div class="text">Caption Two</div>
+                <div class="text">
+                  TEXT 2 
+                </div>
               </div>
               
               <div class="mySlides fade">
                 <img src="/images/c3.jpg" style="width:100%">
-                <div class="text">Caption Three</div>
+                <div class="text">
+                  TEXT 3 
+                </div>
               </div>
               
             </div>
-          </div>
-        
+          </div>  
+          <P class="centerText" >
+            <button id="bt_esquerda" class="arrowButton">
+              <i class="fa fa-angle-double-left" style="font-size:24px"></i>
+            </button>
+            <button id="bt_direita" class="arrowButton">       
+              <i class="fa fa-angle-double-right" style="font-size:24px"></i>
+            </button>
+          </P>      
         <!-- carousel -->
+
         <!-- form_map -->
         <div class="form_map">
           <div class="form-container">
@@ -66,7 +82,7 @@
           <div class="contacts">
               <div>
                 <div class="suport">
-                  <img class ="pictures" src="https://via.placeholder.com/100" >
+                  <img id="suport1" class="pictures" src="">
                   <h3>John Doe</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae massa placerat, cursus velit nec, volutpat tellus. Sed aliquam leo vel facilisis interdum.</p>
                   <div class="grey_back centerText">
@@ -79,7 +95,7 @@
               <div>
 
                 <div class="suport">
-                  <img class ="pictures" src="https://via.placeholder.com/100" >
+                  <img id="suport2" class="pictures" src="">
                   <h3>John Doe</h3>
                   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae massa placerat, cursus velit nec, volutpat tellus. Sed aliquam leo vel facilisis interdum.</p>
                   <div class="grey_back centerText">
@@ -91,7 +107,8 @@
           </div>
         <!-- contacts -->
 
-       
+  
+  <footer id ="footer"></footer>     
   <script type="module" src="/scripts/contact.js"></script>
   <script type="module" src="/main.js"></script>
         
