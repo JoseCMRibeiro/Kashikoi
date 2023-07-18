@@ -55,7 +55,6 @@ export async function checkout(coupon)
     coupon: coupon
   }
 
-
   const url = 'http://127.0.0.1:3333/checkout';
 
   try 
@@ -114,4 +113,3 @@ export async function checkCoupon(text)
     console.error(error);
   }
 }
-

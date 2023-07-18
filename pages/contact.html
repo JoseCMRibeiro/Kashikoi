@@ -1,83 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>CONTACT Kashikoi</title>
+  <title> ABOUT Kashikoi</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Wallpoet">
+  <link rel="stylesheet" href="/css/Contact.css">
   <link rel="stylesheet" href="/css/navbar.css">
-  <link rel="stylesheet" href="/css/contact.css">
 </head>
 <body>
-    <header id="header">
-    </header>
-    <main id ="main">
-      <div class="contact-container">
-        <div class="contact-message">
-          <h3>Best Place for thinkers <br> and innovators</h3>
-          <h2>Be Curious</h2>
-        </div>
-    
-        <div class="box">
-          <div class="form-wrapper">
-            <div class="form-container">
-              <form>
-                <div class="form-input">
-                  <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
-                </div>
-                <div class="form-input">
-                  <input type="text" id="company" name="company" placeholder="Company" required>
-                </div>
-                <div class="form-input">
-                  <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-                <div class="form-input" style="flex-grow: 1;">
-                  <textarea id="message" name="message" rows="5" placeholder="Write your message here:" required></textarea>
-                </div>
-                <div class="form-submit">
-                  <button type="submit">Submit</button>
-                </div>
-              </form>
-            </div>
-            <div class="map-container">
-              <div class="map">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12004.253991328536!2d-8.6862749!3d41.2203867!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2468ec3655d101%3A0x12cab54b20119109!2sATEC%20-%20Academia%20de%20Forma%C3%A7%C3%A3o!5e0!3m2!1spt-PT!2spt!4v1624161318737!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-              </div>
-              <label for="address">Address:</label>
-            </div>
-          </div>
-        </div>
-    
-        <div class="contact-message">
-          <h4>Still not sure? Contact our team and get close and personal!</h4>
-        </div>
-        <div class="testimonial-container">
-          <div class="testimonial">
-            <img src="https://via.placeholder.com/100" alt="Testimonial 1">
-            <h3>John Doe</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae massa placerat, cursus velit nec, volutpat tellus. Sed aliquam leo vel facilisis interdum.</p>
-            <button type="button">Don't mind if I do!</button>
-          </div>
-          <div class="testimonial">
-            <img src="https://via.placeholder.com/100" alt="Testimonial 2">
-            <h3>Jane Smith</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae massa placerat, cursus velit nec, volutpat tellus. Sed aliquam leo vel facilisis interdum.</p>
-            <button type="button">Don't mind if I do!</button>
-          </div>
-        </div>
-      </div>
+    <header id="header"></header>
+        <!-- carousel -->
+        <div class="carousel">
 
-    </main>
-    <footer id ="footer">
-      <div class="footer_logo">
-        <!-- Colocar logo -->
-        <img src="" alt="Logo">
-      </div>
-      <div class="footer_icons">
-        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-        <a href="#"><i class="fa fa-twitter"></i></a>
-        <a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a>
-      </div>
-    </footer>
+            <div class="slideshow-container" onclick="stopSlideshow()">
+      
+              <div class="mySlides fade">
+                <img src="/images/c1.jpg" style="width:100%">
+                <div class="text">Caption Text</div>
+              </div>
+              
+              <div class="mySlides fade">
+                <img src="/images/c2.jpg" style="width:100%">
+                <div class="text">Caption Two</div>
+              </div>
+              
+              <div class="mySlides fade">
+                <img src="/images/c3.jpg" style="width:100%">
+                <div class="text">Caption Three</div>
+              </div>
+              
+            </div>
+          </div>
+        
+        <!-- carousel -->
+        <!-- form_map -->
+        <div class="form_map">
+          <div class="form-container">
+            <form>
+              <div class="form-input">
+                <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+              </div>
+              <div class="form-input">
+                <input type="text" id="company" name="company" placeholder="Company" required>
+              </div>
+              <div class="form-input">
+                <input type="email" id="email" name="email" placeholder="Email" required>
+              </div>
+              <div class="form-input">
+                <textarea id="message" name="message" rows="15" placeholder="Write your message here:" required></textarea>
+              </div>
+              <div class="form-submit">
+                <button type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
+          <div class="map-container">
+            <div class="map">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12004.253991328536!2d-8.6862749!3d41.2203867!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2468ec3655d101%3A0x12cab54b20119109!2sATEC%20-%20Academia%20de%20Forma%C3%A7%C3%A3o!5e0!3m2!1spt-PT!2spt!4v1624161318737!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>  
+        <!-- form_map -->
+        <!-- contacts -->
+        <br><br><br>
+        <h2 class = "centerText">Still not sure? Contact our team and get close and personal! </h2>
+          <div class="contacts">
+              <div>
+                <div class="suport">
+                  <img class ="pictures" src="https://via.placeholder.com/100" >
+                  <h3>John Doe</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae massa placerat, cursus velit nec, volutpat tellus. Sed aliquam leo vel facilisis interdum.</p>
+                  <div class="grey_back centerText">
+                    <h3>Don't mind if I do!</h3>
+                  </div>   
+                </div>      
+              </div>
+
+
+              <div>
+
+                <div class="suport">
+                  <img class ="pictures" src="https://via.placeholder.com/100" >
+                  <h3>John Doe</h3>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae massa placerat, cursus velit nec, volutpat tellus. Sed aliquam leo vel facilisis interdum.</p>
+                  <div class="grey_back centerText">
+                    <h3>Don't mind if I do!</h3>
+                  </div>                  
+                </div>
+      
+              </div>
+          </div>
+        <!-- contacts -->
+
+       
+  <script type="module" src="/scripts/contact.js"></script>
   <script type="module" src="/main.js"></script>
+        
 </body>
 </html>

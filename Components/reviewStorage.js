@@ -5,7 +5,7 @@ export function getProductReview(id)
   if (data)
   {
   const dataJson = JSON.parse(data)
-  for (let i = 0; i < dataJson.length; i++) 
+    for (let i = 0; i < dataJson.length; i++) 
       if (dataJson[i].productID === id) 
           return dataJson[i];//review do produto
     
@@ -30,7 +30,7 @@ export function ratingStorage(ID,nome,rating,comentario)
 
   const data = localStorage.getItem('reviews');
   if (data) //storage não nula    
-  {    
+    {    
         let storedRatings= [] //cria array de reviews
 
         const jsonData=JSON.parse(data)
@@ -58,5 +58,8 @@ export function ratingStorage(ID,nome,rating,comentario)
         }
     }
     else //storage vazia adicionar primeira review
-      localStorage.setItem('reviews', JSON.stringify(productReview));
+    {
+      const reviews  = [productReview];
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+    }
   }

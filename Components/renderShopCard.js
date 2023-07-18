@@ -53,13 +53,17 @@
     }
 
 
-    for (let i = 0; i < 6; i++) 
+    for (let i = 0; i < 5; i++) 
     {
       const starSpan = document.createElement('span');
       if(i>=stars)
         starSpan.className = 'fa fa-star-o'
       else
-        starSpan.className = 'fa fa-star';
+        {
+          starSpan.className = 'fa fa-star';          
+          starSpan.style.color = '#C07F00';
+        }
+        
       
       starSpan.classList.add("stars")
       starsContainer.appendChild(starSpan);

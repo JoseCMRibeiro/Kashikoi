@@ -121,11 +121,19 @@ export function ModalProduct(product)
     for (let i = 0; i < 5; i++) 
     {
       const starIcon = document.createElement("span");
+      const blackStarIcon = document.createElement("span");
+      starIcon.style.color = "#E7B10A";
+      blackStarIcon.style.color = "white"
       if (i < stars) 
-        starIcon.textContent = "★";
+      {
+        starIcon.textContent = "★";        
+        productRatings.appendChild(starIcon);
+      }
       else
-      starIcon.textContent = "☆"
-      productRatings.appendChild(starIcon);
+      {
+        blackStarIcon.textContent = "★"        
+        productRatings.appendChild(blackStarIcon);
+      }
     }
 
 
