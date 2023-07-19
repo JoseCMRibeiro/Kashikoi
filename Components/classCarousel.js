@@ -5,7 +5,8 @@ export class Slideshow
       this.slides = document.getElementsByClassName("mySlides");
       this.currentIndex = 0;
       this.totalSlides = this.slides.length;
-      this.timeout = setTimeout(this.showSlide.bind(this), 3000);
+      this.timer=3000
+      this.timeout = setTimeout(this.showSlide.bind(this), this.timer);
       this.isRunning = false;
     }///////////////////////////////////////////////////////////////////////
   
@@ -43,11 +44,15 @@ export class Slideshow
       {
         if (i === index) 
         {
-          if(i==0)            
-            this.fadeOut(this.slides[this.slides.length-1]);
-          else
-            this.fadeOut(this.slides[i-1]);
-          this.fadeIn(this.slides[i]);
+          this.fadeIn(this.slides[i]);  
+          
+          
+
+          const timeoutDuration = 1500;
+          setTimeout(() => {
+            this.fadeOut(this.slides[i]);
+          }, timeoutDuration);
+
         }
         else
         {
@@ -71,7 +76,7 @@ export class Slideshow
       {
         if (opacity < 1) 
         {
-          opacity += 0.05;
+          opacity += 0.02;
           element.style.opacity = opacity;
         } 
         else 
@@ -106,7 +111,7 @@ export class Slideshow
      this.timeout = setTimeout(() => 
      {
        this.carousel();
-     }, 3000);
+     }, this.timer);
    }///////////////////////////////////////////////////////////////////////
   }
   
