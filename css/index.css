@@ -140,7 +140,7 @@
     transform: rotateY(180deg);
     padding: 3px;
 }
-@media (max-width: 768px) { /*mobile devices*/
+@media (max-width: 600px) { /*mobile devices*/
     .gallery {
         width: 90%;
         grid-template-areas:

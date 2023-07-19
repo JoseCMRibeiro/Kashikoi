@@ -4,14 +4,21 @@ export class Slideshow {
       this.currentIndex = 0;
       this.totalSlides = this.slides.length;
       this.timeout = setTimeout(this.showSlide.bind(this), 3000);
+      this.isRunning = false;
     }
   
     start() {
-      this.carousel();      
+      if (!this.isRunning) {
+        this.isRunning = true;
+        this.carousel();
+      }
     }
   
     stop() {
-      clearTimeout(this.timeout);
+      if (this.isRunning) {
+        clearTimeout(this.timeout);
+        this.isRunning = false;
+      }
     }
   
     goToNext() {
@@ -42,7 +49,7 @@ export class Slideshow {
     }
 
       
-    isSlideshowRunning() 
+    SlideshowRunning() 
     {
       return this.isRunning;
     }
