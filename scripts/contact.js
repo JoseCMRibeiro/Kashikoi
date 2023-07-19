@@ -1,7 +1,7 @@
 import { messageModal } from "../Components/renderMessageModal";
 import { fetchusers } from "../Components/usersApi";
-import { Slideshow} from "../Components/carousel";
-import { RenderStaff } from "../Components/renderStaff";
+import { Slideshow} from "../Components/classCarousel";
+import { RenderStaff } from "../Components/renderStaffCard";
 import { RenderSlides } from "../Components/renderSlides";
 
 const slides = document.getElementById("slides");

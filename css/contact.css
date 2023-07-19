@@ -21,6 +21,7 @@
 {
   text-align: center;
 }
+
 .grey_back{
   background-color: lightgrey;
   width: 100%;
@@ -28,6 +29,7 @@
   color: white;
   margin: 10px;
 }
+
 .pictures{
   border-radius: 50%;
   width: 180px;
@@ -118,12 +120,14 @@ form {
   border: 0;
 }
 
+.fade-out {
+  opacity: 0;
+  transition: opacity 1s ease;
+}
 
-
-
-.mySlides {display: none;}
-img {vertical-align: middle;}
-
+img {
+  vertical-align: middle;
+}
 
 .slideshow-container {
 max-width: 100%;
