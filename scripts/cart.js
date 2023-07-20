@@ -1,8 +1,12 @@
 import { ShoppingCart } from '../Components/classCart';
-import { renderCartItem } from '../Components/renderCartCard'; 
 import { CheckOut } from  '../Components/ClassCheckOut'
+import { renderCartItem } from '../Components/renderCartCard'; 
+const btVisa = document.getElementById("bt_visa")
+const btPay = document.getElementById("bt_pay_pal")
+const btMaster = document.getElementById("bt_master_card")
 const btSubmit =document.getElementById("bt_submeter_cupon")
 const btPagar =document.getElementById("bt_efetuar_pagamento")
+const btAmerican = document.getElementById("bt_American_express")
 
 
 const Check = new CheckOut()
@@ -50,4 +54,5 @@ btPagar.addEventListener('click',() =>
 {   
   Check.efetuarPagamento()
 }); 
+bt
 //-------------------------------------------------------

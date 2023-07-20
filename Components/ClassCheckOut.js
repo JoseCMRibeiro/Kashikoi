@@ -56,7 +56,7 @@ export class CheckOut
     const data = await checkout(discount)//chamada a api  
 
     
-
+      
       
     messageModal("OBRIGADO PELA SUA VISITA",JSON.stringify(data))
 
