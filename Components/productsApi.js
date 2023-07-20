@@ -1,9 +1,9 @@
-
+const baseURL = 'http://127.0.0.1:3333';
 export async function fetchProducts() 
 {
   try 
   {
-    const response = await fetch('http://127.0.0.1:3333/products');///get list of products
+    const response = await fetch(`${baseURL}/products`); // Get list of products
     
     const array_response = await response.json();
     return array_response;//return array with list of products
@@ -15,6 +15,7 @@ export async function fetchProducts()
     throw error;
   }
 }
+
 ////////////////////////////
 ////////////////////////////
 //                        //
@@ -37,7 +38,7 @@ export async function fetchProducts()
 //  }                     //
 ////////////////////////////
 ////////////////////////////
-export async function checkout(coupon) 
+export async function checkout(coupon)
 {
 
   let items=[]
@@ -55,7 +56,7 @@ export async function checkout(coupon)
     coupon: coupon
   }
 
-  const url = 'http://127.0.0.1:3333/checkout';
+  const url = `${baseURL}/checkout`;
 
   try 
   {
@@ -89,7 +90,7 @@ export async function checkCoupon(text)
 {
 //-------------------------------------------------------
 
-  const url = 'http://127.0.0.1:3333/check-coupon';
+  const url = `${baseURL}/check-coupon`;
   const coupon=
   {
     "couponCode": text
