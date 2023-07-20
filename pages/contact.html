@@ -9,58 +9,59 @@
 </head>
 
 <body>
-  <header id="header"></header>
-        <!-- carousel -->
-        <div class="slideshow-container" id="slides"></div>        
-        <!-- carousel -->
+      <header id="header"></header>
+            <!-- carousel -->
+            <div class="slideshow-container" id="slides"></div>        
+            <!-- carousel -->
+            <!-- setas -->
+              <P class="centerText" >
+                <button id="bt_esquerda" class="arrowButton">
+                  <i class="fa fa-angle-double-left" style="font-size:24px"></i>
+                </button>
+                <button id="bt_direita" class="arrowButton">       
+                  <i class="fa fa-angle-double-right" style="font-size:24px"></i>
+                </button>
+              </P>         
+            <!-- setas -->   
+  
+            <main>
 
-        <!-- setas -->
-          <P class="centerText" >
-            <button id="bt_esquerda" class="arrowButton">
-              <i class="fa fa-angle-double-left" style="font-size:24px"></i>
-            </button>
-            <button id="bt_direita" class="arrowButton">       
-              <i class="fa fa-angle-double-right" style="font-size:24px"></i>
-            </button>
-          </P>         
-        <!-- setas -->   
+            <!-- form_map -->
+            <div class="form_map">
+              <div class="form-container">
+                <form>
+                  <div class="form-input">
+                    <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
+                  </div>
+                  <div class="form-input">
+                    <input type="text" id="company" name="company" placeholder="Company" required>
+                  </div>
+                  <div class="form-input">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                  </div>
+                  <div class="form-input">
+                    <textarea id="message" name="message" rows="15" placeholder="Write your message here:" required></textarea>
+                  </div>
+                  <div class="form-submit">
+                    <button type="submit">Submit</button>
+                  </div>
+                </form>
+              </div>
+              <div class="map-container">
+                <div class="map">
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12004.253991328536!2d-8.6862749!3d41.2203867!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2468ec3655d101%3A0x12cab54b20119109!2sATEC%20-%20Academia%20de%20Forma%C3%A7%C3%A3o!5e0!3m2!1spt-PT!2spt!4v1624161318737!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+              </div>
+            </div>  
+            <!-- form_map -->
+            <br><br><br>
 
-        <!-- form_map -->
-        <div class="form_map">
-          <div class="form-container">
-            <form>
-              <div class="form-input">
-                <input type="text" id="first-name" name="first-name" placeholder="First Name" required>
-              </div>
-              <div class="form-input">
-                <input type="text" id="company" name="company" placeholder="Company" required>
-              </div>
-              <div class="form-input">
-                <input type="email" id="email" name="email" placeholder="Email" required>
-              </div>
-              <div class="form-input">
-                <textarea id="message" name="message" rows="15" placeholder="Write your message here:" required></textarea>
-              </div>
-              <div class="form-submit">
-                <button type="submit">Submit</button>
-              </div>
-            </form>
-          </div>
-          <div class="map-container">
-            <div class="map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12004.253991328536!2d-8.6862749!3d41.2203867!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd2468ec3655d101%3A0x12cab54b20119109!2sATEC%20-%20Academia%20de%20Forma%C3%A7%C3%A3o!5e0!3m2!1spt-PT!2spt!4v1624161318737!5m2!1spt-PT!2spt" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-            </div>
-          </div>
-        </div>  
-        <!-- form_map -->
-        <br><br><br>
-
-        <h2 class = "centerText">Still not sure? Contact our team and get close and personal! </h2>
-        
-        <!-- contacts -->
-        <div class="contacts" id="staff"></div>
-        <!-- contacts -->
-
+            <h2 class = "centerText">Still not sure? Contact our team and get close and personal! </h2>
+            
+            <!-- contacts -->
+            <div class="contacts" id="staff"></div>
+            <!-- contacts -->
+    </main>
   
   <footer id ="footer"></footer>     
   <script type="module" src="/scripts/contact.js"></script>

@@ -45,7 +45,7 @@ export function ModalProduct(product)
 
   // Create the modal element
   const modal = document.createElement('div');
-  modal.id = 'productModal';
+  modal.id = 'modal';
   modal.className = 'productModal';
   modal.style.display = 'block';
 
@@ -69,10 +69,7 @@ export function ModalProduct(product)
   closeButton.style.marginTop = '50px';
   closeButton.style.marginLeft = 'auto';
   closeButton.style.marginRight = 'auto';
-  closeButton.addEventListener('click', function () 
-  {
-    modal.style.display = 'none';
-  });
+  closeButton.id = "closeButton"
   btContainer.appendChild(closeButton)
 
   // Create the product information elements
@@ -113,6 +110,7 @@ export function ModalProduct(product)
   {    
     const nameRatings = document.createElement('h4')
     nameRatings.textContent="👤    " + rating.reviews[i].nome + ":"
+    nameRatings.style.margin = "20px";
     modalContent.appendChild(nameRatings)
 
     const productRatings = document.createElement('p')
@@ -135,16 +133,26 @@ export function ModalProduct(product)
         productRatings.appendChild(blackStarIcon);
       }
     }
+    productRatings.style.margin="10px";
 
-
-    const reviewRatings = document.createElement('p')
-    reviewRatings.textContent=rating.reviews[i].comentario
+    //para multiplas linhas de comentario
+    const text = rating.reviews[i].comentario
+    const paragraphs = text.split("\n");
+    const paragraphContainer = document.createElement('div');
+    paragraphs.forEach(paragraph => {
+      if (paragraph.trim() !== "") {
+        const pElement = document.createElement('p');
+        pElement.innerHTML = paragraph; 
+        paragraphContainer.appendChild(pElement);
+      }
+    });
 
     const  fixedBox = document.createElement("div");   
     fixedBox.style.background = "lightgray";
-    fixedBox.style.padding = "1px";
+    fixedBox.style.padding = "2px";
+    fixedBox.style.margin = "10px";
     fixedBox.appendChild(productRatings)
-    fixedBox.appendChild(reviewRatings)
+    fixedBox.appendChild(paragraphContainer)
     modalContent.appendChild(fixedBox)
   }
   
@@ -154,9 +162,17 @@ export function ModalProduct(product)
 
   container.appendChild(modal);
   container.appendChild(modalStyle);
-
-
-  // Inject the component into the body of the page
   document.body.appendChild(container);
-  
+
+
+  //listeners
+  closeButton.addEventListener('click', function () {
+    modal.style.display = 'none';
+  });
+  window.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') modal.style.display = 'none';
+  });
+  window.addEventListener('click', function (event) {
+    if (event.target === modal) modal.style.display = 'none';
+  });
 }

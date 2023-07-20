@@ -18,27 +18,29 @@ export function messageModal(text1, text2)
 
       .modal-content {
         margin: 15% auto;
-        padding: 20px;
+        padding: 30px;
         border: 1px solid #ffbf00;
         width: 80%;
-        text-align: center;
-        
-      background-color: #313131ee;      
-      color: white;
-      }
+        text-align: center;        
+        background-color: #313131ee;      
+        color: white;
+        }
     </style>
   `;
 
   const modalContent = document.createElement('div');
   modalContent.classList.add("modal-content")
   const h1 = document.createElement('h3');
-  h1.textContent=text1
+  h1.textContent=text1  
+  h1.style.margin = '10px';
   const h2 = document.createElement('h3');
   h2.textContent=text2
+  h2.style.margin = '10px';
   const closeButton = document.createElement('button');
   closeButton.textContent = 'CLOSE';
   closeButton.style.backgroundColor = 'grey';
   closeButton.style.color = 'white';
+  closeButton.style.padding= '5px';
   closeButton.addEventListener('click', function () 
   {
     modal.style.display = 'none';
@@ -52,4 +54,16 @@ export function messageModal(text1, text2)
   document.body.appendChild(modal);
 
   modal.style.display = "block";
+
+
+    //listeners
+    closeButton.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') modal.style.display = 'none';
+    });
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) modal.style.display = 'none';
+    });
 }

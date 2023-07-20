@@ -153,11 +153,6 @@
         font-size: 21px;
     }
 }
-@media screen and (max-width: 1370px) {
-    .list-image{
-        padding-left: 0px;
-    }
-}
 .accordion{
     margin: 60px -20px;
     width: 100%;

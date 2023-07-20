@@ -98,15 +98,31 @@
         flex: 1;
       }
       .stars-container {
-      font-size: 0; /* Remove the space created by inline elements */
-    }
+      font-size: 0; 
+      }
+      /* hover */
+        .starsContainer :hover{
+        cursor: pointer;  
+        opacity: 0.5;
+        }
+        .fa.fa-cart-plus.fa-lg:hover{
+        cursor: pointer;               
+        opacity: 0.5;
+        }
+        .image-container:hover{
+          opacity: 0.8;
+        cursor: pointer;  
+        
+
+        }
+
   
-    .stars-container span {
-      font-size: 1rem; /* Reset the font size for the stars */
-    }
+      .stars-container span {
+        font-size: 1rem; 
+      }
+    
   
-  
-    @media screen and (max-width: 576px){
+    @media screen and (max-width: 600px){
       .grid-container {
           grid-template-columns: 1fr; 
       }

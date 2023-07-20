@@ -1,4 +1,4 @@
-export function RenderStaff(img)
+export function RenderStaff(img, name)
 {
     const supportDiv = document.createElement('div');
     supportDiv.classList.add('support');
@@ -10,7 +10,7 @@ export function RenderStaff(img)
     image.src = img;
 
     const nameHeading = document.createElement('h3');
-    nameHeading.textContent = 'John Doe';
+    nameHeading.textContent = name;
 
     const descriptionParagraph = document.createElement('p');
     descriptionParagraph.textContent = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vitae massa placerat, cursus velit nec, volutpat tellus. Sed aliquam leo vel facilisis interdum.';

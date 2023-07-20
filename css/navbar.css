@@ -47,22 +47,22 @@
   margin-left: 10px;
   color: #333;
 }
-.navbar a:hover {
-  color: red;
-  font-size: 21px; 
+.navbar a:hover {  
+  text-shadow: 2px 2px 4px #000000;
 }
 .links a:hover {
-  color: red;
+  text-shadow: 2px 2px 4px #000000;
 }
 .navbar h1:hover{
-  color: red;
+  text-shadow: 2px 2px 4px #000000;
 }
 .hide{display: none;}
 
 /*---------------------------  */
 /*-------  Media   ----------- */
 /*---------------------------  */
-@media screen and (max-width: 576px){
+@media screen and (max-width: 600px)
+{
   .navbarLeft {display: none;}
   .navbarRigth {display: none;}  
   .navbarCenter {margin-right: 0px;}

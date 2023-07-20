@@ -4,20 +4,18 @@ import { ratingStorage } from "./reviewStorage";
 
 export function ligthStars(product) 
 {
-
   const modalStyles = `
-    .modal {
-      display: none;
-      position: fixed;
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.5);
-      
-    }
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);    
+  }
 
     .modal-content {
       display: flex;
@@ -25,11 +23,22 @@ export function ligthStars(product)
       align-items: center;
       background-color: #313131ee;      
       color: white;
-      margin: 20% auto;
-      padding: 20px;
-      border: 1px solid ffbf00;
+      margin: 15% auto;
+      padding: 10px;
+      border: 1px solid #ffbf00;
       width: 50%;
       max-width: 500px;
+    }
+    
+    .input-field {
+      width: 90%;
+      margin-bottom: 20px;
+      padding: 20px; 
+    }
+
+    .submitBtn{
+      padding: 10px;
+      border: 1px solid #ffbf00;
     }
 
     .close {
@@ -38,16 +47,18 @@ export function ligthStars(product)
       font-size: 28px;
       font-weight: bold;
       cursor: pointer;
+      padding: 10px;
+      margin: 20px;
     }
 
     .stars {
-      margin-bottom: 20px;
+      margin: 10% auto;
     }
 
     .star {
       font-size: 24px;
       cursor: pointer;
-      color: #131212;
+      color: white;
     }
 
     .star:hover,
@@ -88,21 +99,24 @@ export function ligthStars(product)
     star.innerHTML = '&#9733;';
     starsContainer.appendChild(star);
   }
-  // Create name input
+  // Nome
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
   nameInput.id = 'nameInput';
   nameInput.placeholder = 'Nome:';
-  // Create review textarea
+  nameInput.className = 'input-field';
+  
+  // comentario
   const reviewInput = document.createElement('textarea');
   reviewInput.id = 'reviewInput';
   reviewInput.placeholder = 'Comentario';
-  // Create empty paragraph element
-  const emptyParagraph = document.createElement('p');
+  reviewInput.className = 'input-field';
+  
   // Create submit button
   const submitBtn = document.createElement('button');
   submitBtn.id = 'submitRating';
   submitBtn.textContent = 'Submeter';
+  submitBtn.className = 'submitBtn';
 
   // Append elements to the modal content
   modalContent.appendChild(closeBtn);
@@ -110,7 +124,6 @@ export function ligthStars(product)
   modalContent.appendChild(starsContainer);
   modalContent.appendChild(nameInput);
   modalContent.appendChild(reviewInput);
-  modalContent.appendChild(emptyParagraph);
   modalContent.appendChild(submitBtn);
   // Append modal content to the modal
   modal.appendChild(modalContent);
@@ -162,7 +175,6 @@ export function ligthStars(product)
 
     if (selectedRating && nameInput.value && reviewInput.value) 
     {
-      const selectedRatingValue = selectedRating.getAttribute('data-rating');
       const name = nameInput.value;
       const review = reviewInput.value;
 
@@ -179,5 +191,18 @@ export function ligthStars(product)
       messageModal('Por favor preencha todos os campos',"");
     }
   });
+
+    //listeners
+    closeModalBtn.addEventListener('click', function () {
+      modal.style.display = 'none';
+    });
+    window.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') modal.style.display = 'none';
+    });
+    window.addEventListener('click', function (event) {
+      if (event.target === modal) modal.style.display = 'none';
+    });
+
+
   return modal;
 }

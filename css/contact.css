@@ -46,9 +46,13 @@
   width: 100%;
   margin: auto;
   padding: 20px;
-  border-radius: 5%; 
-  
+  border-radius: 5%;   
   background-color: rgba(249, 245, 245, 0.988);
+}
+
+.support:hover {
+  background-color: #eaeaea;
+  cursor: pointer; 
 }
 
 .form_map {
@@ -120,11 +124,6 @@ form {
   border: 0;
 }
 
-.fade-out {
-  opacity: 0;
-  transition: opacity 1s ease;
-}
-
 img {
   vertical-align: middle;
 }
@@ -164,4 +163,8 @@ text-align: center;
   .contacts {
     grid-template-columns: 1fr;   
   }
+}
+
+p{
+  padding: 10px;  
 }

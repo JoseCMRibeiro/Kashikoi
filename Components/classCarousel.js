@@ -12,18 +12,22 @@ export class Slideshow
   
     start() 
     {
-      if (!this.isRunning) {
+      if (!this.isRunning) 
+      {
         this.isRunning = true;
         this.carousel();
       }
+      else      
+        this.slides[this.currentIndex].style.display = "block";
     }///////////////////////////////////////////////////////////////////////
   
     stop() 
     {
-      if (this.isRunning) {
+      if (this.isRunning) 
+      {
         clearTimeout(this.timeout);
         this.isRunning = false;
-      }
+      }      
     }///////////////////////////////////////////////////////////////////////
   
     goToNext() 
@@ -42,18 +46,8 @@ export class Slideshow
     {
       for (let i = 0; i < this.slides.length; i++) 
       {
-        if (i === index) 
-        {
-          this.fadeIn(this.slides[i]);  
-          
-          
-
-          const timeoutDuration = 1500;
-          setTimeout(() => {
-            this.fadeOut(this.slides[i]);
-          }, timeoutDuration);
-
-        }
+        if (i === index)           
+          this.fadeIn(this.slides[i]);         
         else
         {
           this.slides[i].style.display = "none";
@@ -76,7 +70,7 @@ export class Slideshow
       {
         if (opacity < 1) 
         {
-          opacity += 0.02;
+          opacity += 0.05;
           element.style.opacity = opacity;
         } 
         else 
@@ -92,9 +86,10 @@ export class Slideshow
   
       const fadeInterval = setInterval(() => 
       {
+        if (this.SlideshowRunning() )
         if (opacity > 0) 
         {
-          opacity -= 0.05;
+          opacity -= 0.1;
           element.style.opacity = opacity;
         } 
         else 

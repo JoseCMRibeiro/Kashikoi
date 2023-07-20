@@ -44,9 +44,17 @@ if(!users)
 else 
   users = JSON.parse(users)
   
+console.log(users.results[0])
 
-staff.appendChild(RenderStaff(users.results[0].picture.large))
-staff.appendChild(RenderStaff(users.results[1].picture.large))
+const staffOneName=  users.results[0].name.title + " " 
+                    + users.results[0].name.first + " "
+                    + users.results[0].name.last;
+const staffTwoName=  users.results[1].name.title + " " 
+                    + users.results[1].name.first + " "
+                    + users.results[1].name.last;   
+                    
+staff.appendChild(RenderStaff(users.results[0].picture.large, staffOneName))
+staff.appendChild(RenderStaff(users.results[1].picture.large, staffTwoName))
 
 async function getUsers()
 {  

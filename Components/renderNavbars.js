@@ -51,7 +51,7 @@ export function NavbarTop()
     <a href="/pages/shop.html"><i class="fa fa-shopping-cart "></i></a> 
     <a href="/pages/about.html"><i class="fa fa-info"></i></a> 
     <a href="/pages/contact.html"><i class="fa fa-phone"></i></a> 
-    `;
+    `;    
     return links
 }
 
