@@ -1,4 +1,4 @@
-import { messageModal } from "./renderMessageModal"
+import { messageModal } from "../Components/renderMessageModal"
 
 const final = document.getElementById("precoFinal")
 const desconto = document.getElementById("desconto")

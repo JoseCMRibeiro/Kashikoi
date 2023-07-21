@@ -1,5 +1,5 @@
-import { ShoppingCart } from '../Components/classCart';
-import { CheckOut } from  '../Components/ClassCheckOut'
+import { ShoppingCart } from '../modules/classCart';
+import { CheckOut } from  '../modules/ClassCheckOut'
 import { renderCartItem } from '../Components/renderCartCard'; 
 const btVisa = document.getElementById("bt_visa")
 const btPay = document.getElementById("bt_pay_pal")
@@ -54,5 +54,4 @@ btPagar.addEventListener('click',() =>
 {   
   Check.efetuarPagamento()
 }); 
-bt
 //-------------------------------------------------------

@@ -1,6 +1,6 @@
 import { messageModal } from "../Components/renderMessageModal";
-import { fetchusers } from "../Components/usersApi";
-import { Slideshow} from "../Components/classCarousel";
+import { fetchusers } from "../modules/usersApi";
+import { Slideshow} from "../modules/classCarousel";
 import { RenderStaff } from "../Components/renderStaffCard";
 import { RenderSlides } from "../Components/renderSlides";
 

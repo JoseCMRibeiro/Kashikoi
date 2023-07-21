@@ -1,6 +1,6 @@
 import DOMPurify from 'dompurify'
 import { checkCoupon, checkout ,fetchProducts} from './productsApi'
-import { messageModal } from './renderMessageModal'
+import { messageModal } from '../Components/renderMessageModal'
 
 const total= document.getElementById("precototal")
 const final = document.getElementById("precoFinal")

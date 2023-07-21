@@ -1,6 +1,5 @@
 import { messageModal } from "./renderMessageModal";
-import { ratingStorage } from "./reviewStorage";
-//import { getProductReview } from "./reviewStorage";
+import { ratingStorage} from "../modules/reviewStorage";
 
 export function ligthStars(product) 
 {

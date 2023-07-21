@@ -1,4 +1,4 @@
-import { getProductReview } from "./reviewStorage";
+import { getProductReview } from "../modules/reviewStorage";
 
 export function ModalProduct(product) 
 {

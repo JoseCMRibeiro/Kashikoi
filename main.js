@@ -1,5 +1,5 @@
 import {NavbarTop, NavBarBottom} from './Components/renderNavbars'
-import { fetchProducts } from './Components/productsApi'
+import { fetchProducts } from './modules/productsApi'
 import { messageModal } from './Components/renderMessageModal'
 const header=document.getElementById("header")
 const footer=document.getElementById("footer")
