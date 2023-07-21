@@ -1,6 +1,7 @@
-import { ShoppingCart } from '../modules/ClassCart'
+import { ShoppingCart } from "../modules/classCart";
+
 const total=document.getElementById("precototal")
-const submit=document.getElementById("bt_submeter_cupon")
+//const submit=document.getElementById("bt_submeter_cupon")
 const Cart = new ShoppingCart()
 
 export function renderCartItem(item)
@@ -107,4 +108,4 @@ export function renderCartItem(item)
         li3.textContent="Sub Total: " +(item.quantityInCart*item.price).toFixed(2)          
     });   
     return cartItem;
-}
+}////////////////////////////////////////////////////////////////////////////

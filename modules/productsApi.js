@@ -1,12 +1,13 @@
-//require('dotenv').config();
+import {API_PRODUCTS} from '../kashikoi.env'
+import {API_CHECKOUT} from '../kashikoi.env'
+import {API_COUPON} from '../kashikoi.env'
 
-// const url = process.env.API_FETCH_PRODUCTS;
 
 export async function fetchProducts() 
 {
   try 
   {
-    const response = await fetch("http://127.0.0.1:3333/products");///get list of products
+    const response = await fetch(API_PRODUCTS);///get list of products
     
     const array_response = await response.json();
     return array_response;//return array with list of products
@@ -58,11 +59,9 @@ export async function checkout(coupon)
     coupon: coupon
   }
 
-  const url = 'http://127.0.0.1:3333/checkout';
-
   try 
   {
-    const response = await fetch(url, 
+    const response = await fetch(API_CHECKOUT, 
     {
       method: 'post',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -90,9 +89,8 @@ export async function checkout(coupon)
 ////////////////////////////////
 export async function checkCoupon(text) 
 {
-//-------------------------------------------------------
 
-  const url = 'http://127.0.0.1:3333/check-coupon';
+
   const coupon=
   {
     "couponCode": text
@@ -100,7 +98,7 @@ export async function checkCoupon(text)
 
   try 
   {
-    const response = await fetch(url, 
+    const response = await fetch(API_COUPON, 
     {
       method: 'post',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
@@ -115,4 +113,4 @@ export async function checkCoupon(text)
   {
     console.error(error);
   }
-}
+}/////////////////////////////////////////////////////////////

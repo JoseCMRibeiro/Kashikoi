@@ -5,8 +5,8 @@ import { RenderStaff } from "../Components/renderStaffCard";
 import { RenderSlides } from "../Components/renderSlides";
 
 const slides = document.getElementById("slides");
-const esquerda = document.getElementById("bt_esquerda");
-const direita = document.getElementById("bt_direita")
+const left = document.getElementById("bt_left");
+const rigth = document.getElementById("bt_rigth")
 const staff = document.getElementById("staff")
 
 slides.appendChild(RenderSlides())
@@ -14,18 +14,16 @@ slides.appendChild(RenderSlides())
 const show = new Slideshow();
 show.start();
 
-esquerda.addEventListener("click", function() 
+left.addEventListener("click", function() 
 {
   show.stop()
   show.goToPrevious()
-  console.log("ESQUERDA");
 });
 
-direita.addEventListener("click", function() 
+rigth.addEventListener("click", function() 
 {
     show.stop()
     show.goToNext()
-    console.log("DIREITA");
 });
 
 slides.onclick = function() 
@@ -44,7 +42,6 @@ if(!users)
 else 
   users = JSON.parse(users)
   
-console.log(users.results[0])
 
 const staffOneName=  users.results[0].name.title + " " 
                     + users.results[0].name.first + " "

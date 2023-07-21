@@ -30,16 +30,16 @@ async function mainFunction()
 {
     try
     {        
-        const armazem = await fetchProducts();
+        const storage = await fetchProducts();
 
-        if (!armazem.fatal)
+        if (!storage.fatal)
         {
-            for (var i = 0; i < armazem.length; i++)
+            for (var i = 0; i < storage.length; i++)
             {
-                armazem[i].quantityInCart = 0
-                armazem[i].productIndex = i
+                storage[i].quantityInCart = 0
+                storage[i].productIndex = i
             }
-            const products= JSON.stringify(armazem);
+            const products= JSON.stringify(storage);
             localStorage.setItem("products", products);    
         }
         else

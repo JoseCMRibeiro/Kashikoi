@@ -135,7 +135,7 @@ export function ModalProduct(product)
     }
     productRatings.style.margin="10px";
 
-    //para multiplas linhas de comentario
+    //for multiline review
     const text = rating.reviews[i].comentario
     const paragraphs = text.split("\n");
     const paragraphContainer = document.createElement('div');

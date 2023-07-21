@@ -1,4 +1,3 @@
-//retorna review do artigo pela id
 export function getProductReview(id) 
 {
   const data = localStorage.getItem('reviews');
@@ -7,15 +6,13 @@ export function getProductReview(id)
   const dataJson = JSON.parse(data)
     for (let i = 0; i < dataJson.length; i++) 
       if (dataJson[i].productID === id) 
-          return dataJson[i];//review do produto
+          return dataJson[i];
     
   }
   else
   return null; 
-}
-//-------------------------------------------------------------
-//          Armazena classificações 
-//-------------------------------------------------------------
+}/////////////////////////////////////////////////////////////
+
 export function ratingStorage(ID,nome,rating,comentario)
 {
   var productReview = 
@@ -29,9 +26,9 @@ export function ratingStorage(ID,nome,rating,comentario)
       }
 
   const data = localStorage.getItem('reviews');
-  if (data) //storage não nula    
+  if (data)    
     {    
-        let storedRatings= [] //cria array de reviews
+        let storedRatings= [] 
 
         const jsonData=JSON.parse(data)
         if(jsonData.length>0)          
@@ -39,7 +36,6 @@ export function ratingStorage(ID,nome,rating,comentario)
         else
           storedRatings.push(JSON.parse(data))
 
-        //vereficar se produto já existe        
         const existingProductIndex = storedRatings.findIndex(review => review.productID === productReview.productID);  
         
         if (existingProductIndex === -1) 
@@ -48,7 +44,7 @@ export function ratingStorage(ID,nome,rating,comentario)
           const jsonAtualizado = JSON.stringify(storedRatings);
           localStorage.setItem('reviews', jsonAtualizado);      
         } 
-        else //adiciona novo rating ao produto caso o produto já tenha ratings
+        else 
         {          
           storedRatings[existingProductIndex].totalEstrelas+=rating
           const novaReview = { nome,comentario, rating };
@@ -57,9 +53,9 @@ export function ratingStorage(ID,nome,rating,comentario)
           localStorage.setItem('reviews', jsonAtualizado);
         }
     }
-    else //storage vazia adicionar primeira review
+    else //stores first review
     {
       const reviews  = [productReview];
       localStorage.setItem('reviews', JSON.stringify(reviews));
     }
-  }
+  }////////////////////////////////////////////////////////////

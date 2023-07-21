@@ -1,10 +1,10 @@
-
+import {API_USERS} from '../kashikoi.env'
 
 export async function fetchusers() 
 {
     try
     {        
-        const response = await fetch('https://randomuser.me/api/?results=2');
+        const response = await fetch(API_USERS);
         const users = await response.json();
 
         return users;//return array with 2 users
@@ -14,4 +14,4 @@ export async function fetchusers()
         console.error('Error fetching users:', error.message);
         throw error;
     }
-}
+}////////////////////////////////////////////////////////////

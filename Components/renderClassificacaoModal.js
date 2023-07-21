@@ -105,7 +105,7 @@ export function ligthStars(product)
   nameInput.placeholder = 'Nome:';
   nameInput.className = 'input-field';
   
-  // comentario
+  // review
   const reviewInput = document.createElement('textarea');
   reviewInput.id = 'reviewInput';
   reviewInput.placeholder = 'Comentario';
@@ -177,13 +177,12 @@ export function ligthStars(product)
       const name = nameInput.value;
       const review = reviewInput.value;
 
-      //armazena classificações
+      //store reviews
       ratingStorage(product.id,name,rating,review)
       
       modalElement.style.display = 'none';
       modal.remove()      
-      location.reload();//para forçar o reload da pagina
-
+      location.reload();//force reload of page
     } 
     else 
     {
