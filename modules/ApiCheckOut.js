@@ -1,6 +1,6 @@
 import {API_CHECKOUT} from '../kashikoi.env'
 import {API_COUPON} from '../kashikoi.env'
-import { getStoredProducts } from './storage'
+import { getStoredProducts } from './localeStorage'
 
 ////////////////////////////
 ////////////////////////////
@@ -33,8 +33,8 @@ export async function checkout(coupon)
   if(productsStorage.PromiseResult)
     items=JSON.parse(PromiseResult)
 
-  const simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));//cria um novo JSON com apenas os atributos necessarios para checkout
-  const cleanProducts = simplifiedProducts.filter(item => item.quantity > 0);//remove produtos a zero
+  const simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));//builds JSON with only the required data
+  const cleanProducts = simplifiedProducts.filter(item => item.quantity > 0);//removes products with quantity=0
 
   const products = 
   {
@@ -51,7 +51,8 @@ export async function checkout(coupon)
       body: JSON.stringify(products)
     });
 
-    return response.json();
+    const responseJson = await response.json();
+    return responseJson;
   } 
   catch (error) 
   {
@@ -84,7 +85,8 @@ export async function checkCoupon(text)
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(coupon)
     });
-    return response.json();
+    const responseJson = await response.json();
+    return responseJson;
   }
   catch (error) 
   {

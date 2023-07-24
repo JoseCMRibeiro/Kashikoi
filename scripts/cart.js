@@ -1,8 +1,8 @@
 import { ShoppingCart } from '../modules/classCart';
-import { CheckOut } from  '../modules/ClassCheckOut'
+import { CheckOut } from '../modules/classCheckOut';
 import { renderCartItem } from '../Components/renderCartCard'; 
 const btSubmit =document.getElementById("bt_cupon")
-const btPagar =document.getElementById("bt_pagamento")
+const btPagar =document.getElementById("bt_payment")
 const cupon = document.getElementById("cupon")
 const cartdiv = document.getElementById("Cart")
 const cartItems = document.getElementById("Cart")
@@ -60,6 +60,6 @@ btSubmit.addEventListener('click',() =>
 //-------------------------------------------------------------
 btPagar.addEventListener('click',() => 
 {   
-  Check.efetuarPagamento()
+  Check.payment()
 }); 
 //-------------------------------------------------------

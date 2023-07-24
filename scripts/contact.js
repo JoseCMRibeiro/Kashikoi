@@ -80,7 +80,7 @@ function validateForm()
 
   if (!email.includes("@"))
   {
-    messageModal("Email must contain '@'.");
+    messageModal("Invalid Email");
     return false;
   }
 

@@ -1,4 +1,5 @@
 import {STORAGE_USERS} from '../kashikoi.env'
+import {STORAGE_REVIEWS} from '../kashikoi.env'
 import {STORAGE_PRODUCTS} from '../kashikoi.env'
 import { fetchusers } from './ApiUsers'
 import { fetchProducts } from './ApiProducts'
@@ -49,20 +50,27 @@ export async function getStoredProducts()
     if(products)
         return JSON.parse(products)
     else
-    {
-        
-        const products = await callApiProducts();  
-        for (var i = 0; i < products.length; i++)
-        {
-            products[i].quantityInCart = 0
-            products[i].productIndex = i
-        }
-        
+    {        
+        const products = await callApiProducts();        
         if(products)
-        setStoredProductes(JSON.stringify(products));
-        return products;      
+        {            
+            for (var i = 0; i < products.length; i++)
+            {
+                products[i].quantityInCart = 0
+                products[i].productIndex = i
+            }             
+            setStoredProductes(JSON.stringify(products));
+            return products;  
+        }    
     }
 }//----------------------------------------------------
+export function refreshProductStorage()
+{
+    localStorage.removeItem(STORAGE_PRODUCTS);    
+    const cart = document.getElementById("Cart")    
+    cart.innerHTML = "";
+    getStoredProducts();
+}
 
 async function callApiProducts()
 {

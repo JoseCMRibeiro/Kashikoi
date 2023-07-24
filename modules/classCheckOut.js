@@ -1,5 +1,6 @@
 import { checkCoupon, checkout} from './ApiCheckOut'
 import { messageModal } from '../Components/renderMessageModal'
+import { refreshProductStorage } from './localeStorage'
 
 const total= document.getElementById("precototal")
 const final = document.getElementById("precoFinal")
@@ -44,7 +45,7 @@ export class CheckOut
       }
     }//////////////////////////////////////////////////////////////////////////
 
-    async efetuarPagamento()
+    async payment()
     {
       let discount
       if(cupon.value)
@@ -52,8 +53,9 @@ export class CheckOut
       else
          discount = ""
     const data = await checkout(discount)
+
     messageModal("OBRIGADO PELA SUA VISITA",JSON.stringify(data))
-    updateProducts();
+    refreshProductStorage()
 
     }//////////////////////////////////////////////////////////////////////////    
 }
