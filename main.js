@@ -1,6 +1,6 @@
-import {NavbarTop, NavBarBottom} from './Components/renderNavbars'
-import { getStoredProducts } from './modules/storage'
+import { NavbarTop, NavBarBottom} from './Components/renderNavbars'
 import { renderFootNote } from './Components/renderFootNote'
+import { getStoredProducts } from './modules/localeStorage'
 
 
 const header=document.getElementById("header")

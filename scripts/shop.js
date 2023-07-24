@@ -5,7 +5,6 @@ import { ModalProduct } from "../Components/renderProductModal";
 import { messageModal } from "../Components/renderMessageModal";
 import { ligthStars } from "../Components/renderClassificacaoModal";
 import { renderSearch } from "../Components/renderSearch";
-import { getStoredProducts } from "../modules/storage";
 
 const Cart = new ShoppingCart()
 const main= document.getElementById("main")
