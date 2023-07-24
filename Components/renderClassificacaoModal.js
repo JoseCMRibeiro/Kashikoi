@@ -1,6 +1,5 @@
 import { messageModal } from "./renderMessageModal";
-import { ratingStorage } from "./reviewStorage";
-//import { getProductReview } from "./reviewStorage";
+import { ratingStorage} from "../modules/reviewStorage";
 
 export function ligthStars(product) 
 {
@@ -22,7 +21,6 @@ export function ligthStars(product)
       flex-direction: column;
       align-items: center;
       background-color: #313131ee;      
-      color: white;
       margin: 15% auto;
       padding: 10px;
       border: 1px solid #ffbf00;
@@ -87,6 +85,7 @@ export function ligthStars(product)
   // Create heading element
   const heading = document.createElement('h2');
   heading.textContent = 'Como qualifica este produto?';
+  heading.style.color = 'white';
   // Create stars container
   const starsContainer = document.createElement('div');
   starsContainer.className = 'stars';
@@ -106,7 +105,7 @@ export function ligthStars(product)
   nameInput.placeholder = 'Nome:';
   nameInput.className = 'input-field';
   
-  // comentario
+  // review
   const reviewInput = document.createElement('textarea');
   reviewInput.id = 'reviewInput';
   reviewInput.placeholder = 'Comentario';
@@ -178,13 +177,12 @@ export function ligthStars(product)
       const name = nameInput.value;
       const review = reviewInput.value;
 
-      //armazena classificações
+      //store reviews
       ratingStorage(product.id,name,rating,review)
       
       modalElement.style.display = 'none';
       modal.remove()      
-      location.reload();//para forçar o reload da pagina
-
+      location.reload();//force reload of page
     } 
     else 
     {

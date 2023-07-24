@@ -1,4 +1,4 @@
-  import { getProductReview } from "./reviewStorage";
+  import { getProductReview } from "../modules/reviewStorage";
   
   // Function to create the product card
   export function createProductCard (item) 

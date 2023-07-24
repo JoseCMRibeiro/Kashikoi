@@ -12,36 +12,40 @@
     <header id="header"></header>
     <main id ="main">
 
-      <div class="container"><!-- items no carrinho -->
-        <div class="column"><!-- items no carrinho -->
-          <ul id="Cart">
-          </ul>
-        </div>
-        <div class="column"><!--talao de compras-->
-            <div> 
-                <ul>
+      <h1 class="title">O SEU CESTO:</h1>
+
+      <div class="grid_container"><!-- items no carrinho -->
+        <div class="grid1"><!-- items no carrinho -->
+          <ul id="Cart"></ul>
+          </div>
+          <!-- cupon   -->
+          <div class="grid2" id = "divcupon"> 
                     <ul>
-                        Inserir Cupon Desconto
+                      <ul>Inserir Cupon discount</ul>
+                      <ul><input id="cupon" type="text" placeholder="codigo coupon"><br><br></ul>
+                      <ul><buttonc class ="blueButton" id="bt_cupon" type="button">Inserir coupon</button>  </ul>
+                        
+                        
+                                              
                     </ul>
-                    <ul>
-                        <input id="cupon" type="text" placeholder="codigo coupon">
-                        <button id="bt_submeter_cupon" type="button">Submit</button>
-                    </ul>
-                    <br>
-                </ul>
             </div>
-          <ul>
-            <ul>Preço Total: <label id="precototal">0.00</label></ul>
-            <ul>Desconto: <label id="desconto">0.00</label></ul>
-            <ul>Preço Final: <label id="precoFinal">0.00</label></ul><br>
-            <ul><button id="bt_efetuar_pagamento" >Efetuar pagamento</button></ul><br>
-            <ul><button id="bt_master_card"></button>
-                <button id="bt_pay_pal">Paypal</button>
-                <button id="bt_visa">Visa</button>
-                <button id="bt_American_express">American Express</button>
-            </ul>
-          </ul>
-        </div>
+            <!-- cupon -->
+            <!-- totals -->
+            <div class="grid3" id="totals">
+              <ul>Preço Total: <label id="precototal">0.00</label></ul>
+              <ul>discount: <label id="discount">0.00</label></ul>
+              <ul>Preço Final: <label id="precoFinal">0.00</label></ul><br>
+
+              <ul><button class ="blueButton" id="bt_pagamento">Efetuar pagamento</ul></button><br>
+
+              <ul>
+                  <button class = "bt_payment master" id="bt_master" ></button>
+                  <button class = "bt_payment paypal" id="bt_paypal"></button>
+                  <button class = "bt_payment visa" id="bt_visa"></button>
+                  <button class = "bt_payment american" id="bt_American"></button>
+              </ul>  
+            </div>          
+            <!-- totals -->
       </div><!-- items no carrinho -->
 
 

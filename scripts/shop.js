@@ -1,8 +1,11 @@
+import DOMPurifyI  from "dompurify";
 import { createProductCard } from "../Components/renderShopCard";
-import { ShoppingCart} from "../Components/classCart"
+import { ShoppingCart} from "../modules/classCart"
 import { ModalProduct } from "../Components/renderProductModal";
 import { messageModal } from "../Components/renderMessageModal";
 import { ligthStars } from "../Components/renderClassificacaoModal";
+import { renderSearch } from "../Components/renderSearch";
+import { getStoredProducts } from "../modules/storage";
 
 const Cart = new ShoppingCart()
 const main= document.getElementById("main")
@@ -17,21 +20,31 @@ const search = document.getElementById("search")
 
 search.addEventListener("keyup", function(event) 
 {
-    const length=search.value.length
-    const filteredValue = search.value.replace(/[^a-zA-Z0-9]/g, '');
-    if(length >0 && length<3)    
+    const length=search.value.length - countSpaces(search.value)
+    const filteredValue = DOMPurifyI.sanitize(search.value.replace(/[^a-zA-Z0-9]/g, ''));
+    if(length >0 && length<3)   
+    { 
         cardGrid.innerHTML=""
-    if(length > 2 )
+        cardGrid.appendChild(renderSearch());
+    }
+        
+    else if(length > 2 )
     {        
         cardGrid.innerHTML=""
-        searchProductGrid(filteredValue)
+        if(!searchProductGrid(filteredValue))
+            cardGrid.appendChild(renderSearch());
+        else
+        {            
+            cardGrid.innerHTML=""
+            searchProductGrid(filteredValue)
+        }
+        
     }
-    else if (length==0 && cardGrid.innerHTML=="")
-        renderCards(Cart.products)
-    else if (length<1)
-    {
+    else if (length==0 && (cardGrid.innerHTML=="" || cardGrid.childElementCount>0))
+    {       
         cardGrid.innerHTML=""
-    }    
+        renderCards(Cart.products)
+    }
 });
 //-----------------------------------------------------------------------------------------
 function cardClick(event)
@@ -121,3 +134,9 @@ function starClick(item)
 {    
     ligthStars(item)
 }
+//----------------------------------------------------------------------------------------------------------------
+function countSpaces(str) {
+    const spacesRegex = /\s/g;
+    const matches = str.match(spacesRegex);
+    return matches ? matches.length : 0;
+}//-----------------------------------------------------------------------------------------------------

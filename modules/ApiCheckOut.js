@@ -1,20 +1,6 @@
-const baseURL = 'http://127.0.0.1:3333';
-export async function fetchProducts() 
-{
-  try 
-  {
-    const response = await fetch(`${baseURL}/products`); // Get list of products
-    
-    const array_response = await response.json();
-    return array_response;//return array with list of products
-
-  } 
-  catch (error) 
-  {
-    console.error('Error fetching products:', error.message);
-    throw error;
-  }
-}
+import {API_CHECKOUT} from '../kashikoi.env'
+import {API_COUPON} from '../kashikoi.env'
+import { getStoredProducts } from './storage'
 
 ////////////////////////////
 ////////////////////////////
@@ -38,14 +24,14 @@ export async function fetchProducts()
 //  }                     //
 ////////////////////////////
 ////////////////////////////
-export async function checkout(coupon)
+export async function checkout(coupon) 
 {
 
   let items=[]
-  let productsStorage = localStorage.getItem('products')
+  let productsStorage = getStoredProducts()
   
-  if(productsStorage)
-    items=JSON.parse(productsStorage)
+  if(productsStorage.PromiseResult)
+    items=JSON.parse(PromiseResult)
 
   const simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));//cria um novo JSON com apenas os atributos necessarios para checkout
   const cleanProducts = simplifiedProducts.filter(item => item.quantity > 0);//remove produtos a zero
@@ -56,19 +42,16 @@ export async function checkout(coupon)
     coupon: coupon
   }
 
-  const url = `${baseURL}/checkout`;
-
   try 
   {
-    const response = await fetch(url, 
+    const response = await fetch(API_CHECKOUT, 
     {
       method: 'post',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(products)
     });
 
-    const data = await response.json();
-    return data
+    return response.json();
   } 
   catch (error) 
   {
@@ -88,9 +71,6 @@ export async function checkout(coupon)
 ////////////////////////////////
 export async function checkCoupon(text) 
 {
-//-------------------------------------------------------
-
-  const url = `${baseURL}/check-coupon`;
   const coupon=
   {
     "couponCode": text
@@ -98,16 +78,13 @@ export async function checkCoupon(text)
 
   try 
   {
-    const response = await fetch(url, 
+    const response = await fetch(API_COUPON, 
     {
       method: 'post',
       headers: {'Accept': 'application/json','Content-Type': 'application/json'},
       body: JSON.stringify(coupon)
     });
-
-    const data = await response.json();
-    console.log(data);
-    return data;
+    return response.json();
   }
   catch (error) 
   {

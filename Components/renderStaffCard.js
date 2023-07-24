@@ -1,4 +1,4 @@
-export function RenderStaff(img, name)
+export function RenderStaffCard(img, name)
 {
     const supportDiv = document.createElement('div');
     supportDiv.classList.add('support');
@@ -26,6 +26,7 @@ export function RenderStaff(img, name)
     supportDiv.appendChild(nameHeading);
     supportDiv.appendChild(descriptionParagraph);
     supportDiv.appendChild(innerDiv);
+    supportDiv.style.marginBottom = '10px'
 
     return supportDiv;
 }

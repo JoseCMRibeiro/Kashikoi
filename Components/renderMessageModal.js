@@ -14,6 +14,7 @@ export function messageModal(text1, text2)
         height: 100%;
         overflow: auto;
         background-color: rgba(0, 0, 0, 0.5);
+        color: white;
       }
 
       .modal-content {
@@ -31,10 +32,12 @@ export function messageModal(text1, text2)
   const modalContent = document.createElement('div');
   modalContent.classList.add("modal-content")
   const h1 = document.createElement('h3');
-  h1.textContent=text1  
+  h1.textContent=text1
+  h1.style.color = 'white';
   h1.style.margin = '10px';
   const h2 = document.createElement('h3');
   h2.textContent=text2
+  h2.style.color = 'white';
   h2.style.margin = '10px';
   const closeButton = document.createElement('button');
   closeButton.textContent = 'CLOSE';

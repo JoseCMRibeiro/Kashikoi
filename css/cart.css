@@ -1,47 +1,90 @@
-#bt_master_card {
-  background-size: cover; 
+.title{
+  padding: 50px;
+}
+.main{
+  margin-top: 200px;
+}
+.grid_container {
+  display: grid;
+  grid-template-columns: 3fr 1fr; 
+  grid-gap: 30px; 
+}
+.grid1 {
+  grid-column: 1 / span 1;   
+  grid-row: 1 / span 3;
+}
+.grid2
+{
+  grid-column: 2;
+  grid-row: 1;
+}
+.grid3
+{  
+  grid-column: 2;
+  grid-row: 2;
+}
+.master{  
   background-image: url('/images/MasterCard.png');
+}
+.paypal{
+  background-image: url('/images/paypal.jpg');
+}
+.visa{
+  background-image: url('/images/visa.jpg');
+}
+.american{
+  background-image: url('/images/american.jpg');
+}
+
+.bt_payment {
+  background-size: cover; 
   background-position: center;  
-  background-color: #e0e0e0;
-  color: #000;
   padding: 10px 20px;
   border: none;
   width: 50px;
-  height: 25px;  
+  height: 30px;  
   cursor: pointer;
 }
-#bt_master_card:hover {
-  background-color: #a0a0a0;
-  color: #fff;
+.bt_payment:hover {  
+  cursor: pointer;  
+  opacity: 0.5;
+  border: 1px solid grey;
 }
-
-.container {
-    display: flex;
-  }
-
-.column {
-    flex-grow: 1;
-    padding: 10px;
-    border: 1px solid #000;
-  }
-
-.column:first-child {
-    flex-grow: 3;
-  }
-
-.grid-container {
-display: grid;
-grid-template-columns: repeat(3, 1fr);
-grid-gap: 10px;
-max-width: 150px; 
+.blueButton{
+  color: white;
+  background-color: rgb(58, 58, 221);
+  padding: 10px;  
+  border: none;
+  border-radius: 5%;
 }
-
-.grid-item {
-border: 1px solid #000;
+.blueButton:hover{  
+  cursor: pointer;
+  text-shadow: 2px 2px 4px #000000;
+  opacity: 0.5;
+  border: 1px solid grey;
 }
+  
+@media screen and (max-width: 600px){
+      .grid_container {
+        display: grid;
+        grid-template-columns: 1fr;
+        justify-items: center; 
+        height: fit-content;
+      }
 
-.grid-item img {
-display: block;
-max-width: 100px;
-max-height: 100px;
-} 
+      .grid1 {
+        grid-column: 1;
+        grid-row: 2; 
+        max-width: 400px;
+      }
+
+      .grid2 {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .grid3 {
+        grid-column: 1;
+        grid-row: 3;
+      }
+}

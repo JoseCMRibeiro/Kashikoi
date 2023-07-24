@@ -1,110 +1,121 @@
-import { ShoppingCart } from './ClassCart'
+import { ShoppingCart } from "../modules/classCart";
+import { checkCart } from "../scripts/cart";
+
 const total=document.getElementById("precototal")
-const submit=document.getElementById("bt_submeter_cupon")
 const Cart = new ShoppingCart()
 
-export function renderCartItem(item)
-{    
-    // const item=Cart.items[Cart.items.length-1]
-    const words=item.name.split(' ');
-    const name= words.slice(0,2).join(' ');
-    const ID=item.id;
-    // Create li element
-    const cartItem = document.createElement('ul');
-    cartItem.id = "inCart"+item.id;
-
-    // Create container div
-    const containerDiv = document.createElement('div');
-    containerDiv.className = 'container';
-
+export function renderCartItem(item) {
+    const words = item.name.split(' ');
+    const name = words.slice(0, 2).join(' ');
+    const ID = item.id;
+  
+    // Create cart item container div
+    const cartItem = document.createElement('div');
+    cartItem.style.display = 'flex';
+    cartItem.style.alignItems = 'center';
+    cartItem.style.justifyContent = 'space-between';
+    cartItem.style.borderBottom = '1px solid #ccc';
+    cartItem.style.padding = '10px';
+    cartItem.id = "itemDiv"+ item.id;
+  
     // Create image element
     const image = document.createElement('img');
-    image.id = 'imagem_produto'+ID;
+    image.id = 'imagem_produto' + ID;
     image.src = item.image;
     image.alt = 'Image';
-    image.width = '50';
-    image.height = '50';
-
-    // Create ul element
-    const ul = document.createElement('ul');
-    const li1 = document.createElement('ul');
-    li1.textContent = name;
-    const li2 = document.createElement('ul');
-    li2.textContent = "Preço: €"+ item.price;
-    const li3 = document.createElement('ul');
-    li3.textContent = "";
-    li3.id='SubTotal'+ID;
-
-    // Append li elements to ul
-    ul.appendChild(li1);
-    ul.appendChild(li2);
-    ul.appendChild(li3);
-
-    // Append image and ul to container div
-    containerDiv.appendChild(image);
-    containerDiv.appendChild(ul);
-
+    image.style.width = '50px';
+    image.style.height = '50px';
+    image.style.marginRight = '10px';
+  
+    // Create div to hold item details (name and price)
+    const itemDetailsDiv = document.createElement('div');
+    itemDetailsDiv.style.flex = '1';
+  
+    // Create h3 element for item name
+    const nameHeading = document.createElement('h3');
+    nameHeading.textContent = name;
+    nameHeading.style.margin = '0';
+  
+    // Create paragraph element for item price
+    const priceParagraph = document.createElement('p');
+    priceParagraph.textContent = "€ " + item.price;
+  
+    // Append item name and price to item details div
+    itemDetailsDiv.appendChild(nameHeading);
+    itemDetailsDiv.appendChild(priceParagraph);
+  
     // Create div for buttons
     const buttonsDiv = document.createElement('div');
-
+  
     // Create buttons
     const plusButton = document.createElement('button');
-    plusButton.id = 'bt_mais'+ID;
+    plusButton.id = 'bt_mais' + ID;
     plusButton.textContent = '+';
-
+    plusButton.style.padding = "3px"
+    plusButton.style.width = "25px"
+  
     const quantityButton = document.createElement('button');
-    quantityButton.id = 'quantidade'+ ID;
+    quantityButton.id = 'quantidade' + ID;
     quantityButton.textContent = item.quantityInCart;
-
+    quantityButton.style.padding = "3px"
+    quantityButton.style.width = "25px"
+  
     const minusButton = document.createElement('button');
     minusButton.id = 'bt_menos';
-    minusButton.textContent = '-';
-
+    minusButton.textContent = ' - ';
+    minusButton.style.padding = "3px"
+    minusButton.style.width = "25px"
+  
     const deleteButton = document.createElement('button');
-    deleteButton.id = 'bt_trash'+ID;
-
+    deleteButton.id = 'bt_trash' + ID;  
     const deleteIcon = document.createElement('i');
     deleteIcon.className = 'fa fa-trash-o';
-
+    deleteIcon.style.padding = "3px"
+    deleteIcon.style.width = "26px"
+  
     deleteButton.appendChild(deleteIcon);
-
+  
     // Append buttons to buttons div
-    buttonsDiv.appendChild(plusButton);
-    buttonsDiv.appendChild(quantityButton);
     buttonsDiv.appendChild(minusButton);
+    buttonsDiv.appendChild(quantityButton);
+    buttonsDiv.appendChild(plusButton);
     buttonsDiv.appendChild(deleteButton);
-
-    // Append container div and buttons div to li item
-    cartItem.appendChild(containerDiv);
+  
+    // Append image, item details, and buttons to the cart item container div
+    cartItem.appendChild(image);
+    cartItem.appendChild(itemDetailsDiv);
     cartItem.appendChild(buttonsDiv);
-
+  
     //trash listener
-    deleteButton.addEventListener('click',() => 
-    {   
-        const toRemove=document.getElementById("inCart"+item.id)
-        toRemove.remove()    
-        Cart.removeItem(item);  
-        total.textContent=Cart.getTotal().toFixed(2)  
-    });
-    //adding listener
-    plusButton.addEventListener('click',() => 
-    {   
-        const quantity = Cart.addItem(item,1);          
-        quantityButton.textContent = quantity;
-        total.textContent=Cart.getTotal().toFixed(2) 
-        li3.textContent="Sub Total: " + (quantity*item.price).toFixed(2)     
-    });
-    //bt_minus listener
-    minusButton.addEventListener('click',() => 
-    {   
-        if(quantityButton.textContent=="1")    
+    deleteButton.addEventListener('click', () => 
+    {      
+        total.textContent = Cart.getTotal().toFixed(2);
+        const toRemove = document.getElementById("itemDiv" + item.id);
+        if (toRemove) 
         {
-            deleteButton.click()
-            return
+          toRemove.remove();
         }
-        quantityButton.textContent=Cart.addItem(item,-1) 
-        total.textContent=Cart.getTotal().toFixed(2) 
-        li3.textContent="Sub Total: " +(item.quantityInCart*item.price).toFixed(2)          
-    });   
+        Cart.removeItem(item);
+        total.textContent = Cart.getTotal().toFixed(2);
+        checkCart();
+      });
+    //adding listener
+    plusButton.addEventListener('click', () => {
+      const quantity = Cart.addItem(item, 1);
+      quantityButton.textContent = quantity;
+      total.textContent = Cart.getTotal().toFixed(2);
+    });
+  
+    //bt_minus listener
+    minusButton.addEventListener('click', () => {
+      if (quantityButton.textContent === "1") {
+        deleteButton.click();
+        return;
+      }
+      quantityButton.textContent = Cart.addItem(item, -1);
+      total.textContent = Cart.getTotal().toFixed(2);
+    });
+  
     return cartItem;
-}
+  }
+  

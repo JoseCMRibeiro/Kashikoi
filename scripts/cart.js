@@ -1,19 +1,15 @@
-import { ShoppingCart } from '../Components/classCart';
-import { CheckOut } from  '../Components/ClassCheckOut'
+import { ShoppingCart } from '../modules/classCart';
+import { CheckOut } from  '../modules/ClassCheckOut'
 import { renderCartItem } from '../Components/renderCartCard'; 
-const btVisa = document.getElementById("bt_visa")
-const btPay = document.getElementById("bt_pay_pal")
-const btMaster = document.getElementById("bt_master_card")
-const btSubmit =document.getElementById("bt_submeter_cupon")
-const btPagar =document.getElementById("bt_efetuar_pagamento")
-const btAmerican = document.getElementById("bt_American_express")
-
+const btSubmit =document.getElementById("bt_cupon")
+const btPagar =document.getElementById("bt_pagamento")
+const cupon = document.getElementById("cupon")
+const cartdiv = document.getElementById("Cart")
+const cartItems = document.getElementById("Cart")
 
 const Check = new CheckOut()
 const Cart = new ShoppingCart()
 
-
-const cartItems = document.getElementById("Cart")
 
 for(var i = 0; i < Cart.products.length;i++)
 {    
@@ -25,11 +21,23 @@ for(var i = 0; i < Cart.products.length;i++)
         {
             const subTotalValue =Cart.products[i].quantityInCart * Cart.products[i].price
             const subTotal=document.getElementById("SubTotal" + Cart.products[i].id)
-            subTotal.textContent="SubTotal: €"+ subTotalValue.toFixed(2);            
         }
     }
 }
+
 Cart.getTotal()
+checkCart()
+
+export function checkCart()
+{  
+    if(cartdiv.innerHTML=="")
+    {
+      const img=document.createElement("img")
+      img.src="/images/emptycart.jpg"
+      img.style.maxWidth="400px"
+      cartdiv.appendChild(img)
+    }
+}
 
 /////////////////////////////////////////////////////////////////
 //                                                             //
@@ -54,5 +62,4 @@ btPagar.addEventListener('click',() =>
 {   
   Check.efetuarPagamento()
 }); 
-bt
 //-------------------------------------------------------
