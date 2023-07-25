@@ -36,8 +36,7 @@ search.addEventListener("keyup", function(event)
         {            
             cardGrid.innerHTML=""
             searchProductGrid(filteredValue)
-        }
-        
+        }        
     }
     else if (length==0 && (cardGrid.innerHTML=="" || cardGrid.childElementCount>0))
     {       
@@ -72,12 +71,12 @@ function iconClick(event)
 
      if(item.quantity<1)        
     {
-        messageModal("Não podemos satisfazer o seu pedido","o artigo está em rotura de stock")
+        messageModal("OUT OF STOCK")
     }
     else
     {
         Cart.addItem(item,1)
-        messageModal(item.name, "Foi adicionado ao carrinho")
+        messageModal(item.name, "was added to your cart")
     }
 }
 //---------------------------------------------------------------------------------------------
@@ -89,9 +88,8 @@ buttonCart.onclick = function()
 function renderCards( products)
 {
     for (var i = 0; i < products.length;i++)
-    {    
-    cardGrid.appendChild(createProductCard(products[i]))
-    }
+        cardGrid.appendChild(createProductCard(products[i]))
+
     main.appendChild(cardGrid)    
     //adding listeners to product cards
     const cardImages = document.querySelectorAll('img')
@@ -101,7 +99,6 @@ function renderCards( products)
     cartIcons.forEach(icon => {icon.addEventListener('click', iconClick)});
     //adding listeners to stars
     const stars = document.querySelectorAll(".starsContainer")    
-    // stars.forEach(star => {star.addEventListener('click', starClick)})
 
     stars.forEach((star, index) => {
         star.addEventListener('click', () => {

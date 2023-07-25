@@ -9,9 +9,11 @@ export async function fetchProducts()
     
     if (!response.ok) 
       throw new Error('Fetch Api Error');      
-    else  
-    return response.json();//return array with list of products
-
+    else 
+    {
+      const productsJson = await response.json();
+      return productsJson//return array with list of products
+    } 
   } 
   catch (error) 
   {    

@@ -7,7 +7,6 @@ const cupon = document.getElementById("cupon")
 const cartdiv = document.getElementById("Cart")
 const cartItems = document.getElementById("Cart")
 
-const Check = new CheckOut()
 const Cart = new ShoppingCart()
 
 
@@ -20,13 +19,14 @@ for(var i = 0; i < Cart.products.length;i++)
         if(Cart.products[i].quantityInCart>1)
         {
             const subTotalValue =Cart.products[i].quantityInCart * Cart.products[i].price
-            const subTotal=document.getElementById("SubTotal" + Cart.products[i].id)
         }
     }
-}
+}//----------------------------------------------------------
 
 Cart.getTotal()
 checkCart()
+
+//--------------------------------------------------------------------------------
 
 export function checkCart()
 {  
@@ -39,27 +39,30 @@ export function checkCart()
     }
 }
 
-/////////////////////////////////////////////////////////////////
-//                                                             //
-//                            EVENTS                           //
-//                                                             //
-/////////////////////////////////////////////////////////////////
+//--------------------------------------------------------------
+//                                                             -
+//                            EVENTS                           -
+//                                                             -
+//--------------------------------------------------------------
 
 cupon.addEventListener("keydown", function(event) 
 {
   if (event.key === "Enter") 
-  {  
+  {      
+    const Check = new CheckOut()
     Check.addCoupon(cupon.value)
   }
 });
 //----------------------------------------------------------
 btSubmit.addEventListener('click',() => 
 {   
+  const Check = new CheckOut()
   Check.addCoupon(cupon.value)
 }); 
 //-------------------------------------------------------------
 btMakePurchase.addEventListener('click',() => 
 {   
+  const Check = new CheckOut()
   Check.payment()
 }); 
 //-------------------------------------------------------

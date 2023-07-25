@@ -12,5 +12,6 @@ export async function fetchusers()
     catch(error)
     {        
         messageModal("API USERS",error.message)
+        return false
     }
 }////////////////////////////////////////////////////////////

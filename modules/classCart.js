@@ -1,5 +1,6 @@
 import { messageModal } from "../Components/renderMessageModal"
 import {STORAGE_PRODUCTS} from '../kashikoi.env'
+import { getStoredProducts } from "./localeStorage"
 
 const final = document.getElementById("total")
 const discount = document.getElementById("discount")

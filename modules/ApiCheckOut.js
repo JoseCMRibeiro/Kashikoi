@@ -91,5 +91,6 @@ export async function checkCoupon(text)
   catch (error) 
   {
     messageModal("COUPON",error)
+    return false
   }
 }

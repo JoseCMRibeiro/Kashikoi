@@ -24,13 +24,7 @@ export function setStoredUsers(users)
     localStorage.setItem(STORAGE_USERS, users); 
 }//-----------------------------------------------
 
-async function callApiUsers()
-{
-    const usersJson = await fetchusers();
-    
-    setStoredUsers(JSON.stringify(usersJson));
-    return usersJson;
-}
+
 //*******************************************************/
 //***************     PRODUCTS     **********************/
 //*******************************************************/
@@ -141,3 +135,16 @@ export function SetRatingReviews(ID,name,rating,review)
       localStorage.setItem(STORAGE_REVIEWS, JSON.stringify(reviews));
     }
   }//------------------------------------------------------------------
+
+  async function callApiProducts()
+  {
+      const productJson = await fetchProducts()
+      setStoredProductes(JSON.stringify(productJson))
+      return productJson;
+  }
+  async function callApiUsers()
+  {
+      const usersJson = await fetchusers();      
+      setStoredUsers(JSON.stringify(usersJson));
+      return usersJson;
+  }

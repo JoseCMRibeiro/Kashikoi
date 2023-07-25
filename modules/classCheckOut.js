@@ -12,14 +12,14 @@ const cupon = document.getElementById("cupon")
 
 export class CheckOut
 {
-    constructor()//construtor 
-    {   
-      const storage = localStorage.getItem(STORAGE_PRODUCTS)
-      if(storage)
-        this.storage = JSON.parse(storage)
-      else
-        this.storage =[];
-    }//////////////////////////////////////////////////////////////////////////
+    // constructor()//construtor 
+    // {   
+    //   const storage = localStorage.getItem(STORAGE_PRODUCTS)
+    //   if(storage)
+    //     this.storage = JSON.parse(storage)
+    //   else
+    //     this.storage =[];
+    // }//////////////////////////////////////////////////////////////////////////
 
     async addCoupon(codigo)     
     { 
@@ -36,7 +36,7 @@ export class CheckOut
               cupon.value="";
               discount.textContent="0.00"
               final.textContent=total.textContent;
-              messageModal("COUPON INVALIDO",response.error)
+              messageModal("COUPON INVALID",response.error)
             }
       }
       else
