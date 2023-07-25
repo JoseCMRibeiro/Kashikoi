@@ -1,5 +1,5 @@
 import { messageModal } from "./renderMessageModal";
-import { ratingStorage} from "../modules/reviewStorage";
+import { SetRatingReviews } from "../modules/localeStorage";
 
 export function ligthStars(product) 
 {
@@ -98,17 +98,17 @@ export function ligthStars(product)
     star.innerHTML = '&#9733;';
     starsContainer.appendChild(star);
   }
-  // Nome
+  // name
   const nameInput = document.createElement('input');
   nameInput.type = 'text';
   nameInput.id = 'nameInput';
-  nameInput.placeholder = 'Nome:';
+  nameInput.placeholder = 'name:';
   nameInput.className = 'input-field';
   
   // review
   const reviewInput = document.createElement('textarea');
   reviewInput.id = 'reviewInput';
-  reviewInput.placeholder = 'Comentario';
+  reviewInput.placeholder = 'review';
   reviewInput.className = 'input-field';
   
   // Create submit button
@@ -178,7 +178,7 @@ export function ligthStars(product)
       const review = reviewInput.value;
 
       //store reviews
-      ratingStorage(product.id,name,rating,review)
+      SetRatingReviews(product.id,name,rating,review)
       
       modalElement.style.display = 'none';
       modal.remove()      

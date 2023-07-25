@@ -2,8 +2,8 @@ import { checkCoupon, checkout} from './ApiCheckOut'
 import { messageModal } from '../Components/renderMessageModal'
 import { refreshProductStorage } from './localeStorage'
 
-const total= document.getElementById("precototal")
-const final = document.getElementById("precoFinal")
+const total= document.getElementById("totalPrice")
+const final = document.getElementById("total")
 const discount = document.getElementById("discount")
 const cupon = document.getElementById("cupon")
 

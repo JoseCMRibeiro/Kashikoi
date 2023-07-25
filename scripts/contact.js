@@ -38,8 +38,6 @@ slides.onclick = function()
     show.start()
 }
 
-
-
 //------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------
@@ -76,9 +74,9 @@ function validateForm()
   firstName = sanitizeInput(firstName);
   company = sanitizeInput(company);
   message = sanitizeInput(message);
-  email = sanitizeInput(email);
-
-  if (!email.includes("@"))
+  
+  const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  if (!emailPattern.test(email))
   {
     messageModal("Invalid Email");
     return false;
@@ -86,7 +84,7 @@ function validateForm()
 
   if (firstName.length > 20)
   {
-    messageModal("First name should not exceed 20 characters.");
+    messageModal("Name should not exceed 20 characters.");
     return false;
   }
 

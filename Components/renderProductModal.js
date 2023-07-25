@@ -1,4 +1,4 @@
-import { getProductReview } from "../modules/reviewStorage";
+import { getProductReview } from "../modules/localeStorage";
 
 export function ModalProduct(product) 
 {
@@ -109,7 +109,7 @@ export function ModalProduct(product)
   for ( var i = 0; i < rating.reviews.length ; i++)
   {    
     const nameRatings = document.createElement('h4')
-    nameRatings.textContent="👤    " + rating.reviews[i].nome + ":"
+    nameRatings.textContent="👤    " + rating.reviews[i].name + ":"
     nameRatings.style.margin = "20px";
     modalContent.appendChild(nameRatings)
 
@@ -136,7 +136,7 @@ export function ModalProduct(product)
     productRatings.style.margin="10px";
 
     //for multiline review
-    const text = rating.reviews[i].comentario
+    const text = rating.reviews[i].review
     const paragraphs = text.split("\n");
     const paragraphContainer = document.createElement('div');
     paragraphs.forEach(paragraph => {

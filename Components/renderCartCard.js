@@ -1,7 +1,7 @@
 import { ShoppingCart } from "../modules/classCart";
 import { checkCart } from "../scripts/cart";
 
-const total=document.getElementById("precototal")
+const total=document.getElementById("totalPrice")
 const Cart = new ShoppingCart()
 
 export function renderCartItem(item) {
@@ -20,7 +20,7 @@ export function renderCartItem(item) {
   
     // Create image element
     const image = document.createElement('img');
-    image.id = 'imagem_produto' + ID;
+    image.id = 'productPicture' + ID;
     image.src = item.image;
     image.alt = 'Image';
     image.style.width = '50px';

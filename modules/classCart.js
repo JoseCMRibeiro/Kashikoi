@@ -1,8 +1,8 @@
 import { messageModal } from "../Components/renderMessageModal"
 
-const final = document.getElementById("precoFinal")
+const final = document.getElementById("total")
 const discount = document.getElementById("discount")
-const precoTotal = document.getElementById("precototal")
+const totalPrice = document.getElementById("totalPrice")
 
 
 export class ShoppingCart 
@@ -51,7 +51,7 @@ export class ShoppingCart
       var total=0;
       for ( var i=0; i < this.products.length; i++)
       total+=this.products[i].quantityInCart*this.products[i].price;
-      precoTotal.textContent = "€" + total.toFixed(2)
+      totalPrice.textContent = "€" + total.toFixed(2)
       const discountValue = parseInt(discount.textContent)
       const finalValue = total * (100 - discountValue)/100
       final.textContent =  "€" + finalValue.toFixed(2) 

@@ -1,4 +1,4 @@
-  import { getProductReview } from "../modules/reviewStorage";
+  import { getProductReview } from "../modules/localeStorage";
   
   // Function to create the product card
   export function createProductCard (item) 
@@ -49,7 +49,7 @@
     const review = getProductReview(item.id)
     if (review!=null)
     {
-      stars = review.totalEstrelas/review.reviews.length
+      stars = review.numberOfStars/review.reviews.length
     }
 
 

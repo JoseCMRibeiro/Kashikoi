@@ -1,3 +1,4 @@
+import { messageModal } from '../Components/renderMessageModal'
 import {API_CHECKOUT} from '../kashikoi.env'
 import {API_COUPON} from '../kashikoi.env'
 import { getStoredProducts } from './localeStorage'
@@ -56,7 +57,7 @@ export async function checkout(coupon)
   } 
   catch (error) 
   {
-    console.log(error);
+   messageModal("CHECKOUT",error)
   }
 }
 ////////////////////////////////
@@ -90,6 +91,6 @@ export async function checkCoupon(text)
   }
   catch (error) 
   {
-    console.error(error);
+    messageModal("COUPON",error)
   }
 }
