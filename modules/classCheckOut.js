@@ -1,6 +1,8 @@
+import {STORAGE_PRODUCTS} from '../kashikoi.env'
+import { getStoredProducts } from './localeStorage'
 import { checkCoupon, checkout} from './ApiCheckOut'
-import { messageModal } from '../Components/renderMessageModal'
 import { refreshProductStorage } from './localeStorage'
+import { messageModal } from '../Components/renderMessageModal'
 
 const total= document.getElementById("totalPrice")
 const final = document.getElementById("total")
@@ -11,12 +13,12 @@ const cupon = document.getElementById("cupon")
 export class CheckOut
 {
     constructor()//construtor 
-    {             
-      const storage = localStorage.getItem('products')
+    {   
+      const storage = localStorage.getItem(STORAGE_PRODUCTS)
       if(storage)
         this.storage = JSON.parse(storage)
       else
-        this.storage =[];//
+        this.storage =[];
     }//////////////////////////////////////////////////////////////////////////
 
     async addCoupon(codigo)     
@@ -43,20 +45,26 @@ export class CheckOut
         discount.textContent="0.00"
         final.textContent=total.textContent;
       }
-    }//////////////////////////////////////////////////////////////////////////
+    }//----------------------------------------------------------------------
 
     async payment()
     {
-      let discount
-      if(cupon.value)
-         discount=cupon.value
-      else
-         discount = ""
-    const data = await checkout(discount)
+          const productsStorage = await getStoredProducts()
 
-    messageModal("OBRIGADO PELA SUA VISITA",JSON.stringify(data))
-    refreshProductStorage()
+          let discount
+          if(cupon.value)
+            discount=cupon.value
+          else
+            discount = ""
 
-    }//////////////////////////////////////////////////////////////////////////    
+          const data = await checkout(discount,productsStorage)
+
+          if(data)
+          {      
+              messageModal("We cant wait to see YOU again",JSON.stringify(data))
+              refreshProductStorage()
+          }
+      }//------------------------------------------------------------
+//////////////////////////////////////////////////////////////////    
 }
 

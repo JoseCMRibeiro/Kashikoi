@@ -42,9 +42,13 @@ export function setStoredProductes(products)
 
 export async function getStoredProducts()
 {
-    const products = localStorage.getItem(STORAGE_PRODUCTS)
+    const products =  localStorage.getItem(STORAGE_PRODUCTS)
     if(products)
-        return JSON.parse(products)
+    {
+      const productsJson = await JSON.parse(products)
+      return await productsJson  
+    }
+    
     else
     {        
         const products = await callApiProducts();        
