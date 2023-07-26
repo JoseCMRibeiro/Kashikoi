@@ -19,11 +19,18 @@ export  function getStoredUsers()
         return users;      
     }
 }//---------------------------------------------
+
 export function setStoredUsers(users)
 {    
     localStorage.setItem(STORAGE_USERS, users); 
 }//-----------------------------------------------
 
+async function callApiUsers()
+{
+    const usersJson = await fetchusers();      
+    setStoredUsers(JSON.stringify(usersJson));
+    return usersJson;
+}
 
 //*******************************************************/
 //***************     PRODUCTS     **********************/
@@ -34,18 +41,18 @@ export function setStoredProductes(products)
     localStorage.setItem(STORAGE_PRODUCTS, products); 
 }//-----------------------------------------------
 
-export async function getStoredProducts()
+export  async function getStoredProducts()
 {
     const products =  localStorage.getItem(STORAGE_PRODUCTS)
     if(products)
     {
-      const productsJson = await JSON.parse(products)
-      return await productsJson  
+      const productsJson =  JSON.parse(products)
+      return  productsJson  
     }
     
     else
     {        
-        const products = await callApiProducts();        
+        const products =  await callApiProducts();        
         if(products)
         {            
             for (var i = 0; i < products.length; i++)
@@ -136,15 +143,5 @@ export function SetRatingReviews(ID,name,rating,review)
     }
   }//------------------------------------------------------------------
 
-  async function callApiProducts()
-  {
-      const productJson = await fetchProducts()
-      setStoredProductes(JSON.stringify(productJson))
-      return productJson;
-  }
-  async function callApiUsers()
-  {
-      const usersJson = await fetchusers();      
-      setStoredUsers(JSON.stringify(usersJson));
-      return usersJson;
-  }
+
+  

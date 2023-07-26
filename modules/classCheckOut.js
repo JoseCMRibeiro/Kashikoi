@@ -1,4 +1,3 @@
-import {STORAGE_PRODUCTS} from '../kashikoi.env'
 import { getStoredProducts } from './localeStorage'
 import { checkCoupon, checkout} from './ApiCheckOut'
 import { refreshProductStorage } from './localeStorage'
@@ -12,15 +11,6 @@ const cupon = document.getElementById("cupon")
 
 export class CheckOut
 {
-    // constructor()//construtor 
-    // {   
-    //   const storage = localStorage.getItem(STORAGE_PRODUCTS)
-    //   if(storage)
-    //     this.storage = JSON.parse(storage)
-    //   else
-    //     this.storage =[];
-    // }//////////////////////////////////////////////////////////////////////////
-
     async addCoupon(codigo)     
     { 
       if(cupon.value.length>0)
@@ -47,7 +37,7 @@ export class CheckOut
       }
     }//----------------------------------------------------------------------
 
-    async payment()
+    async makePurchase()
     {
           const productsStorage = await getStoredProducts()
 
@@ -65,6 +55,5 @@ export class CheckOut
               refreshProductStorage()
           }
       }//------------------------------------------------------------
-//////////////////////////////////////////////////////////////////    
 }
 

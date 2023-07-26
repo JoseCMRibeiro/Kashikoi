@@ -11,7 +11,6 @@ export function renderSearch()
     image.src = "../images/searching.png";
     image.alt = 'search';
     image.width = '500';
-    // image.height = '';
 
    
     containerDiv.appendChild(image);

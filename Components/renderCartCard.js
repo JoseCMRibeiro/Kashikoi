@@ -4,7 +4,8 @@ import { checkCart } from "../scripts/cart";
 const total=document.getElementById("totalPrice")
 const Cart = new ShoppingCart()
 
-export function renderCartItem(item) {
+export function renderCartItem(item) 
+{
     const words = item.name.split(' ');
     const name = words.slice(0, 2).join(' ');
     const ID = item.id;

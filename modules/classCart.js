@@ -7,18 +7,17 @@ const discount = document.getElementById("discount")
 const totalPrice = document.getElementById("totalPrice")
 
 
-export class ShoppingCart 
+export  class ShoppingCart 
 { 
-    constructor()//construtor 
-    {  
+     constructor()//construtor 
+    {          
       const storage = localStorage.getItem(STORAGE_PRODUCTS)
       this.products = JSON.parse(storage)
-    }///////////////////////////////////////////////////////////////
+    }//-----------------------------------------------------------------------
 
-    addItem(item,n)
+    async addItem(item,n)
     {  
-      const storage = localStorage.getItem(STORAGE_PRODUCTS)
-      this.products = JSON.parse(storage)
+      this.products  =  await getStoredProducts()
       item=this.products[item.productIndex]
       if(n<0)//removes items from cart
       {
@@ -39,15 +38,15 @@ export class ShoppingCart
         messageModal("OUT OF STOCK")
         return (quantity)
       }
-    } //////////////////////////////////////////////////////////
+    }//-----------------------------------------------------------------------
     
-    removeItem(item)
+    async removeItem(item)
     {
-      const storage = localStorage.getItem(STORAGE_PRODUCTS)
-      this.products = JSON.parse(storage)
+      this.products  =  await getStoredProducts()
       this.products[item.productIndex].quantityInCart=0;
       localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(this.products));
-    }//////////////////////////////////////////////////////////
+    }//-----------------------------------------------------------------------
+
     getTotal()
     {
       var total=0;
@@ -58,5 +57,5 @@ export class ShoppingCart
       const finalValue = total * (100 - discountValue)/100
       final.textContent =  "€" + finalValue.toFixed(2) 
       return total
-    }////////////////////////////////////////////////////////////////////
+    }//-----------------------------------------------------------------------
 }

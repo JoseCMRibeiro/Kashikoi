@@ -21,7 +21,7 @@ for(var i = 0; i < Cart.products.length;i++)
             const subTotalValue =Cart.products[i].quantityInCart * Cart.products[i].price
         }
     }
-}//----------------------------------------------------------
+}//-----------------------------------------------------------------------------
 
 Cart.getTotal()
 checkCart()
@@ -54,15 +54,32 @@ cupon.addEventListener("keydown", function(event)
   }
 });
 //----------------------------------------------------------
+
 btSubmit.addEventListener('click',() => 
 {   
   const Check = new CheckOut()
   Check.addCoupon(cupon.value)
 }); 
 //-------------------------------------------------------------
+
 btMakePurchase.addEventListener('click',() => 
 {   
   const Check = new CheckOut()
   Check.payment()
 }); 
 //-------------------------------------------------------
+
+window.onresize = handleResize;
+handleResize();
+function handleResize( ) 
+{
+    if (window.innerWidth < 600) 
+    {
+        document.body.style.minHeight = '105vh';
+    } 
+    else 
+    {     
+        document.body.style.minHeight = '100vh';
+    }
+}
+

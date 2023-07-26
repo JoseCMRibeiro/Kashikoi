@@ -166,13 +166,16 @@ export function ModalProduct(product)
 
 
   //listeners
-  closeButton.addEventListener('click', function () {
+  closeButton.addEventListener('click', function () 
+  {
     modal.style.display = 'none';
   });
-  window.addEventListener('keydown', function (event) {
+  window.addEventListener('keydown', function (event) 
+  {
     if (event.key === 'Escape') modal.style.display = 'none';
   });
-  window.addEventListener('click', function (event) {
+  window.addEventListener('click', function (event) 
+  {
     if (event.target === modal) modal.style.display = 'none';
   });
 }

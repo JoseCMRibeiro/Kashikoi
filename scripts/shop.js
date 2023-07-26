@@ -5,6 +5,7 @@ import { ModalProduct } from "../Components/renderProductModal";
 import { messageModal } from "../Components/renderMessageModal";
 import { ligthStars } from "../Components/renderClassificacaoModal";
 import { renderSearch } from "../Components/renderSearch";
+import { getStoredProducts } from "../modules/localeStorage";
 
 const Cart = new ShoppingCart()
 const main= document.getElementById("main")
@@ -136,3 +137,15 @@ function countSpaces(str) {
     const matches = str.match(spacesRegex);
     return matches ? matches.length : 0;
 }//-----------------------------------------------------------------------------------------------------
+window.onresize = handleResize;
+handleResize();
+function handleResize() {
+    if (window.innerWidth < 600) 
+    {
+        document.body.style.minHeight = '105vh';
+    } 
+    else 
+    {     
+        document.body.style.minHeight = '100vh';
+    }
+}

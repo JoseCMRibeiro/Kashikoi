@@ -125,3 +125,16 @@ bt_submit.addEventListener("click", (event) => {
     document.getElementById("message").value = "";
   }
 });
+window.onresize = handleResize;
+handleResize();
+function handleResize() {
+    if (window.innerWidth < 600) 
+    {
+        document.body.style.minHeight = '230vh';
+    } 
+    else 
+    {     
+        document.body.style.minHeight = '100vh';
+    }
+}
+
