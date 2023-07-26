@@ -26,7 +26,7 @@ export  class ShoppingCart
         return (quantity)
       }
 
-      if(item.quantityInCart < this.products[item.productIndex].quantity)
+      if(this.products[item.productIndex].quantityInCart < this.products[item.productIndex].quantity)
       {
         const quantity = ++this.products[item.productIndex].quantityInCart
         localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(this.products));  

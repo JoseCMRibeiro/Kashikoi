@@ -86,7 +86,7 @@ function iconClick(event)
 {    
     const item = matchItem(event.currentTarget.id)
 
-    if(item.quantity<1)
+    if(item.quantity <= item.quantityInCart)
         messageModal("OUT OF STOCK")
     else
     {
