@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 30px;
+  margin: auto;
+  margin-top: 50px;
 }
 .search-container input {
   flex-grow: 1;
@@ -36,11 +37,13 @@
 
 .grid-container {
   margin: auto;
+  margin-bottom: 50px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 100px;
-  padding: 25px;
+  padding: 10px;
+  min-width: 400px;
 }
 
 .card {

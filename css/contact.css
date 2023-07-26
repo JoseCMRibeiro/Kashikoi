@@ -20,7 +20,6 @@
 .topDownMargin
 {
   padding-top: 50px;
-  
 }
 .centerText
 {
@@ -61,6 +60,7 @@
 }
 
 .form_map {
+  
   display: grid;
   grid-gap: 10px;
   width: 90%;
@@ -74,9 +74,8 @@
   display: grid;
   grid-gap: 10px;
   width: 90%;
-  height: 500px;
-  padding: auto;
   margin: auto;
+  margin-bottom: 80px;
   grid-template-columns: 1fr 1fr;  
 }
 
@@ -138,6 +137,7 @@ max-width: 1060px;
 width: 100%;
 position: relative;
 margin: auto;
+margin-top: 36px;
 cursor: pointer; 
 }
 

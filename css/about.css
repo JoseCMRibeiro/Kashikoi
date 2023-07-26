@@ -11,6 +11,7 @@
     font-size: 45px;
     color: #000;
     margin-bottom: 25px;
+    margin-top: 50px;
     position: relative;
 }
 .heading-about h1::after{
@@ -151,12 +152,12 @@
 .accordion input[type="radio"]:checked+label::before{
     content: "-";
 }
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 600px) {
     main{
         display: contents;
     }
     .container-about{
-        margin-bottom: 20px;
+        margin-bottom: 60px;
         margin-top: 15px;
     }
     .heading-about {

@@ -65,21 +65,6 @@ btSubmit.addEventListener('click',() =>
 btMakePurchase.addEventListener('click',() => 
 {   
   const Check = new CheckOut()
-  Check.payment()
+  Check.makePurchase()
 }); 
 //-------------------------------------------------------
-
-window.onresize = handleResize;
-handleResize();
-function handleResize( ) 
-{
-    if (window.innerWidth < 600) 
-    {
-        document.body.style.minHeight = '105vh';
-    } 
-    else 
-    {     
-        document.body.style.minHeight = '100vh';
-    }
-}
-

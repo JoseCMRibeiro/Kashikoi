@@ -137,15 +137,3 @@ function countSpaces(str) {
     const matches = str.match(spacesRegex);
     return matches ? matches.length : 0;
 }//-----------------------------------------------------------------------------------------------------
-window.onresize = handleResize;
-handleResize();
-function handleResize() {
-    if (window.innerWidth < 600) 
-    {
-        document.body.style.minHeight = '105vh';
-    } 
-    else 
-    {     
-        document.body.style.minHeight = '100vh';
-    }
-}

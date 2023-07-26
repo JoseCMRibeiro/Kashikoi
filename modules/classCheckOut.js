@@ -2,6 +2,7 @@ import { getStoredProducts } from './localeStorage'
 import { checkCoupon, checkout} from './ApiCheckOut'
 import { refreshProductStorage } from './localeStorage'
 import { messageModal } from '../Components/renderMessageModal'
+import { checkCart } from '../scripts/cart'
 
 const total= document.getElementById("totalPrice")
 const final = document.getElementById("total")
@@ -53,6 +54,7 @@ export class CheckOut
           {      
               messageModal("We cant wait to see YOU again",JSON.stringify(data))
               refreshProductStorage()
+              checkCart()
           }
       }//------------------------------------------------------------
 }

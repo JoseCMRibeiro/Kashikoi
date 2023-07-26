@@ -10,7 +10,6 @@ body{
 main
 {    
     max-width: 1200px;
-    min-width: 500px;
     margin: auto;
     padding: 10px;
     flex: 1;

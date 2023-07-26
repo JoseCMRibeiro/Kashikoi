@@ -8,6 +8,7 @@
   display: grid;
   grid-template-columns: 3fr 1fr; 
   grid-gap: 30px; 
+  margin-bottom: 100px;
 }
 .grid1 {
   grid-column: 1 / span 1;   

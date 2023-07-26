@@ -7,21 +7,25 @@ export function renderFootNote()
     footNote.style.backgroundColor = '#f0f0f0';
     footNote.style.textAlign = 'center';
     footNote.style.padding = '10px';
+    footNote.style.position = 'fixed'
+    footNote.style.bottom = '0'
+    footNote.style.width = '100%'
 
     const footNoteContent = document.createTextNode(footNoteText);
     footNote.appendChild(footNoteContent);
 
     //EVENTS
-    footNote.addEventListener('mouseover', () => {
-        footNote.style.backgroundColor = 'black';
-        footNote.style.color = 'white';
+    footNote.addEventListener('mouseover', () => 
+    {
         footNote.style.cursor = 'pointer';
-    });
-    footNote.addEventListener('mouseout', () => {
-        footNote.style.backgroundColor = 'lightgrey';
-        footNote.style.color = 'black'; 
+        footNote.style.textShadow = '2px 2px 4px #000000';
+    });//----------------------------------------------------
+    
+    footNote.addEventListener('mouseout', () => 
+    {        
+        footNote.style.textShadow = '';
         footNote.style.cursor = 'default';
-      });
+    });//----------------------------------------------------
 
     footNote.addEventListener('click', () => 
     {
@@ -30,6 +34,7 @@ export function renderFootNote()
             top: 0,
             behavior: 'smooth'
          });
-    });
+    });//----------------------------------------------------
+
     return footNote;
 }
