@@ -43,7 +43,7 @@
 
     const starsContainer = document.createElement('div');
     starsContainer.className = 'starsContainer';
-    starsContainer.id=item.productIndex
+    starsContainer.id=item.id
 
     let stars=0
     const review = getProductReview(item.id)

@@ -90,25 +90,22 @@ export function renderCartItem(item)
     //trash listener
     deleteButton.addEventListener('click', () => 
     {      
-        total.textContent = Cart.getTotal().toFixed(2);
-        const toRemove = document.getElementById("itemDiv" + item.id);
-        if (toRemove) 
-        {
-          toRemove.remove();
-        }
+        const itemToRemove = document.getElementById("itemDiv" + item.id);   
+        itemToRemove.parentNode.removeChild(itemToRemove)
         Cart.removeItem(item);
         total.textContent = Cart.getTotal().toFixed(2);
         checkCart();
       });
     //adding listener
-    plusButton.addEventListener('click', () => {
-      const quantity = Cart.addItem(item, 1);
-      quantityButton.textContent = quantity;
+    plusButton.addEventListener('click', () => 
+    {     
+      quantityButton.textContent = Cart.addItem(item, 1);
       total.textContent = Cart.getTotal().toFixed(2);
     });
   
     //bt_minus listener
-    minusButton.addEventListener('click', () => {
+    minusButton.addEventListener('click', () => 
+    {
       if (quantityButton.textContent === "1") {
         deleteButton.click();
         return;

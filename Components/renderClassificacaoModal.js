@@ -1,7 +1,7 @@
 import { messageModal } from "./renderMessageModal";
 import { SetRatingReviews } from "../modules/localeStorage";
 
-export function ligthStars(product) 
+export function productReview(product) 
 {
   const modalStyles = `
   .modal {
@@ -84,7 +84,7 @@ export function ligthStars(product)
   closeBtn.style.backgroundColor = 'black';
   // Create heading element
   const heading = document.createElement('h2');
-  heading.textContent = 'Como qualifica este produto?';
+  heading.textContent = 'How do you rate this item?';
   heading.style.color = 'white';
   // Create stars container
   const starsContainer = document.createElement('div');
@@ -148,21 +148,21 @@ export function ligthStars(product)
 
   stars.forEach(function(star, index) 
   {
-    star.addEventListener('click', function() 
-    {
-      rating = index + 1;
-
-      for (let i = 0; i < rating; i++) 
+      star.addEventListener('click', function() 
       {
-        stars[i].classList.add('active');
-      }
+        rating = index + 1;
 
-      for (let i = rating; i < stars.length; i++) 
-      {
-        stars[i].classList.remove('active');
-      }
+        for (let i = 0; i < rating; i++) 
+        {
+          stars[i].classList.add('active');
+        }
 
-    });
+        for (let i = rating; i < stars.length; i++) 
+        {
+          stars[i].classList.remove('active');
+        }
+
+      });
   });
 
   // Handle rating submission
@@ -182,7 +182,6 @@ export function ligthStars(product)
       
       modalElement.style.display = 'none';
       modal.remove()      
-      location.reload();//force reload of page
     } 
     else 
     {
@@ -191,16 +190,27 @@ export function ligthStars(product)
   });
 
     //listeners
-    closeModalBtn.addEventListener('click', function () {
-      modal.style.display = 'none';
+    closeModalBtn.addEventListener('click', function () 
+    {
+        modal.style.display = 'none';
+        modal.remove()      
     });
-    window.addEventListener('keydown', function (event) {
-      if (event.key === 'Escape') modal.style.display = 'none';
+    window.addEventListener('keydown', function (event) 
+    {
+        if (event.key === 'Escape') 
+        {
+          modal.style.display = 'none';          
+          modal.remove() 
+        }
+               
     });
-    window.addEventListener('click', function (event) {
-      if (event.target === modal) modal.style.display = 'none';
+    window.addEventListener('click', function (event) 
+    {
+        if (event.target === modal)
+        {
+          modal.style.display = 'none';          
+          modal.remove()
+        }
     });
 
-
-  return modal;
 }

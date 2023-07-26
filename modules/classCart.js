@@ -15,10 +15,10 @@ export  class ShoppingCart
       this.products = JSON.parse(storage)
     }//-----------------------------------------------------------------------
 
-    async addItem(item,n)
+    addItem(item,n)
     {  
-      this.products  =  await getStoredProducts()
-      item=this.products[item.productIndex]
+      const storage = localStorage.getItem(STORAGE_PRODUCTS)
+      this.products = JSON.parse(storage)
       if(n<0)//removes items from cart
       {
         const quantity = --this.products[item.productIndex].quantityInCart
@@ -40,9 +40,8 @@ export  class ShoppingCart
       }
     }//-----------------------------------------------------------------------
     
-    async removeItem(item)
+    removeItem(item)
     {
-      this.products  =  await getStoredProducts()
       this.products[item.productIndex].quantityInCart=0;
       localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(this.products));
     }//-----------------------------------------------------------------------

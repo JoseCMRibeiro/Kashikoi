@@ -19,7 +19,6 @@ async function getLines()
     linhap.textContent =storedProducts[i].name
     linhafatura.appendChild(linhap)
     }   
-
 }
 
 
