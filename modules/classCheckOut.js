@@ -19,8 +19,10 @@ export class CheckOut
           const response=await checkCoupon(codigo) 
           if( response.discount) 
             {
-              discount.textContent=response.discount
-              final.textContent=(parseFloat(total.textContent)*(100-parseFloat(response.discount))/100).toFixed(2)
+              discount.textContent=response.discount + " %"
+              
+              const finalPrice=(parseFloat(total.textContent.replace("€", ""))*(100-response.discount)/100)
+              final.textContent=finalPrice.toFixed(2)
             }
           else
             {              
