@@ -1,6 +1,6 @@
 import { messageModal } from "../Components/renderMessageModal"
 import {STORAGE_PRODUCTS} from '../kashikoi.env'
-import { getStoredProducts } from "./localeStorage"
+import { setStoredProductes } from "./localeStorage"
 
 const final = document.getElementById("total")
 const discount = document.getElementById("discount")
@@ -9,12 +9,6 @@ const totalPrice = document.getElementById("totalPrice")
 
 export  class ShoppingCart 
 { 
-     constructor()//construtor 
-    {          
-      const storage = localStorage.getItem(STORAGE_PRODUCTS)
-      this.products = JSON.parse(storage)
-    }//-----------------------------------------------------------------------
-
     addItem(item,n)
     {  
       const storage = localStorage.getItem(STORAGE_PRODUCTS)
@@ -22,14 +16,14 @@ export  class ShoppingCart
       if(n<0)//removes items from cart
       {
         const quantity = --this.products[item.productIndex].quantityInCart
-        localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(this.products));
+        setStoredProductes(JSON.stringify(this.products)) 
         return (quantity)
       }
 
       if(this.products[item.productIndex].quantityInCart < this.products[item.productIndex].quantity)
       {
         const quantity = ++this.products[item.productIndex].quantityInCart
-        localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(this.products));  
+        setStoredProductes(JSON.stringify(this.products)) 
         return (quantity)
       }
       else
@@ -43,7 +37,7 @@ export  class ShoppingCart
     removeItem(item)
     {
       this.products[item.productIndex].quantityInCart=0;
-      localStorage.setItem(STORAGE_PRODUCTS, JSON.stringify(this.products));
+      setStoredProductes(JSON.stringify(this.products)) 
     }//-----------------------------------------------------------------------
 
     getTotal()

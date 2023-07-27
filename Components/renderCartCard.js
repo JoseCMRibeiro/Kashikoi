@@ -1,8 +1,13 @@
 import { ShoppingCart } from "../modules/classCart";
 import { checkCart } from "../scripts/cart";
+import {STORAGE_PRODUCTS} from '../kashikoi.env'
 
 const total=document.getElementById("totalPrice")
+
+
+const products =  localStorage.getItem(STORAGE_PRODUCTS)
 const Cart = new ShoppingCart()
+Cart.products = JSON.parse(products)
 
 export function renderCartItem(item) 
 {
@@ -95,13 +100,14 @@ export function renderCartItem(item)
         Cart.removeItem(item);
         total.textContent = Cart.getTotal().toFixed(2);
         checkCart();
-      });
+    });//---------------------------------------------------
+
     //adding listener
     plusButton.addEventListener('click', () => 
     {     
       quantityButton.textContent = Cart.addItem(item, 1);
       total.textContent = Cart.getTotal().toFixed(2);
-    });
+    });//-----------------------------------------------------
   
     //bt_minus listener
     minusButton.addEventListener('click', () => 
@@ -112,7 +118,7 @@ export function renderCartItem(item)
       }
       quantityButton.textContent = Cart.addItem(item, -1);
       total.textContent = Cart.getTotal().toFixed(2);
-    });
+    });//-------------------------------------------------------
   
     return cartItem;
   }
