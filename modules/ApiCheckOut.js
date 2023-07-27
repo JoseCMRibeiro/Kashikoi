@@ -24,21 +24,12 @@ import { messageModal } from '../Components/renderMessageModal'
 //  }                     //
 ////////////////////////////
 ////////////////////////////
-export async function checkout(coupon,items ) 
+export async function checkOut(coupon,items ) 
 {
-  
-  const simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));//builds JSON with only the required data
-  const cleanProducts = simplifiedProducts.filter(item => item.quantity > 0);//removes products with quantity=0
 
-  if(cleanProducts.length==0)
-  {
-    messageModal("YOUR CART IS EMPTY")
-    return false
-  }    
-    
   const products = 
   {
-    products: cleanProducts,
+    products: items,
     coupon: coupon
   }
 

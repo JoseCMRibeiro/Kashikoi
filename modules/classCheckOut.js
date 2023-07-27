@@ -1,5 +1,5 @@
 import { getStoredProducts } from './localeStorage'
-import { checkCoupon, checkout} from './ApiCheckOut'
+import { checkCoupon, checkOut} from './ApiCheckOut'
 import { refreshProductStorage } from './localeStorage'
 import { messageModal } from '../Components/renderMessageModal'
 import { checkCart } from '../scripts/cart'
@@ -7,14 +7,14 @@ import { checkCart } from '../scripts/cart'
 const total= document.getElementById("totalPrice")
 const final = document.getElementById("total")
 const discount = document.getElementById("discount")
-const cupon = document.getElementById("cupon")
+const coupon = document.getElementById("coupon")
 
 
 export class CheckOut
 {
-    async addCoupon(codigo)     
-    { 
-      if(cupon.value.length>0)
+    async validadeCoupon(codigo)     
+    {       
+      if(coupon.value.length>0)
       {
           const response=await checkCoupon(codigo) 
           if( response.discount) 
@@ -26,7 +26,7 @@ export class CheckOut
             }
           else
             {              
-              cupon.value="";
+              coupon.value="COUPON INVALID";
               discount.textContent="0.00"
               final.textContent=total.textContent;
               messageModal("COUPON INVALID",response.error)
@@ -34,7 +34,7 @@ export class CheckOut
       }
       else
       {        
-        cupon.value="";
+        coupon.value="";
         discount.textContent="0.00"
         final.textContent=total.textContent;
       }
@@ -43,21 +43,49 @@ export class CheckOut
     async makePurchase()
     {
           const productsStorage = await getStoredProducts()
+          const productsToSell = await packToSell(productsStorage)
 
-          let discount
-          if(cupon.value)
-            discount=cupon.value
+          if(productsToSell==null)
+            //empty cart
+            {
+              messageModal("YOUR CART IS EMPTY")
+              return null
+            }
+          
+
+          let couponCode
+          if(coupon.value && coupon.value!="COUPON INVALID")
+            couponCode=coupon.value
           else
-            discount = ""
+            couponCode=""
 
-          const data = await checkout(discount,productsStorage)
-
-          if(data)
+          const data = await checkOut(couponCode,productsToSell)
+          const dataJson = await data
+          if(!dataJson.error && dataJson.success) 
           {      
-              messageModal("We cant wait to see YOU again",JSON.stringify(data))
+              messageModal("We cant wait to see YOU again")
               refreshProductStorage()
+              total.textContent="0.00"
+              final.textContent="0.00"
+              discount.textContent="0.00"
+              coupon.value=""
               checkCart()
           }
+          else
+            messageModal(dataJson.error)
       }//------------------------------------------------------------
-}
 
+}//------------------------------------------------------------------
+
+export async function packToSell(items)
+{
+    //builds JSON with only the required data
+    const simplifiedProducts = items.map(({ id, quantityInCart }) => ({ id, quantity: quantityInCart }));
+    //removes products with quantity=0
+    const itemsInCart = simplifiedProducts.filter(item => item.quantity > 0);
+
+    if(itemsInCart.length==0)     
+      return null
+    else 
+      return itemsInCart
+} 

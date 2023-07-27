@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import { messageModal } from "./renderMessageModal";
 import { SetRatingReviews } from "../modules/localeStorage";
 
@@ -174,8 +175,8 @@ export function productReview(product)
 
     if (selectedRating && nameInput.value && reviewInput.value) 
     {
-      const name = nameInput.value;
-      const review = reviewInput.value;
+      const name = DOMPurify.sanitize(nameInput.value);
+      const review = DOMPurify.sanitize(reviewInput.value);
 
       //store reviews
       SetRatingReviews(product.id,name,rating,review)
@@ -185,7 +186,7 @@ export function productReview(product)
     } 
     else 
     {
-      messageModal('Por favor preencha todos os campos',"");
+      messageModal('Please fill out all fields',"");
     }
   });
 

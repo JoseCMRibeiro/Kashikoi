@@ -1,8 +1,8 @@
 import {STORAGE_USERS} from '../kashikoi.env'
 import {STORAGE_REVIEWS} from '../kashikoi.env'
 import {STORAGE_PRODUCTS} from '../kashikoi.env'
-import { fetchusers } from './ApiUsers'
 import { fetchProducts } from './ApiProducts'
+import { fetchusers } from './ApiUsers'
 
 
 //*******************************************************/

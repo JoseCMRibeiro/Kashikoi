@@ -2,22 +2,26 @@ import { ShoppingCart } from '../modules/classCart';
 import { CheckOut } from '../modules/classCheckOut';
 import { renderCartItem } from '../Components/renderCartCard'; 
 import { getStoredProducts } from '../modules/localeStorage';
-const btSubmit =document.getElementById("bt_cupon")
+const btSubmit =document.getElementById("bt_coupon")
 const btMakePurchase =document.getElementById("bt_payment")
-const cupon = document.getElementById("cupon")
+const coupon = document.getElementById("coupon")
 const cartdiv = document.getElementById("Cart")
 const cartItems = document.getElementById("Cart")
 
-clientCart()
 
-  async function clientCart()
+          ///////////////////
+          /**/clientCart()///
+          //////////////////
+
+/////////////////////////////////////////////////////////////////////////////
+async function clientCart()
 {
     const products= await getStoredProducts();
 
     for(var i = 0; i < await products.length;i++)
       if(products[i].quantityInCart>0)
           {
-            const item= renderCartItem(products[i])
+            const item= renderCartItem(products,products[i])
             cartItems.appendChild(item)
           }
     
@@ -33,19 +37,19 @@ clientCart()
           //                                                             -
           //--------------------------------------------------------------
 
-cupon.addEventListener("keydown", function(event) 
+coupon.addEventListener("keydown", function(event) 
 {
 if (event.key === "Enter") 
     {      
       const Check = new CheckOut()
-      Check.addCoupon(cupon.value)
+      Check.validadeCoupon(coupon.value)
     }
 });//----------------------------------------------------------
 
 btSubmit.addEventListener('click',() => 
 {   
    const Check = new CheckOut()
-    Check.addCoupon(cupon.value)
+    Check.validadeCoupon(coupon.value)
 });//-------------------------------------------------------------
 
 btMakePurchase.addEventListener('click',() => 

@@ -1,16 +1,12 @@
 import { ShoppingCart } from "../modules/classCart";
 import { checkCart } from "../scripts/cart";
-import {STORAGE_PRODUCTS} from '../kashikoi.env'
 
 const total=document.getElementById("totalPrice")
 
-
-const products =  localStorage.getItem(STORAGE_PRODUCTS)
-const Cart = new ShoppingCart()
-Cart.products = JSON.parse(products)
-
-export function renderCartItem(item) 
+export function renderCartItem(products,item) 
 {
+    const Cart = new ShoppingCart()
+    Cart.products = products
     const words = item.name.split(' ');
     const name = words.slice(0, 2).join(' ');
     const ID = item.id;
@@ -95,8 +91,8 @@ export function renderCartItem(item)
     //trash listener
     deleteButton.addEventListener('click', () => 
     {      
-        const itemToRemove = document.getElementById("itemDiv" + item.id);   
-        itemToRemove.parentNode.removeChild(itemToRemove)
+        const divToRemove = document.getElementById("itemDiv" + item.id);   
+        divToRemove.parentNode.removeChild(divToRemove)
         Cart.removeItem(item);
         total.textContent = Cart.getTotal().toFixed(2);
         checkCart();
