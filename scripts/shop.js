@@ -15,7 +15,10 @@ import { renderSearch } from "../Components/renderSearch";
 
 async function Shop()
 {
-        const Cart = new ShoppingCart()
+        const Cart = new ShoppingCart()        
+        const products = await getStoredProducts()
+        Cart.products = await products;
+
         const main= document.getElementById("main")
         const cardGrid = document.createElement("div")
         cardGrid.classList.add("grid-container")
@@ -29,11 +32,9 @@ async function Shop()
 
         async function renderCards( )
         {
-            const products = await getStoredProducts()
-            Cart.products = await products;
             
 
-            for (var i = 0; i < await  products.length; i++)
+            for (var i = 0; i < products.length; i++)
                 cardGrid.appendChild(createProductCard(products[i]))
 
             main.appendChild(cardGrid)    

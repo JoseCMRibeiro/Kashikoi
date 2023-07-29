@@ -2,20 +2,18 @@ export function messageModal(text1, text2)
 {
   const modal = document.createElement("div");
   modal.className = "modal";
+  modal.style.display = 'none'
+  modal.style.position = 'fixed'
+  modal.style.zIndex = 1;
+  modal.style.left = '0'
+  modal.style.top = '0'
+  modal.style.width= '100%'
+  modal.style.height = '100%'
+  modal.style.overflow = 'auto'
+  modal.style.backgroundColor = 'rgba(0, 0, 0, 0.5)'
+  modal.style.color = 'white'
   modal.innerHTML = `
     <style>
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-      }
 
       .modal-content {
         margin: 15% auto;

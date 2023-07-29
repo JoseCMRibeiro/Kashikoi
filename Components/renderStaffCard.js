@@ -2,6 +2,7 @@ export function RenderStaffCard(img, name)
 {
     const supportDiv = document.createElement('div');
     supportDiv.classList.add('support');
+    supportDiv.style.marginTop = '60px'
 
 
     const image = document.createElement('img');

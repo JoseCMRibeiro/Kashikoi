@@ -15,18 +15,18 @@ const cartItems = document.getElementById("Cart")
 
 /////////////////////////////////////////////////////////////////////////////
 async function clientCart()
-{
+{    
+    const Cart = new ShoppingCart();
     const products= await getStoredProducts();
+    Cart.products =  await products;  
 
-    for(var i = 0; i < await products.length;i++)
+    for(var i = 0; i <  products.length;i++)
       if(products[i].quantityInCart>0)
           {
             const item= renderCartItem(products,products[i])
             cartItems.appendChild(item)
           }
-    
-    const Cart = new ShoppingCart();
-    Cart.products =  await products;    
+        
     Cart.getTotal()
     checkCart()
 }//-------------------------------------------------------------------------------

@@ -19,8 +19,7 @@ export class CheckOut
           const response=await checkCoupon(codigo) 
           if( response.discount) 
             {
-              discount.textContent=response.discount + " %"
-              
+              discount.textContent=response.discount + " %"              
               const finalPrice=(parseFloat(total.textContent.replace("€", ""))*(100-response.discount)/100)
               final.textContent=finalPrice.toFixed(2)
             }
@@ -50,8 +49,7 @@ export class CheckOut
             {
               messageModal("YOUR CART IS EMPTY")
               return null
-            }
-          
+            }          
 
           let couponCode
           if(coupon.value && coupon.value!="COUPON INVALID")
@@ -59,16 +57,18 @@ export class CheckOut
           else
             couponCode=""
 
-          const data = await checkOut(couponCode,productsToSell)
-          const dataJson = await data
+          const dataJson = await checkOut(couponCode,productsToSell)
           if(!dataJson.error && dataJson.success) 
           {      
-              messageModal("We cant wait to see YOU again")
+              total.textContent = "€ 0.00"
+              final.textContent = "€ 0.00"
+              discount.textContent = "0.00"
+              coupon.value = ""
+            
+              messageModal("fatura")
               refreshProductStorage()
-              total.textContent="0.00"
-              final.textContent="0.00"
-              discount.textContent="0.00"
-              coupon.value=""
+
+              //window.location.href = '/pages/shop.html';
               checkCart()
           }
           else
