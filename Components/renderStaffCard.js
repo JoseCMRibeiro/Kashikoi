@@ -9,6 +9,8 @@ export function RenderStaffCard(img, name)
     image.id = 'support1';
     image.classList.add('pictures');
     image.src = img;
+    image.style.marginTop = '30px'
+    image.style.padding = '20px'
 
     const nameHeading = document.createElement('h3');
     nameHeading.textContent = name;
@@ -27,7 +29,7 @@ export function RenderStaffCard(img, name)
     supportDiv.appendChild(nameHeading);
     supportDiv.appendChild(descriptionParagraph);
     supportDiv.appendChild(innerDiv);
-    supportDiv.style.marginBottom = '10px'
+    supportDiv.style.marginBottom = '50px'
 
     return supportDiv;
 }

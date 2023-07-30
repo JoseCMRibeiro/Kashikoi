@@ -35,15 +35,32 @@ export async function renderInvoice()
     modal.style.display = 'none';
   });
 
+ 
   //text 0
   const h0 = document.createElement('h0');
-  h0.textContent="KASHIKOI"
+  h0.textContent="KASHIKOI Tech Store"
   h0.style.color = 'black';
   h0.style.margin = '10px';
   h0.style.textAlign = 'left'
-  h0.style.fontSize = '20px'
+  h0.style.fontSize = '20px' 
 
+  //date time
+  const currentDate = new Date();
+  const year = currentDate.getFullYear();
+  const month = currentDate.getMonth() + 1; 
+  const day = currentDate.getDate();
+  const hours = currentDate.getHours();
+  const minutes = currentDate.getMinutes();
+  const seconds = currentDate.getSeconds();
+  const formattedDate = `${year}-${month.toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+  const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   
+  const hdate = document.createElement('p');
+  hdate.textContent=formattedDate + " " +formattedTime
+  hdate.style.color = 'black';
+  hdate.style.margin = '10px';
+  hdate.style.textAlign = 'left'
+  hdate.style.fontSize = '20px' 
 
   //text 1
   const h1 = document.createElement('h2');
@@ -54,10 +71,13 @@ export async function renderInvoice()
 
   modalContent.appendChild(closeButton)
   modalContent.appendChild(h0)  
+  modalContent.appendChild(hdate)  
   addEmptyParagraph(modalContent)
   addEmptyParagraph(modalContent)
   addEmptyParagraph(modalContent)
   modalContent.appendChild(h1)  
+  addEmptyParagraph(modalContent)
+  addEmptyParagraph(modalContent)
   addEmptyParagraph(modalContent)
   modal.appendChild(modalContent)
   document.body.appendChild(modal);
@@ -71,9 +91,7 @@ export async function renderInvoice()
   details.style.gridTemplateColumns = '1fr 1fr 1fr 1fr'
   details.style.gap = '10px'
 
-  let total=0
-
-  
+  ////////////////////////////////////////////////////////////////////////////////////////////////////
   const Column1 = document.createElement('div');
   Column1.textContent="ITEM"
   const Column2 = document.createElement('div');
@@ -82,14 +100,13 @@ export async function renderInvoice()
   Column3.textContent="PRICE"
   const Column4 = document.createElement('div');
   Column4.textContent="SUBTOTAL"
-
   details.appendChild(Column1)
   details.appendChild(Column2)
   details.appendChild(Column3)
   details.appendChild(Column4)
   modalContent.appendChild(details)
 
-
+  let total=0
   products.forEach(item => 
   {
     if (item.quantityInCart >0)
@@ -117,8 +134,6 @@ export async function renderInvoice()
     }
   });
 
-
-
   const Column21 = document.createElement('div');
   const Column22 = document.createElement('div');
   const Column23 = document.createElement('div');
@@ -126,15 +141,15 @@ export async function renderInvoice()
   Column21.textContent=""
   Column22.textContent=""
   Column23.textContent="TOTAL:"
-  Column24.textContent= total  
+  Column24.textContent= total.toFixed(2)
   details.appendChild(Column21)
   details.appendChild(Column22)
   details.appendChild(Column23)
   details.appendChild(Column24)
   modalContent.appendChild(details)
 
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-  
     //listeners
     closeButton.addEventListener('click', function () 
     {

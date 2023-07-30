@@ -8,7 +8,7 @@ export function NavbarTop()
     navbarLeft.className = 'navbarLeft';
     navbarLeft.id = 'left';
     navbarLeft.innerHTML = `
-      <a href="/pages/shop.html"><i class="fa fa-shopping-cart"></i> Store</a> 
+      <a href="/pages/shop.html"><i class="fa fa-cart-plus"></i> Store</a> 
       <a href="/pages/about.html"><i class="fa fa-info"></i> About Us</a> 
       <a href="/pages/contact.html"><i class="fa fa-phone"></i> Contacts</a> 
     `;
@@ -21,6 +21,7 @@ export function NavbarTop()
     navbarRight.className = 'navbarRigth';
     navbarRight.id = 'rigth';
     navbarRight.innerHTML = `
+      <a href="/pages/cart.html"><i class="fa fa-shopping-cart"></i></a>
       <a href="https://twitter.com/"><i class="fa fa-twitter"></i></a>
       <a href="https://www.facebook.com/"><i class="fa fa-facebook-f"></i></a>
       <a href="#"><i class="fa fa-rss" ></i></a>
@@ -48,7 +49,8 @@ export function NavbarTop()
     links.className = 'links';
     linkContainer.id = 'links';
     linkContainer.innerHTML = `
-    <a href="/pages/shop.html"><i class="fa fa-shopping-cart "></i></a> 
+    <a href="/pages/shop.html"><i class="fa fa-cart-plus"></i></a> 
+    <a href="/pages/cart.html"><i class="fa fa-shopping-cart"></i></a>
     <a href="/pages/about.html"><i class="fa fa-info"></i></a> 
     <a href="/pages/contact.html"><i class="fa fa-phone"></i></a> 
     `;    
