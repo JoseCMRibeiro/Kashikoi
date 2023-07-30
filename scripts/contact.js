@@ -6,11 +6,12 @@ import { getStoredUsers } from "../modules/localeStorage";
 import { messageModal } from "../Components/renderMessageModal";
 
 const slides = document.getElementById("slides");
+const controls = document.getElementById("carouselControls")
 const left = document.getElementById("bt_left");
 const rigth = document.getElementById("bt_rigth")
 const staff = document.getElementById("staff")
 
-
+controls.style.display = 'none'
 renderStaff()  
 
 slides.appendChild(RenderSlides())  
@@ -19,13 +20,11 @@ show.start();
 
 left.addEventListener("click", function() 
 {
-  show.stop()
   show.goToPrevious()
 });
 
 rigth.addEventListener("click", function() 
 {
-    show.stop()
     show.goToNext()
 });
 
@@ -33,9 +32,15 @@ slides.onclick = function()
 {
   console.log("SLIDES")
   if (show.SlideshowRunning()) 
+  {      
     show.stop()
+    controls.style.display = 'block'
+  }
   else 
+  {    
     show.start()
+    controls.style.display = 'none'
+  }
 }
 
 //------------------------------------------------------------------------------------------
@@ -86,11 +91,21 @@ function validateForm()
   {
     messageModal("Name should not exceed 20 characters.");
     return false;
+  }  
+  else if (firstName.length < 5)
+  {
+    messageModal("Name should have at least 5 characters.");
+    return false;
   }
 
   if (company.length > 20)
   {
     messageModal("Company name should not exceed 20 characters.");
+    return false;
+  }
+  else if (company.length < 5)
+  {
+    messageModal("Company name should have at least 5 characters.");
     return false;
   }
 

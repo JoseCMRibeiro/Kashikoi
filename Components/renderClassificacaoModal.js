@@ -202,8 +202,7 @@ export function productReview(product)
         {
           modal.style.display = 'none';          
           modal.remove() 
-        }
-               
+        }               
     });
     window.addEventListener('click', function (event) 
     {
@@ -213,5 +212,4 @@ export function productReview(product)
           modal.remove()
         }
     });
-
 }

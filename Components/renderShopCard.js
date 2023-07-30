@@ -24,8 +24,7 @@
 
     const titleSpan = document.createElement('span');
 
-    const words=item.name.split(' ');
-    
+    const words=item.name.split(' ');    
     titleSpan.textContent = words.slice(0,2).join(' ');
 
     const priceSpan = document.createElement('span');

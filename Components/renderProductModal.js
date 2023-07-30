@@ -23,7 +23,7 @@ export function ModalProduct(product)
     background-color: #fefefe;
     padding: 5%;
     border: 5px solid #ffbf00;
-    height: 90%;
+    height: 100%;
     overflow-y: auto;
   }
 
@@ -57,6 +57,7 @@ export function ModalProduct(product)
   //create image
   const imageContainer = document.createElement('div');
   imageContainer.className = 'imageContainer';
+  imageContainer.style.marginTop = '50px'
 
   //create button
   const btContainer = document.createElement('div');
@@ -85,6 +86,7 @@ export function ModalProduct(product)
   const productPrice = document.createElement('p');
   productPrice.id = 'productPrice';
   productPrice.textContent = 'Price: $' + product.price;
+  productPrice.style.marginTop = '20px'
 
   const productImage = document.createElement('img');
   productImage.id = 'productImage';

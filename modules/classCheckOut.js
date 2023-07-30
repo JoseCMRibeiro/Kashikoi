@@ -3,6 +3,7 @@ import { checkCoupon, checkOut} from './ApiCheckOut'
 import { refreshProductStorage } from './localeStorage'
 import { messageModal } from '../Components/renderMessageModal'
 import { checkCart } from '../scripts/cart'
+import { renderInvoice } from '../Components/renderInvoice'
 
 const total= document.getElementById("totalPrice")
 const final = document.getElementById("total")
@@ -59,17 +60,9 @@ export class CheckOut
 
           const dataJson = await checkOut(couponCode,productsToSell)
           if(!dataJson.error && dataJson.success) 
-          {      
-              total.textContent = "€ 0.00"
-              final.textContent = "€ 0.00"
-              discount.textContent = "0.00"
-              coupon.value = ""
-            
-              messageModal("fatura")
-              refreshProductStorage()
-
-              //window.location.href = '/pages/shop.html';
-              checkCart()
+          {    
+            renderInvoice()
+            refreshProductStorage()
           }
           else
             messageModal(dataJson.error)
