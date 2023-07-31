@@ -30,14 +30,13 @@ async function Shop()
         //************************************************************************ */
         //************************************************************************ */
 
-        async function renderCards( )
+        async function renderCards(productsToRender)
         {
-            
+            const products = productsToRender || Cart.products;
 
             for (var i = 0; i < products.length; i++)
-                cardGrid.appendChild(createProductCard(products[i]))
-
-            main.appendChild(cardGrid)    
+                cardGrid.appendChild(createProductCard(products[i]));
+            main.appendChild(cardGrid); 
             
             //adding listeners to product cards
             const cardImages = document.querySelectorAll('img')
@@ -74,7 +73,7 @@ async function Shop()
                     searchProductGrid(filteredValue)
                 }        
             }
-            else if (length==0 && (cardGrid.innerHTML=="" || cardGrid.childElementCount>0))
+            else if (length===0 && (cardGrid.innerHTML==="" || cardGrid.childElementCount>0))
             {       
                 cardGrid.innerHTML=""
                 renderCards(Cart.products)
@@ -118,14 +117,12 @@ async function Shop()
         //search products
         function searchProductGrid(searchItem)
         {  
-                const products=Cart.products
-
+                
                 //filtra os produtos com base na pesquisa
-                const filteredProducts = products.filter(product => 
-                {
-                    const productName = product.name.toLowerCase(); 
+                const filteredProducts = Cart.products.filter(product => {
+                    const productName = product.name.toLowerCase();
                     return productName.includes(searchItem.toLowerCase());
-                });     
+                });    
 
                 renderCards(filteredProducts)
 
