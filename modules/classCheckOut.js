@@ -2,7 +2,6 @@ import { getStoredProducts } from './localeStorage'
 import { checkCoupon, checkOut} from './ApiCheckOut'
 import { refreshProductStorage } from './localeStorage'
 import { messageModal } from '../Components/renderMessageModal'
-import { checkCart } from '../scripts/cart'
 import { renderInvoice } from '../Components/renderInvoice'
 
 const total= document.getElementById("totalPrice")
@@ -22,7 +21,7 @@ export class CheckOut
             {
               discount.textContent=response.discount + " %"              
               const finalPrice=(parseFloat(total.textContent.replace("€", ""))*(100-response.discount)/100)
-              final.textContent=finalPrice.toFixed(2)
+              final.textContent="€"+finalPrice.toFixed(2)
             }
           else
             {              

@@ -106,7 +106,6 @@ export async function renderInvoice()
   details.appendChild(Column4)
   modalContent.appendChild(details)
 
-  let total=0
   products.forEach(item => 
   {
     if (item.quantityInCart >0)
@@ -122,7 +121,6 @@ export async function renderInvoice()
       name.textContent=words.slice(0,2).join(' ');
 
       const subTotal=item.quantityInCart * parseFloat( item.price)
-      total += subTotal
 
       const subTotalDiv = document.createElement('div');
       subTotalDiv.textContent=subTotal.toFixed(2)
@@ -134,6 +132,22 @@ export async function renderInvoice()
     }
   });
 
+  const Column11 = document.createElement('div');
+  const Column12 = document.createElement('div');
+  const Column13 = document.createElement('div');
+  const Column14 = document.createElement('div');
+  Column11.textContent=""
+  Column12.textContent=""
+  Column13.textContent="DISCOUNT:"
+  const discount = document.getElementById("discount")
+  Column14.textContent= discount.textContent
+  details.appendChild(Column11)
+  details.appendChild(Column12)
+  details.appendChild(Column13)
+  details.appendChild(Column14)
+  modalContent.appendChild(details)
+
+
   const Column21 = document.createElement('div');
   const Column22 = document.createElement('div');
   const Column23 = document.createElement('div');
@@ -141,7 +155,8 @@ export async function renderInvoice()
   Column21.textContent=""
   Column22.textContent=""
   Column23.textContent="TOTAL:"
-  Column24.textContent= total.toFixed(2)
+  const total = document.getElementById("total")  
+  Column24.textContent= total.textContent
   details.appendChild(Column21)
   details.appendChild(Column22)
   details.appendChild(Column23)

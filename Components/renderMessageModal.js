@@ -19,6 +19,7 @@ export function messageModal(text1, text2)
   modalContent.style.padding = '30px'
   modalContent.style.border = '1px solid #ffbf00'
   modalContent.style.width = ' 50%'
+  modalContent.style.minWidth = '400px'
   modalContent.style.textAlign = 'center'
   modalContent.style.backgroundColor = '#313131ee'
   modalContent.style.color = 'white'
