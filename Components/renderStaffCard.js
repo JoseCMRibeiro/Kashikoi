@@ -10,7 +10,7 @@ export function RenderStaffCard(img, name)
     image.classList.add('pictures');
     image.src = img;
     image.style.marginTop = '30px'
-    image.style.padding = '20px'
+    image.style.padding = '10px'
 
     const nameHeading = document.createElement('h3');
     nameHeading.textContent = name;

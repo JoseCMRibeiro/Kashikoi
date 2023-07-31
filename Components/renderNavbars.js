@@ -7,6 +7,7 @@ export function NavbarTop()
     const navbarLeft = document.createElement('div');
     navbarLeft.className = 'navbarLeft';
     navbarLeft.id = 'left';
+    navbar.style.fontSize = '18px'
     navbarLeft.innerHTML = `
       <a href="/pages/shop.html"><i class="fa fa-cart-plus"></i> Store</a> 
       <a href="/pages/about.html"><i class="fa fa-info"></i> About Us</a> 
